@@ -49,6 +49,7 @@
 		AB824B6025A643D900C5A513 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB824B6425A643D900C5A513 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AB824B6625A643D900C5A513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 		AB824B3825A643D400C5A513 = {
 			isa = PBXGroup;
 			children = (
+				EBA285DB25A64DA40010AEBF /* README.md */,
 				AB824B3D25A643D400C5A513 /* Shared */,
 				AB824B4725A643D900C5A513 /* iOS */,
 				AB824B4E25A643D900C5A513 /* macOS */,
