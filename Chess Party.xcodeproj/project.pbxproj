@@ -15,6 +15,30 @@
 		AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB824B3F25A643D400C5A513 /* ContentView.swift */; };
 		AB824B6B25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
 		AB824B6C25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
+		ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
+		ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
+		ABE50C9025A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
+		ABE50C9125A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
+		ABE50C9825A914320093AE52 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C9725A914320093AE52 /* Move.swift */; };
+		ABE50C9925A914320093AE52 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C9725A914320093AE52 /* Move.swift */; };
+		ABE50C9A25A914320093AE52 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C9725A914320093AE52 /* Move.swift */; };
+		ABE50C9B25A914320093AE52 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C9725A914320093AE52 /* Move.swift */; };
+		ABE50CA525A914F80093AE52 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CA425A914F80093AE52 /* Position.swift */; };
+		ABE50CA625A914F80093AE52 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CA425A914F80093AE52 /* Position.swift */; };
+		ABE50CA725A914F80093AE52 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CA425A914F80093AE52 /* Position.swift */; };
+		ABE50CA825A914F80093AE52 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CA425A914F80093AE52 /* Position.swift */; };
+		ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CAD25A9154E0093AE52 /* Piece.swift */; };
+		ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CAD25A9154E0093AE52 /* Piece.swift */; };
+		ABE50CB025A9154E0093AE52 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CAD25A9154E0093AE52 /* Piece.swift */; };
+		ABE50CB125A9154E0093AE52 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CAD25A9154E0093AE52 /* Piece.swift */; };
+		ABE50CB725A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
+		ABE50CB825A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
+		ABE50CB925A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
+		ABE50CBA25A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
+		ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
+		ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
+		ABE50CC225A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
+		ABE50CC325A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +73,12 @@
 		AB824B6025A643D900C5A513 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB824B6425A643D900C5A513 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AB824B6625A643D900C5A513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
+		ABE50C9725A914320093AE52 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		ABE50CA425A914F80093AE52 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		ABE50CAD25A9154E0093AE52 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		ABE50CB625A915B90093AE52 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionalChessBoard.swift; sourceTree = "<group>"; };
 		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +130,7 @@
 		AB824B3D25A643D400C5A513 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				ABE50C7925A912A90093AE52 /* Models */,
 				AB824B3E25A643D400C5A513 /* Chess_PartyApp.swift */,
 				AB824B3F25A643D400C5A513 /* ContentView.swift */,
 				AB824B4025A643D900C5A513 /* Assets.xcassets */,
@@ -151,6 +182,27 @@
 				AB824B6625A643D900C5A513 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		ABE50C7925A912A90093AE52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABE50C7B25A912D80093AE52 /* Chess-Board */,
+				ABE50CA425A914F80093AE52 /* Position.swift */,
+				ABE50CB625A915B90093AE52 /* Player.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABE50C7B25A912D80093AE52 /* Chess-Board */ = {
+			isa = PBXGroup;
+			children = (
+				ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */,
+				ABE50C9725A914320093AE52 /* Move.swift */,
+				ABE50CAD25A9154E0093AE52 /* Piece.swift */,
+				ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */,
+			);
+			path = "Chess-Board";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE50C9825A914320093AE52 /* Move.swift in Sources */,
 				AB824B6925A643D900C5A513 /* ContentView.swift in Sources */,
+				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
+				ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */,
+				ABE50CB725A915B90093AE52 /* Player.swift in Sources */,
+				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
 				AB824B6725A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
+				ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,8 +377,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE50C9925A914320093AE52 /* Move.swift in Sources */,
 				AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */,
+				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
+				ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */,
+				ABE50CB825A915B90093AE52 /* Player.swift in Sources */,
+				ABE50CA625A914F80093AE52 /* Position.swift in Sources */,
 				AB824B6825A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
+				ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +393,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB824B5A25A643D900C5A513 /* Tests_iOS.swift in Sources */,
+				ABE50C9A25A914320093AE52 /* Move.swift in Sources */,
+				ABE50CC225A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABE50CB025A9154E0093AE52 /* Piece.swift in Sources */,
+				ABE50CA725A914F80093AE52 /* Position.swift in Sources */,
+				ABE50CB925A915B90093AE52 /* Player.swift in Sources */,
+				ABE50C9025A9140A0093AE52 /* ChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +407,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB824B6525A643D900C5A513 /* Tests_macOS.swift in Sources */,
+				ABE50C9B25A914320093AE52 /* Move.swift in Sources */,
+				ABE50CC325A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABE50CB125A9154E0093AE52 /* Piece.swift in Sources */,
+				ABE50CA825A914F80093AE52 /* Position.swift in Sources */,
+				ABE50CBA25A915B90093AE52 /* Player.swift in Sources */,
+				ABE50C9125A9140A0093AE52 /* ChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
