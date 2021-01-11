@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PlayerID: Identifiable {
+struct PlayerID: Hashable, Identifiable {
     var id: Int
 }

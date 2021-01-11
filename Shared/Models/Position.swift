@@ -7,14 +7,10 @@
 
 import Foundation
 
-struct Position: Hashable {
+struct Vector: Hashable {
+    var x, y: Int
     
-    
-    func getRow() -> Int {
-        return 0 // TODO
-    }
-    
-    func getColumn() -> Int {
-        return 0 // TODO
+    static func +(right: Vector, left: Vector) -> Vector {
+        return Vector(x: right.x + left.x, y: right.y + left.y)
     }
 }
