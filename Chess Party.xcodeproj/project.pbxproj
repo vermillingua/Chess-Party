@@ -165,6 +165,7 @@
 		AB824B3D25A643D400C5A513 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EB32C2D325ACBAEA009EF1DB /* View-Model */,
 				ABE50C7925A912A90093AE52 /* Models */,
 				AB824B3E25A643D400C5A513 /* Chess_PartyApp.swift */,
 				AB824B3F25A643D400C5A513 /* ContentView.swift */,
@@ -222,7 +223,6 @@
 		ABE50C7925A912A90093AE52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EB1CFF0825AA49D0002BA365 /* Chess-Game */,
 				EB1CFECD25AA3604002BA365 /* Players */,
 				ABE50C7B25A912D80093AE52 /* Chess-Board */,
 				ABE50CA425A914F80093AE52 /* Position.swift */,
@@ -253,14 +253,14 @@
 			path = Players;
 			sourceTree = "<group>";
 		};
-		EB1CFF0825AA49D0002BA365 /* Chess-Game */ = {
+		EB32C2D325ACBAEA009EF1DB /* View-Model */ = {
 			isa = PBXGroup;
 			children = (
 				EB1CFF0925AA49DF002BA365 /* ChessGame.swift */,
 				EB1CFF1F25AA5019002BA365 /* SelectionType.swift */,
 				EB1CFF1625AA4F01002BA365 /* GameState.swift */,
 			);
-			path = "Chess-Game";
+			path = "View-Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
