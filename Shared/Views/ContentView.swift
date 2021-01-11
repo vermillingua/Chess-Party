@@ -9,8 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        SquareChessBoardView(rows: 8, cols: 8, primaryColor: Color.gray, secondaryColor: Color.white)
     }
 }
 

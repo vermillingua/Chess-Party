@@ -54,8 +54,8 @@ extension PrivateChessBoard {
     }
     
     func positionInBounds(_ position: Position) -> Bool {
-        let row = position.getRow()
-        let column = position.getColumn()
+        let row = position.row
+        let column = position.col
         return 0 <= row && row < rows && 0 <= column && column < columns
     }
 }
