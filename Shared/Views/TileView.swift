@@ -20,7 +20,7 @@ struct TileView: View {
                 .fill(tileType == .primary ? theme.primaryBoardColor : theme.secondaryBoardColor)
                 .aspectRatio(contentMode: .fit)
                 .padding(0)
-                .border(theme.colorForSelection(ofType: selectionType), width: theme.selectionBorderWidth)
+                .border(theme.colorForSelection(selectionType), width: theme.selectionBorderWidth)
         } else {
             Rectangle()
                 .fill(tileType == .primary ? theme.primaryBoardColor : theme.secondaryBoardColor)

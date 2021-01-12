@@ -79,10 +79,6 @@
 		EBA7116925ACF0CA00EA6F79 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116725ACF0CA00EA6F79 /* PieceView.swift */; };
 		EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
 		EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
-		EBA7117B25ACFDBD00EA6F79 /* ThemeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */; };
-		EBA7117C25ACFDBD00EA6F79 /* ThemeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */; };
-		EBA7118625AD02F800EA6F79 /* ThemeR.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118525AD02F800EA6F79 /* ThemeR.swift */; };
-		EBA7118725AD02F800EA6F79 /* ThemeR.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118525AD02F800EA6F79 /* ThemeR.swift */; };
 		EBA7118D25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
 		EBA7118E25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
 		EBA7119C25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
@@ -145,8 +141,6 @@
 		EBA7115125ACEE1700EA6F79 /* General.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = General.xcassets; sourceTree = "<group>"; };
 		EBA7116725ACF0CA00EA6F79 /* PieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
 		EBA7116F25ACF36C00EA6F79 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeD.swift; sourceTree = "<group>"; };
-		EBA7118525AD02F800EA6F79 /* ThemeR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeR.swift; sourceTree = "<group>"; };
 		EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyChessBoard.swift; sourceTree = "<group>"; };
 		EBA7119B25AD342A00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA7125425AD4D4200EA6F79 /* SelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionType.swift; sourceTree = "<group>"; };
@@ -293,7 +287,7 @@
 		EB28541825ACC41D00B9150F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EBA7116E25ACF34800EA6F79 /* Themes */,
+				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
 				EB28541925ACC44900B9150F /* SquareChessBoardView.swift */,
 				EBA7116725ACF0CA00EA6F79 /* PieceView.swift */,
 				EB28542425ACC4DC00B9150F /* TileView.swift */,
@@ -321,16 +315,6 @@
 				EBA7115125ACEE1700EA6F79 /* General.xcassets */,
 			);
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		EBA7116E25ACF34800EA6F79 /* Themes */ = {
-			isa = PBXGroup;
-			children = (
-				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
-				EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */,
-				EBA7118525AD02F800EA6F79 /* ThemeR.swift */,
-			);
-			path = Themes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,8 +495,6 @@
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0A25AA49DF002BA365 /* ChessGame.swift in Sources */,
-				EBA7117B25ACFDBD00EA6F79 /* ThemeD.swift in Sources */,
-				EBA7118625AD02F800EA6F79 /* ThemeR.swift in Sources */,
 				ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 				EB28541A25ACC44900B9150F /* SquareChessBoardView.swift in Sources */,
 				EBA7125525AD4D4200EA6F79 /* SelectionType.swift in Sources */,
@@ -541,8 +523,6 @@
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0B25AA49DF002BA365 /* ChessGame.swift in Sources */,
-				EBA7117C25ACFDBD00EA6F79 /* ThemeD.swift in Sources */,
-				EBA7118725AD02F800EA6F79 /* ThemeR.swift in Sources */,
 				ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 				EB28541B25ACC44900B9150F /* SquareChessBoardView.swift in Sources */,
 				EBA7125625AD4D4200EA6F79 /* SelectionType.swift in Sources */,

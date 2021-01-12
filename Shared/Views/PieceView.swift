@@ -14,7 +14,7 @@ struct PieceView: View {
     
     var body: some View {
         ZStack {
-            theme.getImageFor(piece: piece).resizable()
+            theme.getPieceImage(piece).resizable()
         }
         .frame(width: size.width, height: size.height, alignment: .center)
     }
