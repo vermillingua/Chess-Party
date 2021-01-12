@@ -24,5 +24,13 @@ struct ThemeR: Theme {
         }
     }
     
+    func colorForSelection(ofType selectionType: SelectionType) -> Color {
+        switch selectionType {
+        case .userFocus: return Color.yellow
+        default: return Color.gray
+        }
+    }
+    
+    var selectionBorderWidth: CGFloat = 5
     
 }

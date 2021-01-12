@@ -13,4 +13,8 @@ protocol Theme {
     var secondaryBoardColor: Color {get}
 
     func getImageFor(piece: Piece) -> Image
+    
+    func colorForSelection(ofType selectionType: SelectionType) -> Color
+    var selectionBorderWidth: CGFloat {get}
+    
 }

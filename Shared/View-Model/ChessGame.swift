@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ChessGame {
+class ChessGame: ObservableObject {
     @Published var chessBoard: ChessBoard
     @Published var gameState: GameState
     @Published var selectedPositions: [Position: SelectionType]
@@ -23,9 +23,26 @@ class ChessGame {
         selectedPositions = [:]
     }
     
+
     // MARK: - View Events
     func userTappedPosition(_ position: Position) {
-        
+        selectedPositions = [:]
+        if let selection = selectedPositions[position] {
+            switch selection {
+            case .potentialMove:
+                print("Make Move")
+                //TODO: Make move
+            case .userFocus:
+                selectedPositions = [:]
+                return
+            default:
+                selectedPositions = [:]
+            }
+            print("Deselected")
+        }
+        selectedPositions[position] = .userFocus
+        print("Selected")
+        // TODO: Populate potential moves
     }
     
 }
