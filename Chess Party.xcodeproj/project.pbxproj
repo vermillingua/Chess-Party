@@ -79,8 +79,6 @@
 		EBA7114B25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */; };
 		EBA7115225ACEE1700EA6F79 /* General.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115125ACEE1700EA6F79 /* General.xcassets */; };
 		EBA7115325ACEE1700EA6F79 /* General.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115125ACEE1700EA6F79 /* General.xcassets */; };
-		EBA7115925ACEEBA00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */; };
-		EBA7115A25ACEEBA00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */; };
 		EBA7116825ACF0CA00EA6F79 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116725ACF0CA00EA6F79 /* PieceView.swift */; };
 		EBA7116925ACF0CA00EA6F79 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116725ACF0CA00EA6F79 /* PieceView.swift */; };
 		EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
@@ -91,6 +89,8 @@
 		EBA7118725AD02F800EA6F79 /* ThemeR.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118525AD02F800EA6F79 /* ThemeR.swift */; };
 		EBA7118D25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
 		EBA7118E25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
+		EBA7119C25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
+		EBA7119D25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,12 +144,12 @@
 		EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-D.xcassets"; sourceTree = "<group>"; };
 		EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-R.xcassets"; sourceTree = "<group>"; };
 		EBA7115125ACEE1700EA6F79 /* General.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = General.xcassets; sourceTree = "<group>"; };
-		EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBA7116725ACF0CA00EA6F79 /* PieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
 		EBA7116F25ACF36C00EA6F79 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeD.swift; sourceTree = "<group>"; };
 		EBA7118525AD02F800EA6F79 /* ThemeR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeR.swift; sourceTree = "<group>"; };
 		EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyChessBoard.swift; sourceTree = "<group>"; };
+		EBA7119B25AD342A00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,8 +315,8 @@
 		EBA7114825ACED7400EA6F79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */,
 				EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */,
+				EBA7119B25AD342A00EA6F79 /* Assets.xcassets */,
 				EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */,
 				EBA7115125ACEE1700EA6F79 /* General.xcassets */,
 			);
@@ -459,8 +459,8 @@
 			files = (
 				EBA7114A25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */,
 				EBA7114225ACED3E00EA6F79 /* Theme-D.xcassets in Resources */,
+				EBA7119C25AD342A00EA6F79 /* Assets.xcassets in Resources */,
 				EBA7115225ACEE1700EA6F79 /* General.xcassets in Resources */,
-				EBA7115925ACEEBA00EA6F79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,8 +470,8 @@
 			files = (
 				EBA7114B25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */,
 				EBA7114325ACED3E00EA6F79 /* Theme-D.xcassets in Resources */,
+				EBA7119D25AD342A00EA6F79 /* Assets.xcassets in Resources */,
 				EBA7115325ACEE1700EA6F79 /* General.xcassets in Resources */,
-				EBA7115A25ACEEBA00EA6F79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
