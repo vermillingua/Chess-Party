@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        SquareChessBoardView(rows: 8, cols: 8, primaryColor: Color.gray, secondaryColor: Color.white)
+        SquareChessBoardView(rows: 8, cols: 8, theme: ThemeD(), board: DummyChessBoard())
     }
 }
 

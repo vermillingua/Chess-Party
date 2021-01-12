@@ -13,8 +13,6 @@
 		AB824B6825A643D900C5A513 /* Chess_PartyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB824B3E25A643D400C5A513 /* Chess_PartyApp.swift */; };
 		AB824B6925A643D900C5A513 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB824B3F25A643D400C5A513 /* ContentView.swift */; };
 		AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB824B3F25A643D400C5A513 /* ContentView.swift */; };
-		AB824B6B25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
-		AB824B6C25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
 		ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
 		ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
 		ABE50C9025A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
@@ -83,6 +81,16 @@
 		EBA7115325ACEE1700EA6F79 /* General.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115125ACEE1700EA6F79 /* General.xcassets */; };
 		EBA7115925ACEEBA00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */; };
 		EBA7115A25ACEEBA00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */; };
+		EBA7116825ACF0CA00EA6F79 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116725ACF0CA00EA6F79 /* PieceView.swift */; };
+		EBA7116925ACF0CA00EA6F79 /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116725ACF0CA00EA6F79 /* PieceView.swift */; };
+		EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
+		EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
+		EBA7117B25ACFDBD00EA6F79 /* ThemeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */; };
+		EBA7117C25ACFDBD00EA6F79 /* ThemeD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */; };
+		EBA7118625AD02F800EA6F79 /* ThemeR.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118525AD02F800EA6F79 /* ThemeR.swift */; };
+		EBA7118725AD02F800EA6F79 /* ThemeR.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118525AD02F800EA6F79 /* ThemeR.swift */; };
+		EBA7118D25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
+		EBA7118E25AD153800EA6F79 /* DummyChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +113,6 @@
 /* Begin PBXFileReference section */
 		AB824B3E25A643D400C5A513 /* Chess_PartyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chess_PartyApp.swift; sourceTree = "<group>"; };
 		AB824B3F25A643D400C5A513 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AB824B4025A643D900C5A513 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB824B4525A643D900C5A513 /* Chess Party.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chess Party.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB824B4825A643D900C5A513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB824B4D25A643D900C5A513 /* Chess Party.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chess Party.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +145,11 @@
 		EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-R.xcassets"; sourceTree = "<group>"; };
 		EBA7115125ACEE1700EA6F79 /* General.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = General.xcassets; sourceTree = "<group>"; };
 		EBA7115825ACEEBA00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBA7116725ACF0CA00EA6F79 /* PieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
+		EBA7116F25ACF36C00EA6F79 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeD.swift; sourceTree = "<group>"; };
+		EBA7118525AD02F800EA6F79 /* ThemeR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeR.swift; sourceTree = "<group>"; };
+		EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyChessBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +205,6 @@
 				EB32C2D325ACBAEA009EF1DB /* View-Model */,
 				ABE50C7925A912A90093AE52 /* Models */,
 				AB824B3E25A643D400C5A513 /* Chess_PartyApp.swift */,
-				AB824B4025A643D900C5A513 /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -259,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */,
+				EBA7118C25AD153800EA6F79 /* DummyChessBoard.swift */,
 				ABE50C9725A914320093AE52 /* Move.swift */,
 				ABE50CAD25A9154E0093AE52 /* Piece.swift */,
 				ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */,
@@ -281,7 +293,9 @@
 		EB28541825ACC41D00B9150F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EBA7116E25ACF34800EA6F79 /* Themes */,
 				EB28541925ACC44900B9150F /* SquareChessBoardView.swift */,
+				EBA7116725ACF0CA00EA6F79 /* PieceView.swift */,
 				EB28542425ACC4DC00B9150F /* TileView.swift */,
 				AB824B3F25A643D400C5A513 /* ContentView.swift */,
 			);
@@ -307,6 +321,16 @@
 				EBA7115125ACEE1700EA6F79 /* General.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		EBA7116E25ACF34800EA6F79 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
+				EBA7117A25ACFDBD00EA6F79 /* ThemeD.swift */,
+				EBA7118525AD02F800EA6F79 /* ThemeR.swift */,
+			);
+			path = Themes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,7 +460,6 @@
 				EBA7114A25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */,
 				EBA7114225ACED3E00EA6F79 /* Theme-D.xcassets in Resources */,
 				EBA7115225ACEE1700EA6F79 /* General.xcassets in Resources */,
-				AB824B6B25A643D900C5A513 /* Assets.xcassets in Resources */,
 				EBA7115925ACEEBA00EA6F79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +471,6 @@
 				EBA7114B25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */,
 				EBA7114325ACED3E00EA6F79 /* Theme-D.xcassets in Resources */,
 				EBA7115325ACEE1700EA6F79 /* General.xcassets in Resources */,
-				AB824B6C25A643D900C5A513 /* Assets.xcassets in Resources */,
 				EBA7115A25ACEEBA00EA6F79 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +501,7 @@
 				EB1CFEE925AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
 				EB1CFEFB25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				ABE50C9825A914320093AE52 /* Move.swift in Sources */,
+				EBA7118D25AD153800EA6F79 /* DummyChessBoard.swift in Sources */,
 				AB824B6925A643D900C5A513 /* ContentView.swift in Sources */,
 				EB1CFEF225AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
@@ -489,8 +512,12 @@
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0A25AA49DF002BA365 /* ChessGame.swift in Sources */,
+				EBA7117B25ACFDBD00EA6F79 /* ThemeD.swift in Sources */,
+				EBA7118625AD02F800EA6F79 /* ThemeR.swift in Sources */,
 				ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 				EB28541A25ACC44900B9150F /* SquareChessBoardView.swift in Sources */,
+				EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */,
+				EBA7116825ACF0CA00EA6F79 /* PieceView.swift in Sources */,
 				EB28542C25ACC72E00B9150F /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +531,7 @@
 				EB1CFEEA25AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
 				EB1CFEFC25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				ABE50C9925A914320093AE52 /* Move.swift in Sources */,
+				EBA7118E25AD153800EA6F79 /* DummyChessBoard.swift in Sources */,
 				AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */,
 				EB1CFEF325AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
@@ -514,8 +542,12 @@
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0B25AA49DF002BA365 /* ChessGame.swift in Sources */,
+				EBA7117C25ACFDBD00EA6F79 /* ThemeD.swift in Sources */,
+				EBA7118725AD02F800EA6F79 /* ThemeR.swift in Sources */,
 				ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
 				EB28541B25ACC44900B9150F /* SquareChessBoardView.swift in Sources */,
+				EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */,
+				EBA7116925ACF0CA00EA6F79 /* PieceView.swift in Sources */,
 				EB28542D25ACC72E00B9150F /* Direction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

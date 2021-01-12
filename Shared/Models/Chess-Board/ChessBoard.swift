@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ChessBoard {
-    var pieces: [Position: Piece] { get }
+    var pieces: [(Position, Piece)] { get }
     var rows: Int { get }
     var columns: Int { get }
     
