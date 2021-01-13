@@ -7,27 +7,43 @@
 
 import Foundation
 
-protocol TraditionalChessBoard: PrivateChessBoard {
-    var enPassentSquare: Vector? { get set }
-    var pawnMoveDirection: [PlayerID: Vector] { get }
+protocol TraditionalChessBoard: ChessBoard {
+    var board: [Position: Piece] { get set }
+    var kingPosition: [PlayerID: Position] { get }
     
-    func getSlidingMoves(from start: Vector, in directions: [(Int, Int)]) -> [Move]
-    func getJumpingMoves(from start: Vector, in directions: [(Int, Int)]) -> [Move]
-    func isPlayerUnderAttack(_ player: PlayerID, at position: Vector) -> Bool
-    func hasPawnMoved(position: Vector)
-    
-    func enemies(_ player1: PlayerID, _ player2: PlayerID) -> Bool
+    func doMove(_ move: Move) -> ChessBoard
+    func isPositionSafe(_ position: Position, for player: PlayerID) -> Bool
 }
 
 extension TraditionalChessBoard {
-    func getSlidingMoves(from start: Vector, in directions: [Vector]) -> [Move] {
-        var moves = [Move]()
-        for direction in directions {
-            var target = start + direction
-            while (positionInBounds(target) && pieces[target] == nil) {
-                moves.append(Move(actions: [MoveAction.travel(from: start, to: target)])) // Use smarter MoveAction constructors
-            }
+    
+    var copy: TraditionalChessBoard {
+        self
+    }
+    
+    func isKingInCheck(player: PlayerID) -> Bool {
+        isPositionSafe(kingPosition[player]!, for: player)
+    }
+    
+    func doMove(_ move: Move) -> ChessBoard {
+        var newBoard = self.copy
+        for action in move.actions {
+            newBoard.doMoveAction(action)
         }
-        return moves
+        return newBoard
+    }
+    
+    mutating func doMoveAction(_ action: MoveAction) {
+        switch action {
+        case .remove(let position):
+            assert(board[position] != nil)
+            board[position] = nil
+        case .spawn(let position, let piece):
+            assert(board[position] == nil)
+            board[position] = piece
+        case .travel(let start, let end):
+            assert(board[start] != nil && board[end] == nil)
+            board[end] = board.removeValue(forKey: start)
+        }
     }
 }

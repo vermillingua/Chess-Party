@@ -9,10 +9,6 @@ import Foundation
 
 struct Move {
     private(set) var actions: [MoveAction]
-    
-    func getAlgebraicString() -> String? {
-        return "" // TODO
-    }
 }
 
 enum MoveAction {

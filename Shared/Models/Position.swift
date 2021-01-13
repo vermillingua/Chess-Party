@@ -7,10 +7,33 @@
 
 import Foundation
 
-struct Vector: Hashable {
+struct Position: Hashable {
+    var row, column: Int
+    
+    func shift(by displacement: Displacement) -> Position {
+        Position(row: row + displacement.x, column: column + displacement.y)
+    }
+}
+
+struct Displacement {
+    static let north = Displacement(x: -1, y:  0)
+    static let south = Displacement(x:  1, y:  0)
+    static let east  = Displacement(x:  0, y:  1)
+    static let west  = Displacement(x:  0, y: -1)
+    static let northeast = north + east
+    static let northwest = north + west
+    static let southeast = south + east
+    static let southwest = south + west
+    
+    static let allCompassDirections = [north, south, east, west, northeast, northwest, southeast, southwest]
+    
     var x, y: Int
     
-    static func +(right: Vector, left: Vector) -> Vector {
-        return Vector(x: right.x + left.x, y: right.y + left.y)
+    func scale(by factor: Int) -> Displacement {
+        Displacement(x: x * factor, y: y * factor)
+    }
+    
+    static func +(right: Displacement, left: Displacement) -> Displacement {
+        Displacement(x: right.x + left.x, y: right.y + left.y)
     }
 }
