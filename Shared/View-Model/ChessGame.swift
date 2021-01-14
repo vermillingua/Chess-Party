@@ -43,6 +43,8 @@ class ChessGame: ObservableObject {
         selectedPositions[position] = .userFocus
         print("Selected")
         // TODO: Populate potential moves
+        
+        print(chessBoard.getMoves(from: position))
     }
     
 }
