@@ -25,7 +25,7 @@ struct SquareChessBoardView: View {
             ForEach(0..<chessGame.chessBoard.rows) { row in
                 HStack (spacing: 0.0) {
                     ForEach(0..<chessGame.chessBoard.columns) { col in
-                        TileView(selectionType: chessGame.selectedPositions[Position(row: row, column: col)],
+                        TileView(selectionType: getDisplayedSelectionType(atPosition: Position(row: row, column: col)),
                                  theme: theme,
                                  tileType: getTileType(atPosition: Position(row: row, column: col)))
                             .onTapGesture {
@@ -38,6 +38,19 @@ struct SquareChessBoardView: View {
         
     }
     
+    func getDisplayedSelectionType(atPosition position: Position) -> ChessGame.SelectionType? {
+        if let focused = chessGame.userFocusedPosition, focused == position {
+            return .userFocus
+        } else if chessGame.potentialMoveDestinations.contains(position) {
+            return .potentialMove
+        } else if chessGame.warningPositions.contains(position) {
+            return .warning
+        } else if chessGame.lastMoves.contains(position) {
+            return .lastMove
+        }
+        return nil
+    }
+
     func pieces() -> some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             GeometryReader { geometry in

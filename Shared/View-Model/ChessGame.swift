@@ -10,7 +10,23 @@ import Foundation
 class ChessGame: ObservableObject {
     @Published var chessBoard: ChessBoard
     @Published var gameState: GameState
-    @Published var selectedPositions: [Position: SelectionType]
+    
+
+    @Published private(set) var userFocusedPosition: Position? {
+        didSet {
+            potentialMoveDestinations.removeAll()
+            if let selectedPosition = userFocusedPosition {
+                let possibleMoves = chessBoard.getMoves(from: selectedPosition)
+                for move in possibleMoves {
+                    potentialMoveDestinations.insert(move.primaryDestination)
+                }
+            }
+        }
+    }
+    @Published private(set) var potentialMoveDestinations: Set<Position>
+    @Published private(set) var warningPositions: Set<Position>
+    @Published private(set) var lastMoves: Set<Position>
+    
 
     var players: [Player]
     var history: [ChessBoard]
@@ -20,30 +36,36 @@ class ChessGame: ObservableObject {
         self.players = players
         history = []
         gameState = .notStarted
-        selectedPositions = [:]
+        potentialMoveDestinations = []
+        warningPositions = []
+        lastMoves = []
+    }
+    
+    enum SelectionType {
+        case userFocus
+        case potentialMove
+        case warning
+        case lastMove
+    }
+    
+    enum GameState {
+        case notStarted
+        case paused
+        case waitingOnPlayer(player: Player)
+        case endedVictory(forTeam: Team)
+        case endedStalemate
     }
     
 
     // MARK: - View Events
     func userTappedPosition(_ position: Position) {
-        selectedPositions = [:]
-        if let selection = selectedPositions[position] {
-            switch selection {
-            case .potentialMove:
-                print("Make Move")
-                //TODO: Make move
-            case .userFocus:
-                selectedPositions = [:]
-                return
-            default:
-                selectedPositions = [:]
-            }
-            print("Deselected")
+        if (position == userFocusedPosition) {
+            userFocusedPosition = nil
+        } else if (potentialMoveDestinations.contains(position)) {
+            // TODO: Make Move
+        } else {
+            userFocusedPosition = position
         }
-        selectedPositions[position] = .userFocus
-        print("Selected")
-        // TODO: Populate potential moves
     }
-    
 }
 

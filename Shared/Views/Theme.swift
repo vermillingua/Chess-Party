@@ -28,11 +28,12 @@ struct Theme {
     }
     
     // MARK: - Select
-    var colorForSelection: (SelectionType) -> Color = { selection in
+    var colorForSelection: (ChessGame.SelectionType) -> Color = { selection in
         switch selection {
         case .potentialMove: return Color.blue
         case .userFocus: return Color.yellow
         case .warning: return Color.red
+        case .lastMove: return Color.orange
         }
     }
     

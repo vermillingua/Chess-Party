@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TileView: View {
-    var selectionType: SelectionType?
+    var selectionType: ChessGame.SelectionType?
     var theme: Theme
     var tileType: TileType
     
