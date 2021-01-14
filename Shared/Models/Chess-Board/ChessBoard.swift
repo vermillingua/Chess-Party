@@ -11,7 +11,7 @@ protocol ChessBoard {
     var board: [Position: Piece] { get }
     var rows: Int { get }
     var columns: Int { get }
-    
+
     func getMoves(from position: Position) -> [Move]
     func isKingInCheck(player: PlayerID) -> Bool
     func getPositionName(_ position: Position) -> String
