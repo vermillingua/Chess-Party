@@ -9,6 +9,21 @@ import Foundation
 
 struct Move {
     private(set) var actions: [MoveAction]
+    
+    /// The first travel actions's destination in the move. Note: Moves with multiple travel actions must order those MoveActions correctly.
+    var primaryDestination: Position {
+        var destination: Position?
+        forloop: for action in actions {
+            switch action {
+            case .travel(_, let end):
+                destination = end
+                break forloop
+            default:
+                continue
+            }
+        }
+        return destination!
+    }
 }
 
 enum MoveAction {
