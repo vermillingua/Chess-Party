@@ -21,7 +21,7 @@ enum PlayerType {
     case onDevice, computer, remote
 }
 
-struct PlayerID: Identifiable {
+struct PlayerID: Hashable {
     var id: Int
 }
 

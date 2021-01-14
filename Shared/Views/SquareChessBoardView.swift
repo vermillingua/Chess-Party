@@ -25,11 +25,11 @@ struct SquareChessBoardView: View {
             ForEach(0..<chessGame.chessBoard.rows) { row in
                 HStack (spacing: 0.0) {
                     ForEach(0..<chessGame.chessBoard.columns) { col in
-                        TileView(selectionType: chessGame.selectedPositions[Position(row: row, col: col)],
+                        TileView(selectionType: chessGame.selectedPositions[Position(row: row, column: col)],
                                  theme: theme,
-                                 tileType: getTileType(atPosition: Position(row: row, col: col)))
+                                 tileType: getTileType(atPosition: Position(row: row, column: col)))
                             .onTapGesture {
-                                userTappedTile(at: Position(row: row, col: col))
+                                userTappedTile(at: Position(row: row, column: col))
                             }
                     }
                 }
@@ -41,13 +41,17 @@ struct SquareChessBoardView: View {
     func pieces() -> some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             GeometryReader { geometry in
-                ForEach (0..<chessGame.chessBoard.pieces.count) { pieceIndex in
-                    PieceView(theme: theme, piece: chessGame.chessBoard.pieces[pieceIndex].1,
-                              size: getPieceSize(withBoardSize: geometry.size))
-                        .position(getPiecePosition(withBoardSize: geometry.size, atPosition: chessGame.chessBoard.pieces[pieceIndex].0))
-                        .onTapGesture {
-                            userTappedTile(at: chessGame.chessBoard.pieces[pieceIndex].0)
+                ForEach (0..<chessGame.chessBoard.rows) { row in
+                    ForEach (0..<chessGame.chessBoard.columns) { column in
+                        if let piece = chessGame.chessBoard.board[Position(row: row, column: column)] {
+                            PieceView(theme: theme, piece: piece,
+                                      size: getPieceSize(withBoardSize: geometry.size))
+                                .position(getPiecePosition(withBoardSize: geometry.size, atPosition: Position(row: row, column: column)))
+                                .onTapGesture {
+                                    userTappedTile(at: Position(row: row, column: column))
+                                }
                         }
+                    }
                 }
             }
         }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
@@ -55,7 +59,7 @@ struct SquareChessBoardView: View {
     
 
     func getTileType(atPosition position: Position) -> TileView.TileType {
-        (position.row + position.col) % 2 == 0 ? TileView.TileType.primary : TileView.TileType.secondary
+        (position.row + position.column) % 2 == 0 ? TileView.TileType.primary : TileView.TileType.secondary
     }
     
 
@@ -63,7 +67,7 @@ struct SquareChessBoardView: View {
     
     func getPiecePosition(withBoardSize size: CGSize, atPosition position: Position) -> CGPoint {
         let tileSize = size.width / CGFloat(chessGame.chessBoard.columns)
-        return CGPoint(x: tileSize*(CGFloat(position.col)+0.5), y: tileSize*(CGFloat(position.row)+0.5))
+        return CGPoint(x: tileSize*(CGFloat(position.column)+0.5), y: tileSize*(CGFloat(position.row)+0.5))
     }
     
     // MARK: - User Intents

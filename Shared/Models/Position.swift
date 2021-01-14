@@ -8,25 +8,42 @@
 import Foundation
 
 struct Position: Hashable {
-    let row: Int
-    let col: Int
-
-    typealias PositionModifier = (Position) -> Position
-
-    func modifyPosition(withFunction modifier: PositionModifier) -> Position{
-        return modifier(self)
+    var row, column: Int
+    
+    func shift(by displacement: Displacement) -> Position {
+        Position(row: row + displacement.y, column: column + displacement.x)
     }
+}
 
-    func modifyPosition(by steps: Int, inDirection direction: Direction) -> Position {
-        switch direction {
-        case .north: return Position(row: row-steps, col: col)
-        case .northEast: return Position(row: row-steps, col: col+steps)
-        case .east: return Position(row: row, col: col+steps)
-        case .southEast: return Position(row: row+steps, col: col+steps)
-        case .south: return Position(row: row+steps, col: col)
-        case .southWest: return Position(row: row+steps, col: col-steps)
-        case .west: return Position(row: row, col: col-steps)
-        case .northWest: return Position(row: row-steps, col: col-steps)
-        }
+struct Displacement {
+    static let north = Displacement(x:  0, y:  -1)
+    static let south = Displacement(x:  0, y:  1)
+    static let east  = Displacement(x:  1, y:  0)
+    static let west  = Displacement(x: -1, y:  0)
+    static let northeast = north + east
+    static let northwest = north + west
+    static let southeast = south + east
+    static let southwest = south + west
+    
+    static let allCompassDirections = [north, south, east, west, northeast, northwest, southeast, southwest]
+    
+    var x, y: Int
+    
+    private var scale: Int { abs(x) + abs(y) }
+    
+    var rotatedClockwise: Displacement {
+        Displacement(x: (x - y) / scale, y: (x + y) / scale)
+    }
+    
+    var rotatedCounterClockwise: Displacement {
+        Displacement(x: (x + y) / scale, y: (y - x) / scale)
+    }
+    
+    func scale(by factor: Int) -> Displacement {
+        Displacement(x: x * factor, y: y * factor)
+    }
+    
+    static func +(right: Displacement, left: Displacement) -> Displacement {
+        Displacement(x: right.x + left.x, y: right.y + left.y)
     }
 }
