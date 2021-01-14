@@ -11,15 +11,15 @@ struct Position: Hashable {
     var row, column: Int
     
     func shift(by displacement: Displacement) -> Position {
-        Position(row: row + displacement.x, column: column + displacement.y)
+        Position(row: row + displacement.y, column: column + displacement.x)
     }
 }
 
 struct Displacement {
-    static let north = Displacement(x: -1, y:  0)
-    static let south = Displacement(x:  1, y:  0)
-    static let east  = Displacement(x:  0, y:  1)
-    static let west  = Displacement(x:  0, y: -1)
+    static let north = Displacement(x:  0, y:  -1)
+    static let south = Displacement(x:  0, y:  1)
+    static let east  = Displacement(x:  1, y:  0)
+    static let west  = Displacement(x: -1, y:  0)
     static let northeast = north + east
     static let northwest = north + west
     static let southeast = south + east

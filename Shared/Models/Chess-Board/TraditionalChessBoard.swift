@@ -42,10 +42,15 @@ extension TraditionalChessBoard {
         isPositionSafe(kingPosition[player]!, for: player)
     }
     
+    func isPositionSafe(_ position: Position, for player: PlayerID) -> Bool {
+        // MARK: TODO Uhh... Everything!
+        return true
+    }
+    
     func doMove(_ move: Move) -> ChessBoard {
         var newBoard = self.copy
         
-        // Mark: TODO If this is an en passent move we need to change the state of the enpassent square.
+        // MARK: TODO If this is an en passent move we need to change the state of the enpassent square.
         
         newBoard.enPassentPosition = nil
         
@@ -93,7 +98,7 @@ extension TraditionalChessBoard {
     func getKingMoves(from start: Position) -> [Move] {
         var moves = [Move]()
         moves += getJumpingMoves(from: start, towards: kingMoveDirections)
-        // Mark: TODO Generate castle moves.
+        // MARK: TODO Generate castle moves.
         return moves
     }
     
@@ -132,6 +137,8 @@ extension TraditionalChessBoard {
                 moves.append(Move.getTransitionMove(from: start, to: upTwo))
             }
         }
+        
+        // MARK: TODO Generate promotion moves
         
         return moves
     }
