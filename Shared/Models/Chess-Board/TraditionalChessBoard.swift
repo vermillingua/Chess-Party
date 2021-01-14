@@ -18,6 +18,8 @@ protocol TraditionalChessBoard: ChessBoard {
     var kingMoveDirections: [Displacement] { get }
     var knightMoveDirections: [Displacement] { get }
     
+    var pawnMoveDirection: [PlayerID: Displacement] { get }
+    
     func doMove(_ move: Move) -> ChessBoard
     func isPositionSafe(_ position: Position, for player: PlayerID) -> Bool
 }
@@ -59,6 +61,35 @@ extension TraditionalChessBoard {
             assert(board[start] != nil && board[end] == nil && positionInBounds(end))
             board[end] = board.removeValue(forKey: start)
         }
+    }
+    
+    func getMoves(from position: Position) -> [Move] {
+        var moves = [Move]()
+        let piece = board[position]!
+        switch piece.type {
+        case .queen:
+            moves += getSlidingMoves(from: position, towards: queenMoveDirections)
+        case .bishop:
+            moves += getSlidingMoves(from: position, towards: bishopMoveDirections)
+        case .knight:
+            moves += getJumpingMoves(from: position, towards: knightMoveDirections)
+        case .rook:
+            moves += getSlidingMoves(from: position, towards: rookMoveDirections)
+        case .king:
+            moves += getKingMoves(from: position)
+        case .pawn:
+            moves += getPawnMoves(from: position)
+        }
+        // MARK: TODO Filter out illegal moves that either put the king in check or leave the king in check.
+        return moves
+    }
+    
+    func getKingMoves(from start: Position) -> [Move] {
+        
+    }
+    
+    func getPawnMoves(from start: Position) -> [Move] {
+        
     }
     
     func getSlidingMoves(from start: Position, towards displacements: [Displacement]) -> [Move] {
