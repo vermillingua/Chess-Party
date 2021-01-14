@@ -15,10 +15,10 @@
 		AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB824B3F25A643D400C5A513 /* ContentView.swift */; };
 		AB824B6B25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
 		AB824B6C25A643D900C5A513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB824B4025A643D900C5A513 /* Assets.xcassets */; };
-		ABBEB76325B09D9700D3DDEE /* RegularChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */; };
-		ABBEB76425B09D9700D3DDEE /* RegularChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */; };
-		ABBEB76525B09D9700D3DDEE /* RegularChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */; };
-		ABBEB76625B09D9700D3DDEE /* RegularChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */; };
+		ABBEB76325B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */; };
+		ABBEB76425B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */; };
+		ABBEB76525B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */; };
+		ABBEB76625B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */; };
 		ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
 		ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
 		ABE50C9025A9140A0093AE52 /* ChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */; };
@@ -39,10 +39,10 @@
 		ABE50CB825A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
 		ABE50CB925A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
 		ABE50CBA25A915B90093AE52 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CB625A915B90093AE52 /* Player.swift */; };
-		ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
-		ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
-		ABE50CC225A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
-		ABE50CC325A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */; };
+		ABE50CC025A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
+		ABE50CC125A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
+		ABE50CC225A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
+		ABE50CC325A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,13 +77,13 @@
 		AB824B6025A643D900C5A513 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB824B6425A643D900C5A513 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		AB824B6625A643D900C5A513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularChessBoard.swift; sourceTree = "<group>"; };
+		ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionalChessBoard.swift; sourceTree = "<group>"; };
 		ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoard.swift; sourceTree = "<group>"; };
 		ABE50C9725A914320093AE52 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		ABE50CA425A914F80093AE52 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		ABE50CAD25A9154E0093AE52 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		ABE50CB625A915B90093AE52 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionalChessBoard.swift; sourceTree = "<group>"; };
+		ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionalRulesChessBoard.swift; sourceTree = "<group>"; };
 		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,8 +205,8 @@
 				ABE50C8D25A9140A0093AE52 /* ChessBoard.swift */,
 				ABE50C9725A914320093AE52 /* Move.swift */,
 				ABE50CAD25A9154E0093AE52 /* Piece.swift */,
-				ABE50CBF25A9FE430093AE52 /* TraditionalChessBoard.swift */,
-				ABBEB76225B09D9700D3DDEE /* RegularChessBoard.swift */,
+				ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */,
+				ABBEB76225B09D9700D3DDEE /* TraditionalChessBoard.swift */,
 			);
 			path = "Chess-Board";
 			sourceTree = "<group>";
@@ -375,8 +375,8 @@
 				ABE50CB725A915B90093AE52 /* Player.swift in Sources */,
 				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
 				AB824B6725A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
-				ABBEB76325B09D9700D3DDEE /* RegularChessBoard.swift in Sources */,
-				ABE50CC025A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABBEB76325B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
+				ABE50CC025A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,8 +391,8 @@
 				ABE50CB825A915B90093AE52 /* Player.swift in Sources */,
 				ABE50CA625A914F80093AE52 /* Position.swift in Sources */,
 				AB824B6825A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
-				ABBEB76425B09D9700D3DDEE /* RegularChessBoard.swift in Sources */,
-				ABE50CC125A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABBEB76425B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
+				ABE50CC125A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,8 +402,8 @@
 			files = (
 				AB824B5A25A643D900C5A513 /* Tests_iOS.swift in Sources */,
 				ABE50C9A25A914320093AE52 /* Move.swift in Sources */,
-				ABBEB76525B09D9700D3DDEE /* RegularChessBoard.swift in Sources */,
-				ABE50CC225A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABBEB76525B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
+				ABE50CC225A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB025A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50CA725A914F80093AE52 /* Position.swift in Sources */,
 				ABE50CB925A915B90093AE52 /* Player.swift in Sources */,
@@ -417,8 +417,8 @@
 			files = (
 				AB824B6525A643D900C5A513 /* Tests_macOS.swift in Sources */,
 				ABE50C9B25A914320093AE52 /* Move.swift in Sources */,
-				ABBEB76625B09D9700D3DDEE /* RegularChessBoard.swift in Sources */,
-				ABE50CC325A9FE430093AE52 /* TraditionalChessBoard.swift in Sources */,
+				ABBEB76625B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
+				ABE50CC325A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB125A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50CA825A914F80093AE52 /* Position.swift in Sources */,
 				ABE50CBA25A915B90093AE52 /* Player.swift in Sources */,
