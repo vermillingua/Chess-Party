@@ -29,6 +29,16 @@ struct Displacement {
     
     var x, y: Int
     
+    private var scale: Int { abs(x) + abs(y) }
+    
+    var rotatedClockwise: Displacement {
+        Displacement(x: (x - y) / scale, y: (x + y) / scale)
+    }
+    
+    var rotatedCounterClockwise: Displacement {
+        Displacement(x: (x + y) / scale, y: (y - x) / scale)
+    }
+    
     func scale(by factor: Int) -> Displacement {
         Displacement(x: x * factor, y: y * factor)
     }

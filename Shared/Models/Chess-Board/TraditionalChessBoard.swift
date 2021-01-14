@@ -11,6 +11,7 @@ protocol TraditionalChessBoard: ChessBoard {
     var board: [Position: Piece] { get set }
     var kingPosition: [PlayerID: Position] { get }
     var enPassentPosition: Position? { get set }
+    var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
     
     var queenMoveDirections: [Displacement] { get }
     var rookMoveDirections: [Displacement] { get }
@@ -43,6 +44,11 @@ extension TraditionalChessBoard {
     
     func doMove(_ move: Move) -> ChessBoard {
         var newBoard = self.copy
+        
+        // Mark: TODO If this is an en passent move we need to change the state of the enpassent square.
+        
+        newBoard.enPassentPosition = nil
+        
         for action in move.actions {
             newBoard.doMoveAction(action)
         }
@@ -85,11 +91,49 @@ extension TraditionalChessBoard {
     }
     
     func getKingMoves(from start: Position) -> [Move] {
-        
+        var moves = [Move]()
+        moves += getJumpingMoves(from: start, towards: kingMoveDirections)
+        // Mark: TODO Generate castle moves.
+        return moves
     }
     
     func getPawnMoves(from start: Position) -> [Move] {
+        var moves = [Move]()
+        let pawn = board[start]!
+        assert(pawn.type == PieceType.pawn)
         
+        let displacement = pawnMoveDirection[pawn.player]!
+    
+        let upperRight = start.shift(by: displacement.rotatedClockwise)
+        if let captee = board[upperRight], captee.player != pawn.player {
+            moves.append(Move.getCaptureMove(from: start, to: upperRight))
+        } else {
+            let right = start.shift(by: displacement.rotatedClockwise.rotatedClockwise)
+            if positionInBounds(upperRight), board[upperRight] == nil, right == enPassentPosition {
+                moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: right))
+            }
+        }
+        
+        let upperLeft = start.shift(by: displacement.rotatedCounterClockwise)
+        if let captee = board[upperLeft], captee.player != pawn.player {
+            moves.append(Move.getCaptureMove(from: start, to: upperLeft))
+        } else {
+            let left = start.shift(by: displacement.rotatedCounterClockwise.rotatedCounterClockwise)
+            if positionInBounds(upperLeft), board[upperLeft] == nil, left == enPassentPosition {
+                moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: left))
+            }
+        }
+        
+        let up = start.shift(by: displacement)
+        if positionInBounds(up), board[up] == nil {
+            moves.append(Move.getTransitionMove(from: start, to: up))
+            let upTwo = up.shift(by: displacement)
+            if positionInBounds(upTwo), board[upTwo] == nil, pawnDoubleJumpPositions[pawn.player]!.contains(start) {
+                moves.append(Move.getTransitionMove(from: start, to: upTwo))
+            }
+        }
+        
+        return moves
     }
     
     func getSlidingMoves(from start: Position, towards displacements: [Displacement]) -> [Move] {
@@ -129,5 +173,9 @@ fileprivate extension Move {
     
     static func getCaptureMove(from start: Position, to end: Position) -> Move {
         Move(actions: [MoveAction.remove(at: end), MoveAction.travel(from: start, to: end)])
+    }
+    
+    static func getEnPassentMove(from start: Position, to end: Position, capturing: Position) -> Move {
+        Move(actions: [MoveAction.remove(at: capturing), MoveAction.travel(from: start, to: end)])
     }
 }
