@@ -35,7 +35,7 @@ extension TraditionalRulesChessBoard {
     var rookMoveDirections: [Displacement] { [.north, .south, .east, .west] }
     var bishopMoveDirections: [Displacement] { [.northeast, .northwest, .southeast, .southwest] }
     var kingMoveDirections: [Displacement] { Displacement.allCompassDirections }
-    var knightMoveDirections: [Displacement] { [Displacement(x: 3, y: 1), Displacement(x: -3, y: 1), Displacement(x: 3, y: -1), Displacement(x: -3, y: -1), Displacement(x: 1, y: 3), Displacement(x: -1, y: 3), Displacement(x: 1, y: -3), Displacement(x: -1, y: -3)] }
+    var knightMoveDirections: [Displacement] { [Displacement(x: 2, y: 1), Displacement(x: -2, y: 1), Displacement(x: 2, y: -1), Displacement(x: -2, y: -1), Displacement(x: 1, y: 2), Displacement(x: -1, y: 2), Displacement(x: 1, y: -2), Displacement(x: -1, y: -2)] }
     
     
     func isKingInCheck(player: PlayerID) -> Bool {
@@ -69,12 +69,15 @@ extension TraditionalRulesChessBoard {
             assert(board[position] == nil && positionInBounds(position))
             board[position] = piece
         case .travel(let start, let end):
-            assert(board[start] != nil && board[end] == nil && positionInBounds(end))
+            assert(board[start] != nil)
+            assert(board[end] == nil, "\(String(describing: board[end])) && \(end)")
+            assert(positionInBounds(end))
             board[end] = board.removeValue(forKey: start)
         }
     }
     
     func getMoves(from position: Position) -> [Move] {
+        guard board[position] != nil else { return [Move]() }
         var moves = [Move]()
         let piece = board[position]!
         switch piece.type {
@@ -161,10 +164,10 @@ extension TraditionalRulesChessBoard {
         var moves = [Move]()
         for displacement in displacements {
             let target = start.shift(by: displacement)
-            if let captee = board[target], captee.player != board[start]!.player {
-                moves.append(Move.getCaptureMove(from: start, to: target))
-            } else if positionInBounds(target) {
+            if positionInBounds(target), board[target] == nil {
                 moves.append(Move.getTransitionMove(from: start, to: target))
+            } else if let captee = board[target], captee.player != board[start]!.player {
+                moves.append(Move.getCaptureMove(from: start, to: target))
             }
         }
         return moves
