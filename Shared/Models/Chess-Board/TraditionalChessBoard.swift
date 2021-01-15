@@ -11,6 +11,7 @@ let white: PlayerID = PlayerID(id: 0)
 let black: PlayerID = PlayerID(id: 1)
 
 struct TraditionalChessBoard: TraditionalRulesChessBoard {
+    var kingPosition = [PlayerID: Position]()
     var board: [Position : Piece]
     var rows: Int = 8
     var columns: Int = 8
@@ -54,11 +55,11 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
         board[Position(row: 6, column: 6)] = Piece(player: white, type: .pawn)
         board[Position(row: 6, column: 7)] = Piece(player: white, type: .pawn)
         
-        //Temporary
-        kingPosition = [PlayerID: Position]()
+        kingPosition[white] = Position(row: 7, column: 4)
+        kingPosition[black] = Position(row: 0, column: 4)
     }
     
-    var kingPosition: [PlayerID : Position] // MARK: TODO Update automaticially with an onSet watcher on the board struct.
+    //var kingPosition: [PlayerID : Position] // MARK: TODO Update automaticially with an onSet watcher on the board struct.
     var enPassentPosition: Position?
     var pawnDoubleJumpPositions: [PlayerID : Set<Position>] = [white: [Position(row: 0, column: 6), Position(row: 1, column: 6), Position(row: 2, column: 6), Position(row: 3, column: 6), Position(row: 4, column: 6), Position(row: 5, column: 6), Position(row: 5, column: 6), Position(row: 7, column: 6)], black: [Position(row: 0, column: 1), Position(row: 1, column: 1), Position(row: 2, column: 1), Position(row: 3, column: 1), Position(row: 4, column: 1), Position(row: 5, column: 1), Position(row: 5, column: 1), Position(row: 7, column: 1)]]
 
