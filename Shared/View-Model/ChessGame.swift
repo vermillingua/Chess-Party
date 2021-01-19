@@ -8,7 +8,16 @@
 import Foundation
 
 class ChessGame: ObservableObject {
-    @Published var chessBoard: ChessBoard
+    @Published var chessBoard: TraditionalChessBoard
+    var chessPieces: [Piece] {
+        var pieces = [Piece]()
+        for position in chessBoard.board.keys {
+            var piece = chessBoard.board[position]!
+            piece.position = position
+            pieces.append(piece)
+        }
+        return pieces
+    }
     @Published var gameState: GameState
     
 
@@ -31,7 +40,7 @@ class ChessGame: ObservableObject {
     var players: [Player]
     var history: [ChessBoard]
     
-    init(chessBoard: ChessBoard, players: [Player]) {
+    init(chessBoard: TraditionalChessBoard, players: [Player]) {
         self.chessBoard = chessBoard
         self.players = players
         history = []
@@ -61,16 +70,12 @@ class ChessGame: ObservableObject {
     func userTappedPosition(_ position: Position) {
         if (position == userFocusedPosition) {
             userFocusedPosition = nil
+            chessBoard.dummyMakeMove()
         } else if (potentialMoveDestinations.contains(position)) {
             // TODO: Make Move
         } else {
             userFocusedPosition = position
         }
-        selectedPositions[position] = .userFocus
-        print("Selected")
-        // TODO: Populate potential moves
-        
-        print(chessBoard.getMoves(from: position))
     }
 }
 
