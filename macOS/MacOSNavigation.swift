@@ -11,7 +11,6 @@ struct MacOSNavigation: View {
     var body: some View {
         NavigationView {
             MacOSMainMenu()
-            Text("Secondary")
         }
     }
 }

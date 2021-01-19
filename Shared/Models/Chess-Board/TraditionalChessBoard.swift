@@ -16,6 +16,8 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
     var rows: Int = 8
     var columns: Int = 8
     
+    static var gameType: ChessGameType = Duel()
+    
     init() {
         board = [Position: Piece]()
         

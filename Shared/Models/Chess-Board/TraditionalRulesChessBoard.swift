@@ -74,6 +74,10 @@ extension TraditionalRulesChessBoard {
         }
     }
     
+    mutating func dummyMakeMove() {
+        doMoveAction(MoveAction.travel(from: Position(row: 6, column: 0), to: Position(row: 4, column: 0)))
+    }
+    
     func getMoves(from position: Position) -> [Move] {
         var moves = [Move]()
         let piece = board[position]!

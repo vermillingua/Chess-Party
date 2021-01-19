@@ -10,19 +10,20 @@ import SwiftUI
 struct MacOSMainMenu: View {
     var body: some View {
         VStack (spacing: 10) {
-            Text("Chess Party").font(.custom("Arial Rounded MT Bold", size: 32)).padding(.bottom, 20)
+            Text("Parties").font(.custom("Arial Rounded MT Bold", size: 32)).padding(.bottom, 20)
             List {
                 Section (header: Text("New Game")) {
-                    NavigationLink(destination: GameMakerView()) {
-                        Text("1v1").frame(alignment: .center)
-                    }
-                    NavigationLink(destination: GameMakerView()) {
-                        Text("2v2").frame(alignment: .center)
-                    }
+                    newGameLink(forGameType: Duel.self)
+                    newGameLink(forGameType: Battle.self)
                 }
                 Section (header: Text("Current Games")) {
                     ForEach (currentGames) { game in
-                        Text(String(describing: game))
+                        NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up, theme: Theme())) {
+                            HStack {
+                                type(of: game.gameType).icon
+                                Text(String(describing: game))
+                            }
+                        }
                     }
                 }
             }
@@ -45,6 +46,18 @@ struct MacOSMainMenu: View {
     
     func showSettings() {
         
+    }
+    
+    func newGameLink(forGameType gameType: ChessGameType.Type) -> some View {
+        NavigationLink(destination: gameType.gameMaker()) {
+            HStack {
+                gameType.icon.font(.largeTitle)
+                VStack (alignment: .leading) {
+                    Text(gameType.title).font(.title)
+                    Text(gameType.description).font(.caption).lineLimit(3)
+                }
+            }
+        }
     }
     
     var currentGames: [ChessGame] {

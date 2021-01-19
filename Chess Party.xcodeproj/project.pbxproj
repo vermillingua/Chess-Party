@@ -77,14 +77,18 @@
 		EBA7119D25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
 		EBAE192225B7493D008AF991 /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */; };
 		EBAE192325B7493D008AF991 /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */; };
-		EBAE192D25B754C7008AF991 /* GameMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* GameMakerView.swift */; };
-		EBAE192E25B754C7008AF991 /* GameMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* GameMakerView.swift */; };
+		EBAE192D25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */; };
+		EBAE192E25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */; };
 		EBAE194125B764BE008AF991 /* IOSMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE194025B764BE008AF991 /* IOSMainMenu.swift */; };
 		EBAE194725B764F0008AF991 /* MacOSMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE194625B764F0008AF991 /* MacOSMainMenu.swift */; };
 		EBAE195525B7659F008AF991 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE195425B7659F008AF991 /* SettingsView.swift */; };
 		EBAE195A25B765A5008AF991 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE195425B7659F008AF991 /* SettingsView.swift */; };
 		EBAE196025B76691008AF991 /* MacOSNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE195F25B76691008AF991 /* MacOSNavigation.swift */; };
 		EBAE196625B766B3008AF991 /* IOSNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE196525B766B3008AF991 /* IOSNavigation.swift */; };
+		EBAE198C25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */; };
+		EBAE198D25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */; };
+		EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
+		EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,12 +143,14 @@
 		EBA7116F25ACF36C00EA6F79 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EBA7119B25AD342A00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonStyle.swift; sourceTree = "<group>"; };
-		EBAE192C25B754C7008AF991 /* GameMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMakerView.swift; sourceTree = "<group>"; };
+		EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneVOneGameMaker.swift; sourceTree = "<group>"; };
 		EBAE194025B764BE008AF991 /* IOSMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSMainMenu.swift; sourceTree = "<group>"; };
 		EBAE194625B764F0008AF991 /* MacOSMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSMainMenu.swift; sourceTree = "<group>"; };
 		EBAE195425B7659F008AF991 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EBAE195F25B76691008AF991 /* MacOSNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MacOSNavigation.swift; path = macOS/MacOSNavigation.swift; sourceTree = SOURCE_ROOT; };
 		EBAE196525B766B3008AF991 /* IOSNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSNavigation.swift; sourceTree = "<group>"; };
+		EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoVTwoGameMaker.swift; sourceTree = "<group>"; };
+		EBAE199625B786F0008AF991 /* ChessGameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +266,7 @@
 				EB1CFECD25AA3604002BA365 /* Players */,
 				ABE50C7B25A912D80093AE52 /* Chess-Board */,
 				ABE50CA425A914F80093AE52 /* Position.swift */,
+				EBAE199625B786F0008AF991 /* ChessGameType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,7 +338,8 @@
 		EBAE191925B74136008AF991 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				EBAE192C25B754C7008AF991 /* GameMakerView.swift */,
+				EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */,
+				EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */,
 				EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */,
 			);
 			path = Menus;
@@ -500,17 +508,19 @@
 			files = (
 				EB601C6D25B0B90C00EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195A25B765A5008AF991 /* SettingsView.swift in Sources */,
+				EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */,
 				EB1CFEE025AA3D25002BA365 /* TeamID.swift in Sources */,
 				EB1CFEE925AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
 				EB1CFEFB25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				ABE50C9825A914320093AE52 /* Move.swift in Sources */,
 				AB824B6925A643D900C5A513 /* ContentView.swift in Sources */,
 				EB1CFEF225AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
-				EBAE192D25B754C7008AF991 /* GameMakerView.swift in Sources */,
+				EBAE192D25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */,
 				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				EBAE194125B764BE008AF991 /* IOSMainMenu.swift in Sources */,
 				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
+				EBAE198C25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */,
 				AB824B6725A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
@@ -530,6 +540,7 @@
 			files = (
 				EB601C7625B0B96700EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195525B7659F008AF991 /* SettingsView.swift in Sources */,
+				EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */,
 				EB1CFEE125AA3D25002BA365 /* TeamID.swift in Sources */,
 				EBAE196025B76691008AF991 /* MacOSNavigation.swift in Sources */,
 				EB1CFEEA25AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
@@ -537,10 +548,11 @@
 				ABE50C9925A914320093AE52 /* Move.swift in Sources */,
 				AB824B6A25A643D900C5A513 /* ContentView.swift in Sources */,
 				EB1CFEF325AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
-				EBAE192E25B754C7008AF991 /* GameMakerView.swift in Sources */,
+				EBAE192E25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */,
 				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				ABE50CA625A914F80093AE52 /* Position.swift in Sources */,
+				EBAE198D25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */,
 				AB824B6825A643D900C5A513 /* Chess_PartyApp.swift in Sources */,
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,

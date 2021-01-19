@@ -5,9 +5,10 @@
 //  Created by Robert Swanson on 1/9/21.
 //
 
-import Foundation
+import SwiftUI
 
 class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
+    var gameType: ChessGameType
     @Published var chessBoard: TraditionalChessBoard
     var chessPieces: [Piece] {
         var pieces = [Piece]()
@@ -69,6 +70,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         potentialMoveDestinations = []
         warningPositions = []
         lastMoves = []
+        gameType = type(of: chessBoard).gameType
     }
     
     enum SelectionType {
@@ -91,7 +93,9 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     func userTappedPosition(_ position: Position) {
         if (position == userFocusedPosition) {
             userFocusedPosition = nil
-            chessBoard.dummyMakeMove()
+            withAnimation(.interactiveSpring()) {
+                chessBoard.dummyMakeMove()
+            }
         } else if (potentialMoveDestinations.contains(position)) {
             // TODO: Make Move
         } else {

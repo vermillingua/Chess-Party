@@ -59,7 +59,7 @@ struct ChessBoardView: View {
                                   size: getPieceSize(withBoardSize: geometry.size))
                             .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
                             .onTapGesture { userTappedTile(at: position) }
-                            .animation(.interactiveSpring())
+//                            .animation(.interactiveSpring())
                     }
                 }
             }
