@@ -10,8 +10,8 @@ import Foundation
 protocol Player {
     var name: String {get}
     var type: PlayerType {get}
-    var team: Team? {get}
     var playerID: PlayerID {get}
+    var teamID: TeamID {get}
     var playerResponseHandler: PlayerResponseHandler? {get set}
     
     mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler)

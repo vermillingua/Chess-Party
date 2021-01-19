@@ -7,9 +7,21 @@
 
 import Foundation
 
-struct Piece {
+struct Piece: Identifiable {
     var player: PlayerID
     var type: PieceType
+    var id: Int
+    var position: Position?
+    
+    static var idCount = 0
+    
+    init(player: PlayerID, type: PieceType, position: Position? = nil) {
+        self.player = player
+        self.type = type
+        id = Piece.idCount
+        Piece.idCount += 1
+        self.position = position
+    }
 }
 
 enum PieceType {
