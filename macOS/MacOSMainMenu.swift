@@ -8,46 +8,61 @@
 import SwiftUI
 
 struct MacOSMainMenu: View {
+    
+    @State var showSettings: Bool = false
+    
     var body: some View {
-        VStack (spacing: 10) {
-            Text("Parties").font(.custom("Arial Rounded MT Bold", size: 32)).padding(.bottom, 20)
-            List {
-                Section (header: Text("New Game")) {
-                    newGameLink(forGameType: Duel.self)
-                    newGameLink(forGameType: Battle.self)
+        NavigationView {
+            VStack (spacing: 10) {
+                Text("Parties").font(.custom("Arial Rounded MT Bold", size: 32)).padding(.bottom, 20)
+                List {
+                    newGameLinks()
+                    currentGameLinks()
                 }
-                Section (header: Text("Current Games")) {
-                    ForEach (currentGames) { game in
-                        NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up, theme: Theme())) {
-                            HStack {
-                                type(of: game.gameType).icon
-                                Text(String(describing: game))
-                            }
-                        }
+                HStack {
+                    Spacer()
+                    Button(action: {showSettings = true}, label: { Image(systemName: "gear").font(.headline)}).padding()
+                        .buttonStyle(BorderlessButtonStyle())
+                }
+            }
+            .frame(minWidth: 200, minHeight: 400, idealHeight: nil, alignment: .top)
+            .toolbar(content: {
+                ToolbarItem(placement: .navigation) {
+                    Button(action: toggleSidebar) {
+                        Image(systemName: "sidebar.left")
+                    }
+                }
+            })
+        }.sheet(isPresented: $showSettings) {
+            VStack {
+                Text("Settings").font(.title)
+                SettingsView()
+                Button("Done", action: {showSettings = false})
+            }.padding()
+        }
+    }
+
+    func newGameLinks() -> some View {
+        Section (header: Text("New Game")) {
+            newGameLink(forGameType: Duel.self)
+            newGameLink(forGameType: Battle.self)
+        }
+    }
+    
+    func currentGameLinks() -> some View {
+        Section (header: Text("Current Games")) {
+            ForEach (currentGames) { game in
+                NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up)) {
+                    HStack {
+                        type(of: game.gameType).icon
+                        Text(String(describing: game))
                     }
                 }
             }
-            HStack {
-                Spacer()
-                Button(action: showSettings, label: { Image(systemName: "gear").font(.system(size: 25))}).padding()
-                    .buttonStyle(BorderlessButtonStyle())
-            }
         }
-        .frame(minWidth: 200, minHeight: 400, idealHeight: nil, alignment: .top)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigation) {
-                Button(action: toggleSidebar) {
-                    Image(systemName: "sidebar.left")
-                }
-            }
-        })
-
-    }
-    
-    func showSettings() {
         
     }
-    
+
     func newGameLink(forGameType gameType: ChessGameType.Type) -> some View {
         NavigationLink(destination: gameType.gameMaker()) {
             HStack {

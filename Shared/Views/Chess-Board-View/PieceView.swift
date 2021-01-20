@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct PieceView: View {
-    var theme: Theme
+    @EnvironmentObject var settings: AppSettings
     var piece: Piece
     var size: CGSize
     
     var body: some View {
         ZStack {
-            theme.getPieceImage(piece).resizable()
+            settings.theme.pieceImageGetter(piece).resizable()
         }
         .frame(width: size.width, height: size.height, alignment: .center)
     }

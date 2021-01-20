@@ -8,24 +8,30 @@
 import SwiftUI
 
 struct TileView: View {
-    var selectionType: ChessGame.SelectionType?
-    var theme: Theme
-    var tileType: TileType
+    @EnvironmentObject var settings: AppSettings
     
+    var selectionType: ChessGame.SelectionType?
+    var tileType: TileType
+
     enum TileType { case primary, secondary }
     
     var body: some View {
-        if let selectionType = self.selectionType {
-            Rectangle()
-                .fill(tileType == .primary ? theme.primaryBoardColor : theme.secondaryBoardColor)
-                .aspectRatio(contentMode: .fit)
-                .padding(0)
-                .border(theme.colorForSelection(selectionType), width: theme.selectionBorderWidth)
-        } else {
-            Rectangle()
-                .fill(tileType == .primary ? theme.primaryBoardColor : theme.secondaryBoardColor)
-                .aspectRatio(contentMode: .fit)
-                .padding(0)
+        ZStack {
+            if let selectionType = self.selectionType {
+                Rectangle()
+                    .fill(tileType == .primary ? settings.theme.primaryBoardColor : settings.theme.secondaryBoardColor)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(0)
+                    .border(settings.theme.selectionColorGetter(selectionType), width: settings.theme.selectionBorderWidth)
+            } else {
+                Rectangle()
+                    .fill(tileType == .primary ? settings.theme.primaryBoardColor : settings.theme.secondaryBoardColor)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(0)
+            }
+            if settings.sounds {
+                Text("😀")
+            }
         }
     }
 }

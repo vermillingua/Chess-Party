@@ -11,7 +11,7 @@ struct ChessBoardView: View {
     @ObservedObject var chessGame: ChessGame
     
     var orientation: Orientation = .up
-    var theme: Theme
+    
 
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
@@ -26,7 +26,6 @@ struct ChessBoardView: View {
                 HStack (spacing: 0.0) {
                     ForEach(0..<chessGame.chessBoard.columns) { col in
                         TileView(selectionType: getDisplayedSelectionType(atPosition: Position(row: row, column: col)),
-                                 theme: theme,
                                  tileType: getTileType(atPosition: Position(row: row, column: col)))
                             .onTapGesture {
                                 userTappedTile(at: Position(row: row, column: col))
@@ -55,7 +54,7 @@ struct ChessBoardView: View {
             GeometryReader { geometry in
                 ForEach (chessGame.chessPieces) { piece in
                     if let position = piece.position {
-                        PieceView(theme: theme, piece: piece,
+                        PieceView(piece: piece,
                                   size: getPieceSize(withBoardSize: geometry.size))
                             .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
                             .onTapGesture { userTappedTile(at: position) }
