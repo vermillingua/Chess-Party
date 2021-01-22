@@ -75,11 +75,7 @@ extension TraditionalRulesChessBoard {
             board[end] = board.removeValue(forKey: start)
         }
     }
-    
-    mutating func dummyMakeMove() {
-        doMoveAction(MoveAction.travel(from: Position(row: 6, column: 0), to: Position(row: 4, column: 0)))
-    }
-    
+
     func getMoves(from position: Position) -> [Move] {
         guard board[position] != nil else { return [Move]() }
         var moves = [Move]()

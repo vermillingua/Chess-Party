@@ -20,6 +20,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         return pieces
     }
     @Published var gameState: GameState
+    private var potentialMovesForCurrentPiece: [Move] = []
     
 
     @Published private(set) var userFocusedPosition: Position? {
@@ -93,13 +94,18 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     func userTappedPosition(_ position: Position) {
         if (position == userFocusedPosition) {
             userFocusedPosition = nil
-            withAnimation(.interactiveSpring()) {
-                chessBoard.dummyMakeMove()
-            }
         } else if (potentialMoveDestinations.contains(position)) {
             // TODO: Make Move
+            if let userMove = potentialMovesForCurrentPiece.filter({$0.primaryDestination == position}).first {
+                let _ = withAnimation(.interactiveSpring()) {
+                    chessBoard.doMove(userMove)
+                }
+            }
         } else {
             userFocusedPosition = position
+            potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
+            potentialMoveDestinations.removeAll()
+            potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
         }
     }
 }
