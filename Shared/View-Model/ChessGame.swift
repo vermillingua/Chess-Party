@@ -47,10 +47,10 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         var teams: [String] = []
         var teamIDs: [TeamID] = []
         for player in players {
-            if let index = teamIDs.firstIndex(where: { teamID in return teamID == player.teamID }) {
+            if let index = teamIDs.firstIndex(where: { teamID in return teamID == player.playerID.team }) {
                 teams[index] += ", \(player.name)"
             } else {
-                teamIDs.append(player.teamID)
+                teamIDs.append(player.playerID.team)
                 teams.append(player.name)
             }
         }

@@ -37,10 +37,6 @@
 		EB1CFED025AA3627002BA365 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFECE25AA3627002BA365 /* Player.swift */; };
 		EB1CFED125AA3627002BA365 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFECE25AA3627002BA365 /* Player.swift */; };
 		EB1CFED225AA3627002BA365 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFECE25AA3627002BA365 /* Player.swift */; };
-		EB1CFEE025AA3D25002BA365 /* TeamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEDF25AA3D25002BA365 /* TeamID.swift */; };
-		EB1CFEE125AA3D25002BA365 /* TeamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEDF25AA3D25002BA365 /* TeamID.swift */; };
-		EB1CFEE225AA3D25002BA365 /* TeamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEDF25AA3D25002BA365 /* TeamID.swift */; };
-		EB1CFEE325AA3D25002BA365 /* TeamID.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEDF25AA3D25002BA365 /* TeamID.swift */; };
 		EB1CFEE925AA4635002BA365 /* OnDevicePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */; };
 		EB1CFEEA25AA4635002BA365 /* OnDevicePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */; };
 		EB1CFEEB25AA4635002BA365 /* OnDevicePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */; };
@@ -126,7 +122,6 @@
 		ABE50CAD25A9154E0093AE52 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraditionalRulesChessBoard.swift; sourceTree = "<group>"; };
 		EB1CFECE25AA3627002BA365 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		EB1CFEDF25AA3D25002BA365 /* TeamID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamID.swift; sourceTree = "<group>"; };
 		EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDevicePlayer.swift; sourceTree = "<group>"; };
 		EB1CFEF125AA47B0002BA365 /* ComputerPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerPlayer.swift; sourceTree = "<group>"; };
 		EB1CFEFA25AA486D002BA365 /* RemotePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlayer.swift; sourceTree = "<group>"; };
@@ -192,6 +187,7 @@
 				AB824B5825A643D900C5A513 /* Tests iOS */,
 				AB824B6325A643D900C5A513 /* Tests macOS */,
 				AB824B4625A643D900C5A513 /* Products */,
+				EBFBAA5A25BB83EA001F2209 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,7 +280,6 @@
 				EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */,
 				EB1CFEFA25AA486D002BA365 /* RemotePlayer.swift */,
 				EB1CFEF125AA47B0002BA365 /* ComputerPlayer.swift */,
-				EB1CFEDF25AA3D25002BA365 /* TeamID.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -337,6 +332,13 @@
 				EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */,
 			);
 			path = Menus;
+			sourceTree = "<group>";
+		};
+		EBFBAA5A25BB83EA001F2209 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +505,6 @@
 				EB601C6D25B0B90C00EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195A25B765A5008AF991 /* SettingsView.swift in Sources */,
 				EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */,
-				EB1CFEE025AA3D25002BA365 /* TeamID.swift in Sources */,
 				EB1CFEE925AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
 				EB1CFEFB25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				EB6A85AE25B892A000B24CB0 /* ChessGameStore.swift in Sources */,
@@ -534,7 +535,6 @@
 				EB601C7625B0B96700EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195525B7659F008AF991 /* SettingsView.swift in Sources */,
 				EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */,
-				EB1CFEE125AA3D25002BA365 /* TeamID.swift in Sources */,
 				EB1CFEEA25AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
 				EB6A85AF25B892A100B24CB0 /* ChessGameStore.swift in Sources */,
 				EB1CFEFC25AA486D002BA365 /* RemotePlayer.swift in Sources */,
@@ -568,7 +568,6 @@
 				ABBEB76525B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
 				ABE50CC225A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB025A9154E0093AE52 /* Piece.swift in Sources */,
-				EB1CFEE225AA3D25002BA365 /* TeamID.swift in Sources */,
 				EB1CFED125AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0C25AA49DF002BA365 /* ChessGame.swift in Sources */,
 				ABE50CA725A914F80093AE52 /* Position.swift in Sources */,
@@ -589,7 +588,6 @@
 				ABBEB76625B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
 				ABE50CC325A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB125A9154E0093AE52 /* Piece.swift in Sources */,
-				EB1CFEE325AA3D25002BA365 /* TeamID.swift in Sources */,
 				EB1CFED225AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0D25AA49DF002BA365 /* ChessGame.swift in Sources */,
 				ABE50CA825A914F80093AE52 /* Position.swift in Sources */,
@@ -776,8 +774,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -798,8 +798,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

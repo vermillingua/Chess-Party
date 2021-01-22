@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
+import GameKit
 
 struct OneVOneGameMaker: View {
     var body: some View {
         Text("Game Maker")
+    }
+    
+    func gameCenterTest() {
     }
 }
