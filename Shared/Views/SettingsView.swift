@@ -19,14 +19,15 @@ struct SettingsView: View {
         Form {
             Toggle("Sounds", isOn: $sounds).onChange(of: sounds) { settings.sounds = $0 }
             Toggle("Notifications", isOn: $notifications).onChange(of: notifications) { settings.notifications = $0}
-            Divider()
+            #if os(macOS)
+                Divider()
+            #endif
             Picker("Theme", selection: $themeSelection) {
                 ForEach(ThemeType.allCases, id: \.self) { theme in
                     Text(theme.rawValue).tag(theme.rawValue)
                 }
             }.onChange(of: themeSelection) { settings.theme = Theme(themeType: $0)}
         }
-        .padding(.horizontal)
         .frame(minWidth: 300, minHeight: 200)
     }
 }

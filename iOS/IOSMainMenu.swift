@@ -20,7 +20,7 @@ struct IOSMainMenu: View {
                     }
                     Section (header: Text("Current Games")) {
                         ForEach (chessGameStore.currentGames) { game in
-                            NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up, theme: Theme())) {
+                            NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up)) {
                                 HStack {
                                     type(of: game.gameType).icon
                                     Text(String(describing: game))
@@ -38,10 +38,10 @@ struct IOSMainMenu: View {
             .edgesIgnoringSafeArea(.vertical)
         } .sheet(isPresented: $showSettings) {
             NavigationView {
-                SettingsView().edgesIgnoringSafeArea(.all)
+                SettingsView()
                     .navigationBarItems(trailing: Button("Done") { showSettings = false })
                     .navigationTitle("Settings")
-            }
+            }.edgesIgnoringSafeArea(.all)
         }
     }
     

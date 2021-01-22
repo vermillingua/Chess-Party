@@ -36,7 +36,7 @@ struct MacOSMainMenu: View {
         }.sheet(isPresented: $showSettings) {
             VStack {
                 Text("Settings").font(.title)
-                SettingsView()
+                SettingsView().padding(.horizontal)
                 Button("Done", action: {showSettings = false})
             }.padding()
         }
