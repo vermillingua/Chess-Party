@@ -13,6 +13,7 @@ protocol ChessBoard {
     var columns: Int { get }
 
     func getMoves(from position: Position) -> [Move]
+    func doMove(_ move: Move) -> ChessBoard
     func isKingInCheck(player: PlayerID) -> Bool
     func getPositionName(_ position: Position) -> String
 }

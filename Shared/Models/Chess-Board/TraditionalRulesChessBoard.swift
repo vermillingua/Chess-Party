@@ -135,6 +135,7 @@ extension TraditionalRulesChessBoard {
         if positionInBounds(up), board[up] == nil {
             moves.append(Move.getTransitionMove(from: start, to: up))
             let upTwo = up.shift(by: displacement)
+            print(start)
             if positionInBounds(upTwo), board[upTwo] == nil, pawnDoubleJumpPositions[pawn.player]!.contains(start) {
                 moves.append(Move.getTransitionMove(from: start, to: upTwo))
             }
