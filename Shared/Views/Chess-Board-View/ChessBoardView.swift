@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct SquareChessBoardView: View {
+struct ChessBoardView: View {
     @ObservedObject var chessGame: ChessGame
     
     var orientation: Orientation = .up
-    var theme: Theme
+    
 
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
@@ -19,14 +19,13 @@ struct SquareChessBoardView: View {
             pieces()
         }
     }
-    
+
     func boardGrid() -> some View {
         VStack (spacing: 0.0) {
             ForEach(0..<chessGame.chessBoard.rows) { row in
                 HStack (spacing: 0.0) {
                     ForEach(0..<chessGame.chessBoard.columns) { col in
-                        TileView(selectionType: chessGame.selectedPositions[Position(row: row, column: col)],
-                                 theme: theme,
+                        TileView(selectionType: getDisplayedSelectionType(atPosition: Position(row: row, column: col)),
                                  tileType: getTileType(atPosition: Position(row: row, column: col)))
                             .onTapGesture {
                                 userTappedTile(at: Position(row: row, column: col))
@@ -35,28 +34,48 @@ struct SquareChessBoardView: View {
                 }
             }
         }
-        
     }
     
+    func getDisplayedSelectionType(atPosition position: Position) -> ChessGame.SelectionType? {
+        if let focused = chessGame.userFocusedPosition, focused == position {
+            return .userFocus
+        } else if chessGame.potentialMoveDestinations.contains(position) {
+            return .potentialMove
+        } else if chessGame.warningPositions.contains(position) {
+            return .warning
+        } else if chessGame.lastMoves.contains(position) {
+            return .lastMove
+        }
+        return nil
+    }
+
     func pieces() -> some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             GeometryReader { geometry in
-                ForEach (0..<chessGame.chessBoard.rows) { row in
-                    ForEach (0..<chessGame.chessBoard.columns) { column in
-                        if let piece = chessGame.chessBoard.board[Position(row: row, column: column)] {
-                            PieceView(theme: theme, piece: piece,
-                                      size: getPieceSize(withBoardSize: geometry.size))
-                                .position(getPiecePosition(withBoardSize: geometry.size, atPosition: Position(row: row, column: column)))
-                                .onTapGesture {
-                                    userTappedTile(at: Position(row: row, column: column))
-                                }
-                        }
+                ForEach (chessGame.chessPieces) { piece in
+                    if let position = piece.position {
+                        PieceView(piece: piece,
+                                  size: getPieceSize(withBoardSize: geometry.size))
+                            .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
+                            .onTapGesture { userTappedTile(at: position) }
+//                            .animation(.interactiveSpring())
                     }
                 }
             }
         }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
     }
-    
+//                ForEach (0..<chessGame.chessBoard.rows) { row in
+//                    ForEach (0..<chessGame.chessBoard.columns) { column in
+//                        if let piece = chessGame.chessBoard.board[Position(row: row, column: column)] {
+//                            PieceView(theme: theme, piece: piece,
+//                                      size: getPieceSize(withBoardSize: geometry.size))
+//                                .position(getPiecePosition(withBoardSize: geometry.size, atPosition: Position(row: row, column: column)))
+//                                .onTapGesture { userTappedTile(at: Position(row: row, column: column)) }
+//                        }
+//                    }
+//            }
+//
+
 
     func getTileType(atPosition position: Position) -> TileView.TileType {
         (position.row + position.column) % 2 == 0 ? TileView.TileType.primary : TileView.TileType.secondary

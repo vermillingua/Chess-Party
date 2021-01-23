@@ -10,9 +10,14 @@ import Foundation
 struct OnDevicePlayer: Player {
     var name: String
     var type: PlayerType = .onDevice
-    var team: Team?
     var playerID: PlayerID
     var playerResponseHandler: PlayerResponseHandler?
+    
+    init(name: String, playerID: PlayerID, playerResponsehandler: PlayerResponseHandler? = nil) {
+        self.name = name
+        self.playerID = playerID
+        self.playerResponseHandler = playerResponsehandler
+    }
     
     mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
         playerResponseHandler = handler
