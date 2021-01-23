@@ -9,7 +9,7 @@ import SwiftUI
 
 class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     var gameType: ChessGameType
-    @Published var chessBoard: TraditionalChessBoard
+    @Published var chessBoard: ChessBoard
     var chessPieces: [Piece] {
         var pieces = [Piece]()
         for position in chessBoard.board.keys {
@@ -98,8 +98,11 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             // TODO: Make Move
             if let userMove = potentialMovesForCurrentPiece.filter({$0.primaryDestination == position}).first {
                 let _ = withAnimation(.interactiveSpring()) {
-                    chessBoard.doMove(userMove)
+                    chessBoard = chessBoard.doMove(userMove)
                 }
+                potentialMoveDestinations.removeAll()
+                potentialMovesForCurrentPiece.removeAll()
+                userFocusedPosition = nil
             }
         } else {
             userFocusedPosition = position
