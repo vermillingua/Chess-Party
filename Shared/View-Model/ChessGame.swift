@@ -15,8 +15,15 @@ struct RenderablePiece: Identifiable {
 }
 
 class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
-    var gameType: ChessGameType
-    @Published var chessBoard: ChessBoard
+    // MARK: - Board Identity
+    let gameType: ChessGameType
+    private(set) var id: UUID
+    private(set) var players: [Player]
+    private(set) var history: [ChessBoard]
+    
+    @Published private(set) var chessBoard: ChessBoard
+    @Published private(set) var gameState: GameState
+    
     var renderedChessPieces: [RenderablePiece] {
         var pieces = [RenderablePiece]()
         chessBoard.board.keys.forEach { position in
@@ -24,29 +31,18 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         }
         return pieces
     }
-    @Published var gameState: GameState
-    private var potentialMovesForCurrentPiece: [Move] = []
     
-
-    @Published private(set) var userFocusedPosition: Position? {
-        didSet {
-            potentialMoveDestinations.removeAll()
-            if let selectedPosition = userFocusedPosition {
-                let possibleMoves = chessBoard.getMoves(from: selectedPosition)
-                for move in possibleMoves {
-                    potentialMoveDestinations.insert(move.primaryDestination)
-                }
-            }
-        }
+    init(chessBoard: TraditionalChessBoard, players: [Player], id: UUID = UUID()) {
+        self.chessBoard = chessBoard
+        self.players = players
+        self.id = id
+        history = []
+        gameState = .notStarted
+        potentialMoveDestinations = []
+        warningPositions = []
+        lastMoves = []
+        gameType = type(of: chessBoard).gameType
     }
-    @Published private(set) var potentialMoveDestinations: Set<Position>
-    @Published private(set) var warningPositions: Set<Position>
-    @Published private(set) var lastMoves: Set<Position>
-    
-    var id: UUID
-
-    var players: [Player]
-    var history: [ChessBoard]
     
     var description: String {
         var description = ""
@@ -67,17 +63,24 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         return description
     }
     
-    init(chessBoard: TraditionalChessBoard, players: [Player], id: UUID = UUID()) {
-        self.chessBoard = chessBoard
-        self.players = players
-        self.id = id
-        history = []
-        gameState = .notStarted
-        potentialMoveDestinations = []
-        warningPositions = []
-        lastMoves = []
-        gameType = type(of: chessBoard).gameType
+
+    // MARK: - View Events
+    
+    private var potentialMovesForCurrentPiece: [Move] = []
+    @Published private(set) var userFocusedPosition: Position? {
+        didSet {
+            potentialMoveDestinations.removeAll()
+            if let selectedPosition = userFocusedPosition {
+                let possibleMoves = chessBoard.getMoves(from: selectedPosition)
+                for move in possibleMoves {
+                    potentialMoveDestinations.insert(move.primaryDestination)
+                }
+            }
+        }
     }
+    @Published private(set) var potentialMoveDestinations: Set<Position>
+    @Published private(set) var warningPositions: Set<Position>
+    @Published private(set) var lastMoves: Set<Position>
     
     enum SelectionType {
         case userFocus
@@ -86,21 +89,10 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         case lastMove
     }
     
-    enum GameState {
-        case notStarted
-        case paused
-        case waitingOnPlayer(player: Player)
-        case endedVictory(forTeam: TeamID)
-        case endedStalemate
-    }
-    
-
-    // MARK: - View Events
     func userTappedPosition(_ position: Position) {
         if (position == userFocusedPosition) {
             userFocusedPosition = nil
         } else if (potentialMoveDestinations.contains(position)) {
-            // TODO: Make Move
             if let userMove = potentialMovesForCurrentPiece.filter({$0.primaryDestination == position}).first {
                 let _ = withAnimation(.interactiveSpring()) {
                     chessBoard = chessBoard.doMove(userMove)
@@ -116,5 +108,25 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
         }
     }
+    
+    // MARK: - States
+    
+    enum GameState {
+        case notStarted
+        case paused
+        case waitingOnPlayer(player: Player)
+        case endedVictory(forTeam: TeamID)
+        case endedStalemate
+        
+        func isWaitingOnUserToMakeMove() -> Bool {
+            switch self {
+            case .waitingOnPlayer(let player):
+                return player.type == .onDevice
+            default:
+                return false
+            }
+        }
+    }
+    
 }
 

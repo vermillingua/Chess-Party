@@ -31,7 +31,7 @@ struct MainMenu: View {
                 NavigationLink(destination: ChessBoardView(chessGame: game, orientation: .up), tag: game.id, selection: self.$selectedGame) {
                     HStack {
                         type(of: game.gameType).icon
-                        Text(String(describing: game))
+                        Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove() ? .bold : .regular))
                     }
                 }
             }.onAppear(perform: {
