@@ -9,15 +9,10 @@ import Foundation
 
 struct OnDevicePlayer: Player {
     var name: String
-    var type: PlayerType = .onDevice
-    var playerID: PlayerID
+    let type: PlayerType = .onDevice
+    var id: PlayerID
+    var team: TeamID
     var playerResponseHandler: PlayerResponseHandler?
-    
-    init(name: String, playerID: PlayerID, playerResponsehandler: PlayerResponseHandler? = nil) {
-        self.name = name
-        self.playerID = playerID
-        self.playerResponseHandler = playerResponsehandler
-    }
     
     mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
         playerResponseHandler = handler
@@ -26,5 +21,4 @@ struct OnDevicePlayer: Player {
     func handleOnDeviceMove(_ move: Move) -> Bool {
         return playerResponseHandler!(move)
     }
-    
 }

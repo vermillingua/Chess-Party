@@ -24,6 +24,18 @@ struct Move {
         }
         return destination!
     }
+    
+    var captureSquare: Position? {
+        for action in actions {
+            switch action {
+            case .remove(let position):
+                return position
+            default:
+                continue
+            }
+        }
+        return nil
+    }
 }
 
 enum MoveAction {

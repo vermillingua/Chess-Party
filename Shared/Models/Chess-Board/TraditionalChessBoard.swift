@@ -10,7 +10,11 @@ import Foundation
 let white: PlayerID = PlayerID(id: 0)
 let black: PlayerID = PlayerID(id: 1)
 
+let team1: TeamID = TeamID(id: 0)
+let team2: TeamID = TeamID(id: 1)
+
 struct TraditionalChessBoard: TraditionalRulesChessBoard {
+    
     var kingPosition = [PlayerID: Position]()
     var board: [Position : Piece]
     var rows: Int = 8
@@ -21,14 +25,14 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
     init() {
         board = [Position: Piece]()
         
-        board[Position(row: 0, column: 0)] = Piece(player: black, type: .rook)
-        board[Position(row: 0, column: 1)] = Piece(player: black, type: .knight)
-        board[Position(row: 0, column: 2)] = Piece(player: black, type: .bishop)
-        board[Position(row: 0, column: 3)] = Piece(player: black, type: .queen)
-        board[Position(row: 0, column: 4)] = Piece(player: black, type: .king)
-        board[Position(row: 0, column: 5)] = Piece(player: black, type: .bishop)
-        board[Position(row: 0, column: 6)] = Piece(player: black, type: .knight)
-        board[Position(row: 0, column: 7)] = Piece(player: black, type: .rook)
+        board[Position(row: 0, column: 0)] = Piece(player: black, type: .rook, team: team1)
+        board[Position(row: 0, column: 1)] = Piece(player: black, type: .knight, team: team1)
+        board[Position(row: 0, column: 2)] = Piece(player: black, type: .bishop, team: team1)
+        board[Position(row: 0, column: 3)] = Piece(player: black, type: .queen, team: team1)
+        board[Position(row: 0, column: 4)] = Piece(player: black, type: .king, team: team1)
+        board[Position(row: 0, column: 5)] = Piece(player: black, type: .bishop, team: team1)
+        board[Position(row: 0, column: 6)] = Piece(player: black, type: .knight, team: team1)
+        board[Position(row: 0, column: 7)] = Piece(player: black, type: .rook, team: team1)
         
 //        board[Position(row: 1, column: 0)] = Piece(player: black, type: .pawn)
 //        board[Position(row: 1, column: 1)] = Piece(player: black, type: .pawn)
@@ -39,14 +43,14 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
 //        board[Position(row: 1, column: 6)] = Piece(player: black, type: .pawn)
 //        board[Position(row: 1, column: 7)] = Piece(player: black, type: .pawn)
         
-        board[Position(row: 7, column: 0)] = Piece(player: white, type: .rook)
-        board[Position(row: 7, column: 1)] = Piece(player: white, type: .knight)
-        board[Position(row: 7, column: 2)] = Piece(player: white, type: .bishop)
-        board[Position(row: 7, column: 3)] = Piece(player: white, type: .queen)
-        board[Position(row: 7, column: 4)] = Piece(player: white, type: .king)
-        board[Position(row: 7, column: 5)] = Piece(player: white, type: .bishop)
-        board[Position(row: 7, column: 6)] = Piece(player: white, type: .knight)
-        board[Position(row: 7, column: 7)] = Piece(player: white, type: .rook)
+        board[Position(row: 7, column: 0)] = Piece(player: white, type: .rook, team: team2)
+        board[Position(row: 7, column: 1)] = Piece(player: white, type: .knight, team: team2)
+        board[Position(row: 7, column: 2)] = Piece(player: white, type: .bishop, team: team2)
+        board[Position(row: 7, column: 3)] = Piece(player: white, type: .queen, team: team2)
+        board[Position(row: 7, column: 4)] = Piece(player: white, type: .king, team: team2)
+        board[Position(row: 7, column: 5)] = Piece(player: white, type: .bishop, team: team2)
+        board[Position(row: 7, column: 6)] = Piece(player: white, type: .knight, team: team2)
+        board[Position(row: 7, column: 7)] = Piece(player: white, type: .rook, team: team2)
         
 //        board[Position(row: 6, column: 0)] = Piece(player: white, type: .pawn)
 //        board[Position(row: 6, column: 1)] = Piece(player: white, type: .pawn)

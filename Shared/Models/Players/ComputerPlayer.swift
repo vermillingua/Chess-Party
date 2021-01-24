@@ -9,19 +9,12 @@ import Foundation
 
 struct ComputerPlayer: Player {
     var name: String
-    var type: PlayerType = .computer
-    var playerID: PlayerID
+    let type: PlayerType = .computer
+    var id: PlayerID
+    var team: TeamID
     var playerResponseHandler: PlayerResponseHandler?
-    
-    init(name: String, playerID: PlayerID, playerResponsehandler: PlayerResponseHandler? = nil) {
-        self.name = name
-        self.playerID = playerID
-        self.playerResponseHandler = playerResponsehandler
-    }
     
     mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
         playerResponseHandler = handler
     }
-    
-    
 }
