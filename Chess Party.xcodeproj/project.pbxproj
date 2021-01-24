@@ -57,8 +57,8 @@
 		EB28541B25ACC44900B9150F /* ChessBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28541925ACC44900B9150F /* ChessBoardView.swift */; };
 		EB28542525ACC4DC00B9150F /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28542425ACC4DC00B9150F /* TileView.swift */; };
 		EB28542625ACC4DC00B9150F /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB28542425ACC4DC00B9150F /* TileView.swift */; };
-		EB5C882F25BCB34F002F2528 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C882E25BCB34F002F2528 /* MainMenu.swift */; };
-		EB5C883025BCB34F002F2528 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C882E25BCB34F002F2528 /* MainMenu.swift */; };
+		EB5C884E25BD29C6002F2528 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C884D25BD29C6002F2528 /* MainMenu.swift */; };
+		EB5C884F25BD29C6002F2528 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C884D25BD29C6002F2528 /* MainMenu.swift */; };
 		EB601C6D25B0B90C00EEFACF /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
 		EB601C7625B0B96700EEFACF /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
 		EB6A85AE25B892A000B24CB0 /* ChessGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A85AD25B892A000B24CB0 /* ChessGameStore.swift */; };
@@ -130,7 +130,7 @@
 		EB1CFF0925AA49DF002BA365 /* ChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		EB28541925ACC44900B9150F /* ChessBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardView.swift; sourceTree = "<group>"; };
 		EB28542425ACC4DC00B9150F /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
-		EB5C882E25BCB34F002F2528 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		EB5C884D25BD29C6002F2528 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		EB6A85AD25B892A000B24CB0 /* ChessGameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameStore.swift; sourceTree = "<group>"; };
 		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-D.xcassets"; sourceTree = "<group>"; };
@@ -330,8 +330,8 @@
 		EBAE191925B74136008AF991 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				EB5C882E25BCB34F002F2528 /* MainMenu.swift */,
 				EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */,
+				EB5C884D25BD29C6002F2528 /* MainMenu.swift */,
 				EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */,
 				EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */,
 			);
@@ -525,7 +525,7 @@
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0A25AA49DF002BA365 /* ChessGame.swift in Sources */,
 				EBAE192225B7493D008AF991 /* MenuButtonStyle.swift in Sources */,
-				EB5C882F25BCB34F002F2528 /* MainMenu.swift in Sources */,
+				EB5C884E25BD29C6002F2528 /* MainMenu.swift in Sources */,
 				EB28541A25ACC44900B9150F /* ChessBoardView.swift in Sources */,
 				EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */,
 				EBA7116825ACF0CA00EA6F79 /* PieceView.swift in Sources */,
@@ -556,7 +556,7 @@
 				EB1CFF0B25AA49DF002BA365 /* ChessGame.swift in Sources */,
 				EBAE192325B7493D008AF991 /* MenuButtonStyle.swift in Sources */,
 				EB28541B25ACC44900B9150F /* ChessBoardView.swift in Sources */,
-				EB5C883025BCB34F002F2528 /* MainMenu.swift in Sources */,
+				EB5C884F25BD29C6002F2528 /* MainMenu.swift in Sources */,
 				EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */,
 				EBAE194725B764F0008AF991 /* MacOSNavigationView.swift in Sources */,
 				EBA7116925ACF0CA00EA6F79 /* PieceView.swift in Sources */,
