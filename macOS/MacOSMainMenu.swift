@@ -76,10 +76,16 @@ struct MacOSMainMenu: View {
     }
     
     var currentGames: [ChessGame] {
+        let white: PlayerID = PlayerID(id: 0)
+        let black: PlayerID = PlayerID(id: 1)
+
+        let team1: TeamID = TeamID(id: 0)
+        let team2: TeamID = TeamID(id: 1)
+        
         return [
-            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), ComputerPlayer(name: "Chester", playerID: PlayerID(id: 1))]),
-            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Remone", playerID: PlayerID(id: 1))]),
-            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Teamy", playerID: PlayerID(id: 1)), RemotePlayer(name: "Enemenimy", playerID: PlayerID(id: 2)), RemotePlayer(name: "Secondenimy", playerID: PlayerID(id: 3))])
+            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: white, team: team2), ComputerPlayer(name: "Chester", id: black, team: team1)]),
+            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: white, team: team2), RemotePlayer(name: "Remone", id: black, team: team1)]),
+            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: white, team: team2), RemotePlayer(name: "Teamy", id: white, team: team2), RemotePlayer(name: "Enemenimy", id: black, team: team1), RemotePlayer(name: "Secondenimy", id: white, team: team1)])
         ]
     }
     

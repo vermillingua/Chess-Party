@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct Position: Hashable {
+struct Position: Hashable, Identifiable {
     var row, column: Int
+    
+    var id: Int {
+        return row + 1000 + column //MARK: TODO Something better
+    }
     
     func shift(by displacement: Displacement) -> Position {
         Position(row: row + displacement.y, column: column + displacement.x)
