@@ -14,9 +14,9 @@ class ChessGameStore {
 
     init() {
         currentGames = [
-            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), ComputerPlayer(name: "Chester", playerID: PlayerID(id: 1))]),
-           ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Remone", playerID: PlayerID(id: 1))]),
-           ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Teamy", playerID: PlayerID(id: 1)), RemotePlayer(name: "Enemenimy", playerID: PlayerID(id: 2)), RemotePlayer(name: "Secondenimy", playerID: PlayerID(id: 3))])
+            ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: PlayerID(id: 0), team: TeamID(id: 0)), ComputerPlayer(name: "Chester", id: PlayerID(id: 1), team: TeamID(id: 1))]),
+           ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: PlayerID(id: 0), team: TeamID(id: 0)), RemotePlayer(name: "Remone", id: PlayerID(id: 1), team: TeamID(id: 1))]),
+           ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", id: PlayerID(id: 0), team: TeamID(id: 0)), RemotePlayer(name: "Teamy", id: PlayerID(id: 1), team: TeamID(id: 1)), RemotePlayer(name: "Enemenimy", id: PlayerID(id: 2), team: TeamID(id: 2)), RemotePlayer(name: "Secondenimy", id: PlayerID(id: 3), team: TeamID(id: 3))])
         ]
     }
 }

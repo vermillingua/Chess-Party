@@ -7,15 +7,20 @@
 
 import SwiftUI
 
+struct RenderablePiece: Identifiable {
+    let piece: Piece
+    var id: Int { piece.id }
+    var position: Position
+    
+}
+
 class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     var gameType: ChessGameType
     @Published var chessBoard: ChessBoard
-    var chessPieces: [Piece] {
-        var pieces = [Piece]()
-        for position in chessBoard.board.keys {
-            var piece = chessBoard.board[position]!
-            piece.position = position
-            pieces.append(piece)
+    var renderedChessPieces: [RenderablePiece] {
+        var pieces = [RenderablePiece]()
+        chessBoard.board.keys.forEach { position in
+            pieces.append(RenderablePiece(piece: chessBoard.board[position]!, position: position))
         }
         return pieces
     }

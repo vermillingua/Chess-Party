@@ -52,9 +52,9 @@ struct ChessBoardView: View {
     func pieces() -> some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             GeometryReader { geometry in
-                ForEach (chessGame.chessPieces) { piece in
-                    if let position = piece.position {
-                        PieceView(piece: piece,
+                ForEach (chessGame.renderedChessPieces) { renderedPiece in
+                    if let position = renderedPiece.position {
+                        PieceView(piece: renderedPiece.piece,
                                   size: getPieceSize(withBoardSize: geometry.size))
                             .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
                             .onTapGesture { userTappedTile(at: position) }
