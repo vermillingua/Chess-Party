@@ -73,18 +73,20 @@
 		EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA7116F25ACF36C00EA6F79 /* Theme.swift */; };
 		EBA7119C25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
 		EBA7119D25AD342A00EA6F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7119B25AD342A00EA6F79 /* Assets.xcassets */; };
-		EBAE192225B7493D008AF991 /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */; };
-		EBAE192325B7493D008AF991 /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */; };
-		EBAE192D25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */; };
-		EBAE192E25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */; };
+		EBAE192D25B754C7008AF991 /* DuelGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */; };
+		EBAE192E25B754C7008AF991 /* DuelGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */; };
 		EBAE194125B764BE008AF991 /* IOSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE194025B764BE008AF991 /* IOSNavigationView.swift */; };
 		EBAE194725B764F0008AF991 /* MacOSNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE194625B764F0008AF991 /* MacOSNavigationView.swift */; };
 		EBAE195525B7659F008AF991 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE195425B7659F008AF991 /* SettingsView.swift */; };
 		EBAE195A25B765A5008AF991 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE195425B7659F008AF991 /* SettingsView.swift */; };
-		EBAE198C25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */; };
-		EBAE198D25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */; };
+		EBAE198C25B78431008AF991 /* BattleGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* BattleGameMaker.swift */; };
+		EBAE198D25B78431008AF991 /* BattleGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* BattleGameMaker.swift */; };
 		EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
 		EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
+		EBF7574825BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
+		EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
+		EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
+		EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,13 +140,14 @@
 		EBA7116725ACF0CA00EA6F79 /* PieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
 		EBA7116F25ACF36C00EA6F79 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		EBA7119B25AD342A00EA6F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonStyle.swift; sourceTree = "<group>"; };
-		EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneVOneGameMaker.swift; sourceTree = "<group>"; };
+		EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuelGameMaker.swift; sourceTree = "<group>"; };
 		EBAE194025B764BE008AF991 /* IOSNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSNavigationView.swift; sourceTree = "<group>"; };
 		EBAE194625B764F0008AF991 /* MacOSNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSNavigationView.swift; sourceTree = "<group>"; };
 		EBAE195425B7659F008AF991 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoVTwoGameMaker.swift; sourceTree = "<group>"; };
+		EBAE198B25B78431008AF991 /* BattleGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleGameMaker.swift; sourceTree = "<group>"; };
 		EBAE199625B786F0008AF991 /* ChessGameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameType.swift; sourceTree = "<group>"; };
+		EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
+		EBF7574F25BD3D350042CF57 /* DuelGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuelGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,7 +296,7 @@
 				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
 				EBAE195425B7659F008AF991 /* SettingsView.swift */,
 				EBAE191925B74136008AF991 /* Menus */,
-				EB601C9425B0F1A000EEFACF /* Chess-Board-View */,
+				EBF7574E25BD3CE10042CF57 /* GameViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				EB28541925ACC44900B9150F /* ChessBoardView.swift */,
 				EB28542425ACC4DC00B9150F /* TileView.swift */,
 				EBA7116725ACF0CA00EA6F79 /* PieceView.swift */,
+				EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */,
 			);
 			path = "Chess-Board-View";
 			sourceTree = "<group>";
@@ -330,12 +334,20 @@
 		EBAE191925B74136008AF991 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				EBAE192C25B754C7008AF991 /* OneVOneGameMaker.swift */,
 				EB5C884D25BD29C6002F2528 /* MainMenu.swift */,
-				EBAE198B25B78431008AF991 /* TwoVTwoGameMaker.swift */,
-				EBAE192125B7493D008AF991 /* MenuButtonStyle.swift */,
+				EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */,
+				EBAE198B25B78431008AF991 /* BattleGameMaker.swift */,
 			);
 			path = Menus;
+			sourceTree = "<group>";
+		};
+		EBF7574E25BD3CE10042CF57 /* GameViews */ = {
+			isa = PBXGroup;
+			children = (
+				EB601C9425B0F1A000EEFACF /* Chess-Board-View */,
+				EBF7574F25BD3D350042CF57 /* DuelGameView.swift */,
+			);
+			path = GameViews;
 			sourceTree = "<group>";
 		};
 		EBFBAA5A25BB83EA001F2209 /* Frameworks */ = {
@@ -514,17 +526,18 @@
 				EB6A85AE25B892A000B24CB0 /* ChessGameStore.swift in Sources */,
 				ABE50C9825A914320093AE52 /* Move.swift in Sources */,
 				EB1CFEF225AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
-				EBAE192D25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */,
+				EBAE192D25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				EBAE194125B764BE008AF991 /* IOSNavigationView.swift in Sources */,
+				EBF7574825BD3B760042CF57 /* PlayerInfoView.swift in Sources */,
 				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
-				EBAE198C25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */,
+				EBAE198C25B78431008AF991 /* BattleGameMaker.swift in Sources */,
 				AB824B6725A643D900C5A513 /* ChessPartyApp.swift in Sources */,
+				EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0A25AA49DF002BA365 /* ChessGame.swift in Sources */,
-				EBAE192225B7493D008AF991 /* MenuButtonStyle.swift in Sources */,
 				EB5C884E25BD29C6002F2528 /* MainMenu.swift in Sources */,
 				EB28541A25ACC44900B9150F /* ChessBoardView.swift in Sources */,
 				EBA7117025ACF36C00EA6F79 /* Theme.swift in Sources */,
@@ -545,16 +558,17 @@
 				EB1CFEFC25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				ABE50C9925A914320093AE52 /* Move.swift in Sources */,
 				EB1CFEF325AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
-				EBAE192E25B754C7008AF991 /* OneVOneGameMaker.swift in Sources */,
+				EBAE192E25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
 				ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				ABE50CA625A914F80093AE52 /* Position.swift in Sources */,
-				EBAE198D25B78431008AF991 /* TwoVTwoGameMaker.swift in Sources */,
+				EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */,
+				EBAE198D25B78431008AF991 /* BattleGameMaker.swift in Sources */,
 				AB824B6825A643D900C5A513 /* ChessPartyApp.swift in Sources */,
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
+				EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0B25AA49DF002BA365 /* ChessGame.swift in Sources */,
-				EBAE192325B7493D008AF991 /* MenuButtonStyle.swift in Sources */,
 				EB28541B25ACC44900B9150F /* ChessBoardView.swift in Sources */,
 				EB5C884F25BD29C6002F2528 /* MainMenu.swift in Sources */,
 				EBA7117125ACF36C00EA6F79 /* Theme.swift in Sources */,

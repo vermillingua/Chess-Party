@@ -5,7 +5,7 @@
 //  Created by Robert Swanson on 1/9/21.
 //
 
-import Foundation
+import SwiftUI
 
 protocol Player {
     var name: String { get }
@@ -13,6 +13,7 @@ protocol Player {
     var id: PlayerID { get }
     var team: TeamID { get }
     var playerResponseHandler: PlayerResponseHandler? { get set }
+    var icon: Image? { get set }
     
     mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler)
 }

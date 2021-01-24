@@ -8,7 +8,7 @@
 import SwiftUI
 import GameKit
 
-struct OneVOneGameMaker: View {
+struct DuelGameMaker: View {
     var body: some View {
         Text("Game Maker")
     }

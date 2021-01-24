@@ -20,7 +20,7 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
     var rows: Int = 8
     var columns: Int = 8
     
-    static var gameType: ChessGameType = Duel()
+    static var gameType: ChessGameType = .duel
     
     init() {
         board = [Position: Piece]()

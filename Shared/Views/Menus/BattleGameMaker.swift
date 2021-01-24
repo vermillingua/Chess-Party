@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TwoVTwoGameMaker: View {
+struct BattleGameMaker: View {
     var body: some View {
         Text("Two V Two Game Maker")
     }
