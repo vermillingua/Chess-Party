@@ -316,7 +316,6 @@
 				EB28541925ACC44900B9150F /* ChessBoardView.swift */,
 				EB28542425ACC4DC00B9150F /* TileView.swift */,
 				EBA7116725ACF0CA00EA6F79 /* PieceView.swift */,
-				EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */,
 			);
 			path = "Chess-Board-View";
 			sourceTree = "<group>";
@@ -344,8 +343,9 @@
 		EBF7574E25BD3CE10042CF57 /* GameViews */ = {
 			isa = PBXGroup;
 			children = (
-				EB601C9425B0F1A000EEFACF /* Chess-Board-View */,
+				EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */,
 				EBF7574F25BD3D350042CF57 /* DuelGameView.swift */,
+				EB601C9425B0F1A000EEFACF /* Chess-Board-View */,
 			);
 			path = GameViews;
 			sourceTree = "<group>";

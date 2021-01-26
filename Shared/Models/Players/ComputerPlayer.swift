@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct ComputerPlayer: Player {
-    var name: String
+    let name: String
     let type: PlayerType = .computer
-    var id: PlayerID
+    var identity: PlayerID
     var team: TeamID
-    var playerResponseHandler: PlayerResponseHandler?
-    var icon: Image?
+    var icon: Image
+    var playerResponseHandler: PlayerResponseHandler
     
-    mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
-        playerResponseHandler = handler
+    
+    func startMove(withBoard chessBoard: ChessBoard) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            for position in chessBoard.board.keys {
+                if let piece = chessBoard.board[position], piece.player == identity, piece.type != .king {
+                    if let move = chessBoard.getMoves(from: position).first {
+                        playerResponseHandler(move)
+                        return
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    private func makeArbitraryMove(withBoard chessBoard: ChessBoard) {
+        for position in chessBoard.board.keys {
+            if let piece = chessBoard.board[position], piece.player == identity, piece.type != .king {
+                if let move = chessBoard.getMoves(from: position).first {
+                    playerResponseHandler(move)
+                    return
+                }
+            }
+        }
+        assert(false, "Couldn't find arbitrary move")
     }
 }

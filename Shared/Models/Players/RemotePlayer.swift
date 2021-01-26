@@ -10,12 +10,13 @@ import SwiftUI
 struct RemotePlayer: Player {
     var name: String
     let type: PlayerType = .onDevice
-    var id: PlayerID
-    var team: TeamID
-    var playerResponseHandler: PlayerResponseHandler?
-    var icon: Image?
-    
-    mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
-        playerResponseHandler = handler
+    let identity: PlayerID
+    let team: TeamID
+    var icon: Image
+    let playerResponseHandler: PlayerResponseHandler
+
+
+    func startMove(withBoard board: ChessBoard) {
     }
+    
 }

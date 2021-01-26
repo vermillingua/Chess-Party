@@ -11,7 +11,6 @@ struct RenderablePiece: Identifiable {
     let piece: Piece
     var id: Int { piece.id }
     var position: Position
-    
 }
 
 class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
@@ -32,16 +31,24 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         return pieces
     }
     
-    init(chessBoard: TraditionalChessBoard, players: [Player], id: UUID = UUID()) {
+    init(chessBoard: ChessBoard, playerBuilders: [PlayerBuilder], id: UUID = UUID()) {
         self.chessBoard = chessBoard
-        self.players = players
         self.id = id
         history = []
-        gameState = .notStarted
         potentialMoveDestinations = []
         warningPositions = []
         lastMoves = []
         gameType = type(of: chessBoard).gameType
+        gameState = .paused
+
+        players = []
+        for builder in playerBuilders {
+            players.append(builder.buildPlayer(withResponseHandler: {move in self.handleMove(move)} ))
+        }
+        gameState = .waitingOnPlayer(player: self.players.first!)
+        self.players.first!.startMove(withBoard: chessBoard)
+
+        enforcePlayerOrder(players: playerBuilders)
     }
     
     var description: String {
@@ -61,6 +68,12 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             description += teamIndex == 0 ? teams[teamIndex] : " vs \(teams[teamIndex])"
         }
         return description
+    }
+    
+    func enforcePlayerOrder(players: [PlayerBuilder]) {
+        for index in 0..<players.count {
+            assert(players[index].index == index, "Player ID's must equal their index in the order of players")
+        }
     }
     
 
@@ -90,43 +103,69 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     }
     
     func userTappedPosition(_ position: Position) {
-        if (position == userFocusedPosition) {
-            userFocusedPosition = nil
-        } else if (potentialMoveDestinations.contains(position)) {
-            if let userMove = potentialMovesForCurrentPiece.filter({$0.primaryDestination == position}).first {
-                let _ = withAnimation(.interactiveSpring()) {
-                    chessBoard = chessBoard.doMove(userMove)
-                }
-                potentialMoveDestinations.removeAll()
-                potentialMovesForCurrentPiece.removeAll()
+        if gameState.isWaitingOnUserToMakeMove() {
+            if (position == userFocusedPosition) {
                 userFocusedPosition = nil
+            } else if (potentialMoveDestinations.contains(position)) {
+                if let userMove = potentialMovesForCurrentPiece.filter({$0.primaryDestination == position}).first,
+                   let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
+                    
+                    potentialMoveDestinations.removeAll()
+                    potentialMovesForCurrentPiece.removeAll()
+                    userFocusedPosition = nil
+                    onDevicePlayer.handleOnDeviceMove(userMove)
+                }
+            } else {
+                if case .waitingOnPlayer(let currentPlayer) = gameState,
+                   let piece = chessBoard.board[position],
+                   piece.player == currentPlayer.identity {
+    
+                    userFocusedPosition = position
+                    potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
+                    potentialMoveDestinations.removeAll()
+                    potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
+                }
             }
-        } else {
-            userFocusedPosition = position
-            potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
-            potentialMoveDestinations.removeAll()
-            potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
         }
+    }
+    
+    func handleMove(_ move: Move) {
+        // Make this move
+        let _ = withAnimation(.interactiveSpring()) {
+            chessBoard = chessBoard.doMove(move)
+        }
+        
+        // Next players turn
+        if let currentIndex = gameState.getCurrentPlayer()?.index {
+            gameState = .waitingOnPlayer(player: players[(currentIndex + 1) % players.count])
+            gameState.getCurrentPlayer()?.startMove(withBoard: chessBoard)
+        }
+        
     }
     
     // MARK: - States
     
     enum GameState {
-        case notStarted
         case paused
         case waitingOnPlayer(player: Player)
         case endedVictory(forTeam: TeamID)
         case endedStalemate
         
         func isWaitingOnUserToMakeMove() -> Bool {
-            switch self {
-            case .waitingOnPlayer(let player):
-                return player.type == .onDevice
-            default:
+            if let currentPlayer = getCurrentPlayer() {
+                return currentPlayer.type == .onDevice
+            } else {
                 return false
             }
         }
+        
+        func getCurrentPlayer() -> Player? {
+            if case .waitingOnPlayer(let currentPlayer) = self {
+                return currentPlayer
+            } else {
+                return nil
+            }
+        }
     }
-    
 }
 
