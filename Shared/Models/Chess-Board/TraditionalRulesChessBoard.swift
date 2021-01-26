@@ -34,6 +34,14 @@ extension TraditionalRulesChessBoard {
     var kingMoveDirections: [Displacement] { Displacement.allCompassDirections }
     var knightMoveDirections: [Displacement] { [Displacement(x: 2, y: 1), Displacement(x: -2, y: 1), Displacement(x: 2, y: -1), Displacement(x: -2, y: -1), Displacement(x: 1, y: 2), Displacement(x: -1, y: 2), Displacement(x: 1, y: -2), Displacement(x: -1, y: -2)] }
     
+    func canPlayerMakeMove(player: PlayerID) -> Bool {
+        for (pos, piece) in board {
+            if piece.player == player, getMoves(from: pos).count > 0 {
+                return true
+            }
+        }
+        return false
+    }
     
     func isKingInCheck(player: PlayerID) -> Bool {
         let positionOfKing = kingPosition[player]!
