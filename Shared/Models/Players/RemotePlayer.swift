@@ -9,10 +9,13 @@ import SwiftUI
 
 struct RemotePlayer: Player {
     var name: String
-    let type: PlayerType = .onDevice
+    let type: PlayerType = .remote
     let identity: PlayerID
     let team: TeamID
     var icon: Image
+    var hasBeenEliminated: Bool = false
+    var nextPlayer: PlayerID
+    var previousPlayer: PlayerID
     let playerResponseHandler: PlayerResponseHandler
 
 

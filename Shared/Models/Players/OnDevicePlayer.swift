@@ -13,6 +13,9 @@ struct OnDevicePlayer: Player {
     let identity: PlayerID
     let team: TeamID
     var icon: Image
+    var hasBeenEliminated: Bool = false
+    var nextPlayer: PlayerID
+    var previousPlayer: PlayerID
     let playerResponseHandler: PlayerResponseHandler
 
     func startMove(withBoard board: ChessBoard) {

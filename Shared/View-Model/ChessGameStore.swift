@@ -7,21 +7,28 @@
 
 import Foundation
 
-class ChessGameStore {
+class ChessGameStore: ObservableObject {
     static var instance: ChessGameStore = ChessGameStore()
-    
-    var currentGames: [ChessGame]
+
+    @Published var currentGames: [ChessGame]
 
     init() {
-        let you = PlayerBuilder(name: "You", type: .onDevice, identity: PlayerID(id: 0), team: TeamID(id: 0))
-        let chester = PlayerBuilder(name: "Chester", type: .computer, identity: PlayerID(id: 1), team: TeamID(id: 1))
-        let remone = PlayerBuilder(name: "Remone", type: .remote, identity: PlayerID(id: 1), team: TeamID(id: 1))
-        let teamy = PlayerBuilder(name: "Teamy", type: .remote, identity: PlayerID(id: 2), team: TeamID(id: 0))
-        let enimy = PlayerBuilder(name: "Enimy", type: .remote, identity: PlayerID(id: 3), team: TeamID(id: 1))
+        let you = PlayerBuilder(name: "You", type: .onDevice, team: TeamID(id: 0))
+        let chester = PlayerBuilder(name: "Chester", type: .computer, team: TeamID(id: 1))
+        let remone = PlayerBuilder(name: "Remone", type: .remote,  team: TeamID(id: 1))
+        let teamy = PlayerBuilder(name: "Teamy", type: .onDevice,  team: TeamID(id: 0))
+        let enimy = PlayerBuilder(name: "Enimy", type: .onDevice,  team: TeamID(id: 1))
+        let otherEnemy = PlayerBuilder(name: "Other Enimy", type: .onDevice,  team: TeamID(id: 1))
         currentGames = [
             ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, chester]),
-           ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, remone]),
-           ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, remone, teamy, enimy])
+            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, enimy]),
+            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, remone]),
+            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, enimy, teamy, otherEnemy]),
+            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [remone, you])
         ]
+    }
+    
+    func gameWillChange() {
+        objectWillChange.send()
     }
 }

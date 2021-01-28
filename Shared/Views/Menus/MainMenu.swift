@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainMenu: View {
-    let chessGameStore = ChessGameStore.instance
+    @ObservedObject var chessGameStore = ChessGameStore.instance
     @State var selectedGame: UUID?
     
     var body: some View {
@@ -32,6 +32,10 @@ struct MainMenu: View {
                     HStack {
                         game.gameType.icon()
                         Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove() ? .bold : .regular))
+                        if game.gameState.isWaitingOnComputer() {
+                            Spacer()
+                            ProgressView().scaleEffect(0.5).frame(height: 10)
+                        }
                     }
                 }
             }.onAppear(perform: {
