@@ -44,10 +44,10 @@ struct Theme {
     }
     static let defaultSelectionColorGetter: SelectionColorGetter = { selection in
         switch selection {
-        case .potentialMove: return Color.blue
+        case .potentialMove: return Color.orange
         case .userFocus: return Color.yellow
         case .warning: return Color.red
-        case .lastMove: return Color.orange
+        case .lastMove: return Color.pink
         }
     }
     

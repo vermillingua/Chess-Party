@@ -28,7 +28,7 @@ struct MainMenu: View {
     func currentGameLinks() -> some View {
         Section (header: Text("Current Games")) {
             ForEach (chessGameStore.currentGames) { game in
-                NavigationLink(destination: game.gameType.gameView(game: game), tag: game.id, selection: self.$selectedGame) {
+                NavigationLink(destination: gameView(forGame: game), tag: game.id, selection: self.$selectedGame) {
                     HStack {
                         game.gameType.icon()
                         Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove() ? .bold : .regular))
@@ -43,6 +43,15 @@ struct MainMenu: View {
             })
         }
         
+    }
+    
+    @ViewBuilder
+    func gameView(forGame game: ChessGame) -> some View {
+        if game.gameType == .duel {
+            DuelGameView(game: game)
+        } else if game.gameType == .battle {
+           // TODO: Implement
+        }
     }
     
     func newGameLink(forGameType gameType: ChessGameType) -> some View {

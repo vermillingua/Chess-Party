@@ -8,23 +8,78 @@
 import SwiftUI
 
 struct PlayerInfoView: View {
-    enum layoutOrientation { case vertical, horizontal }
-    var layout: layoutOrientation
+    let player: Player
+    let orientation: LayoutOrientation
+    let flip: Bool
+    let currentPlayer: Bool
     
+    @ViewBuilder
     var body: some View {
-        if layout == .horizontal{
-            horizontalLayout()
-        } else if layout == .vertical {
-            verticalLayout()
+        layout
+            .padding(5)
+            .overlay(
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(lineWidth: 4)
+                .opacity(currentPlayer ? 1 : 0))
+    }
+    
+    @ViewBuilder
+    var layout: some View {
+        if orientation == .vertical{
+            if flip {
+                verticalLayoutFlipped
+            } else {
+                verticalLayout
+            }
+        } else {
+            if flip {
+                horizontalLayoutFlipped
+            } else {
+                horizontalLayout
+            }
+        }
+//        .frame(minWidth: 50, minHeight: 50)
+//        .background(Color.black)
+        
+    }
+    
+    var verticalLayout: some View {
+        VStack {
+            playerNameLabel
+            playerIcon
         }
     }
     
-    func verticalLayout() -> some View {
-        return Text("vertical")
+    var verticalLayoutFlipped: some View {
+        VStack {
+            playerIcon
+            playerNameLabel
+        }
     }
     
-    func horizontalLayout() -> some View {
-        return Text("horizontal")
-        
+    var horizontalLayout: some View {
+        HStack {
+            playerNameLabel
+            playerIcon
+        }
     }
+    var horizontalLayoutFlipped: some View {
+        HStack {
+            playerIcon
+            playerNameLabel
+        }
+    }
+    
+    var playerIcon: some View {
+        player.icon
+            .font(.largeTitle)
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .shadow(radius: 50)
+    }
+    
+    var playerNameLabel: some View {
+        Text(player.name).font(.largeTitle).fixedSize()
+    }
+    
+    
 }

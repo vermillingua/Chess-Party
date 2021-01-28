@@ -13,9 +13,7 @@ struct PieceView: View {
     var size: CGSize
     
     var body: some View {
-        ZStack {
-            settings.theme.pieceImageGetter(piece).resizable()
-        }
+        settings.theme.pieceImageGetter(piece).resizable()
         .frame(width: size.width, height: size.height, alignment: .center)
     }
 }

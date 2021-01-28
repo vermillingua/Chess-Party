@@ -23,7 +23,7 @@ struct MacOSNavigationView: View {
                 }
             }
         }
-        .frame(minWidth: 200, minHeight: 400, idealHeight: nil, alignment: .top)
+        .frame(minWidth: 600, minHeight: 500, idealHeight: nil, alignment: .top)
         .sheet(isPresented: $showSettings) {
             VStack {
                 Text("Settings").font(.title)

@@ -15,6 +15,7 @@ struct OnDevicePlayer: Player {
     var icon: Image
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
+    var lastMove: Move? = nil
     var previousPlayer: PlayerID
     let playerResponseHandler: PlayerResponseHandler
 

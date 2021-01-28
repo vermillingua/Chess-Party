@@ -7,48 +7,13 @@
 
 import SwiftUI
 
-struct PlayerBuilder {
-    var name: String
-    var type: PlayerType
-    var team: TeamID
-    var icon: Image?
-
-    public func buildPlayer(atIndex: Int, previousPlayer: Int, nextPlayerIndex: Int, withResponseHandler responseHandler: @escaping PlayerResponseHandler) -> Player {
-        switch type {
-        case .onDevice:
-            return OnDevicePlayer(name: name,
-                                  identity: PlayerID(id: atIndex),
-                                  team: team,
-                                  icon: icon ?? Image(systemName: "person"),
-                                  nextPlayer: PlayerID(id: nextPlayerIndex),
-                                  previousPlayer: PlayerID(id: previousPlayer),
-                                  playerResponseHandler: responseHandler)
-        case .computer:
-            return ComputerPlayer(name: name,
-                                  identity: PlayerID(id: atIndex),
-                                  team: team,
-                                  icon: icon ?? Image(systemName: "desktopcomputer"),
-                                  nextPlayer: PlayerID(id: nextPlayerIndex),
-                                  previousPlayer: PlayerID(id: previousPlayer),
-                                  playerResponseHandler: responseHandler)
-        case .remote:
-            return RemotePlayer(name: name,
-                                identity: PlayerID(id: atIndex),
-                                team: team,
-                                icon: icon ?? Image(systemName: "network"),
-                                nextPlayer: PlayerID(id: nextPlayerIndex),
-                                previousPlayer: PlayerID(id: previousPlayer),
-                                playerResponseHandler: responseHandler)
-        }
-    }
-}
-
 protocol Player {
     var name: String { get }
     var type: PlayerType { get }
     var identity: PlayerID { get }
     var nextPlayer: PlayerID { get set }
-    var previousPlayer: PlayerID { get set } 
+    var previousPlayer: PlayerID { get set }
+    var lastMove: Move? { get set }
     var team: TeamID { get }
     var icon: Image { get set }
     var hasBeenEliminated: Bool { get set }

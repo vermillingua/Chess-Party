@@ -63,6 +63,14 @@
 		EB601C7625B0B96700EEFACF /* TraditionalRulesChessBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE50CBF25A9FE430093AE52 /* TraditionalRulesChessBoard.swift */; };
 		EB6A85AE25B892A000B24CB0 /* ChessGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A85AD25B892A000B24CB0 /* ChessGameStore.swift */; };
 		EB6A85AF25B892A100B24CB0 /* ChessGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A85AD25B892A000B24CB0 /* ChessGameStore.swift */; };
+		EB7EAA8D25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */; };
+		EB7EAA8E25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */; };
+		EB7EAA8F25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */; };
+		EB7EAA9025C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */; };
+		EB869E5725C26190005F683B /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E5625C2618F005F683B /* CGSizeExtensions.swift */; };
+		EB869E5825C26190005F683B /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E5625C2618F005F683B /* CGSizeExtensions.swift */; };
+		EB869E6D25C28397005F683B /* SelectTileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */; };
+		EB869E6E25C28397005F683B /* SelectTileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */; };
 		EBA7114225ACED3E00EA6F79 /* Theme-D.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */; };
 		EBA7114325ACED3E00EA6F79 /* Theme-D.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */; };
 		EBA7114A25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */; };
@@ -134,6 +142,9 @@
 		EB28542425ACC4DC00B9150F /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		EB5C884D25BD29C6002F2528 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		EB6A85AD25B892A000B24CB0 /* ChessGameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameStore.swift; sourceTree = "<group>"; };
+		EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBuilder.swift; sourceTree = "<group>"; };
+		EB869E5625C2618F005F683B /* CGSizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
+		EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTileViewModifier.swift; sourceTree = "<group>"; };
 		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-D.xcassets"; sourceTree = "<group>"; };
 		EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-R.xcassets"; sourceTree = "<group>"; };
@@ -283,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				EB1CFECE25AA3627002BA365 /* Player.swift */,
+				EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */,
 				EB1CFEE825AA4635002BA365 /* OnDevicePlayer.swift */,
 				EB1CFEFA25AA486D002BA365 /* RemotePlayer.swift */,
 				EB1CFEF125AA47B0002BA365 /* ComputerPlayer.swift */,
@@ -293,6 +305,7 @@
 		EB28541825ACC41D00B9150F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB869E5625C2618F005F683B /* CGSizeExtensions.swift */,
 				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
 				EBAE195425B7659F008AF991 /* SettingsView.swift */,
 				EBAE191925B74136008AF991 /* Menus */,
@@ -315,6 +328,7 @@
 			children = (
 				EB28541925ACC44900B9150F /* ChessBoardView.swift */,
 				EB28542425ACC4DC00B9150F /* TileView.swift */,
+				EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */,
 				EBA7116725ACF0CA00EA6F79 /* PieceView.swift */,
 			);
 			path = "Chess-Board-View";
@@ -528,11 +542,14 @@
 				EB1CFEF225AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				EBAE192D25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
+				EB869E6D25C28397005F683B /* SelectTileViewModifier.swift in Sources */,
+				EB7EAA8D25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */,
 				ABE50C8E25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				EBAE194125B764BE008AF991 /* IOSNavigationView.swift in Sources */,
 				EBF7574825BD3B760042CF57 /* PlayerInfoView.swift in Sources */,
 				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
 				EBAE198C25B78431008AF991 /* BattleGameMaker.swift in Sources */,
+				EB869E5725C26190005F683B /* CGSizeExtensions.swift in Sources */,
 				AB824B6725A643D900C5A513 /* ChessPartyApp.swift in Sources */,
 				EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
@@ -560,11 +577,14 @@
 				EB1CFEF325AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				EBAE192E25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
+				EB869E6E25C28397005F683B /* SelectTileViewModifier.swift in Sources */,
+				EB7EAA8E25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */,
 				ABE50C8F25A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				ABE50CA625A914F80093AE52 /* Position.swift in Sources */,
 				EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */,
 				EBAE198D25B78431008AF991 /* BattleGameMaker.swift in Sources */,
 				AB824B6825A643D900C5A513 /* ChessPartyApp.swift in Sources */,
+				EB869E5825C26190005F683B /* CGSizeExtensions.swift in Sources */,
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,
@@ -594,6 +614,7 @@
 				EB1CFEF425AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				ABE50C9025A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				EB1CFEEB25AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
+				EB7EAA8F25C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */,
 				EB1CFEFD25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,6 +635,7 @@
 				EB1CFEF525AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
 				ABE50C9125A9140A0093AE52 /* ChessBoard.swift in Sources */,
 				EB1CFEEC25AA4635002BA365 /* OnDevicePlayer.swift in Sources */,
+				EB7EAA9025C25E5F00CC4D3E /* PlayerBuilder.swift in Sources */,
 				EB1CFEFE25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

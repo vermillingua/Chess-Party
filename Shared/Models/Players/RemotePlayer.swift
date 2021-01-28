@@ -16,6 +16,7 @@ struct RemotePlayer: Player {
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
     var previousPlayer: PlayerID
+    var lastMove: Move? = nil
     let playerResponseHandler: PlayerResponseHandler
 
 

@@ -33,8 +33,5 @@ enum ChessGameType: String, CaseIterable {
         DuelGameMaker()
     }
     
-    func gameView(game: ChessGame) -> some View {
-        DuelGameView(boardView: ChessBoardView(chessGame: game))
-    }
 }
 

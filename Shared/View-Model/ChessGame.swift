@@ -66,7 +66,6 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             players.append(builder.buildPlayer(atIndex: players.count, previousPlayer: previousPlayer, nextPlayerIndex: nextPlayer, withResponseHandler: responseHandler))
         }
         gameState = .waitingOnPlayer(player: self.players.first!)
-        print("Starting: It's \(currentPlayer?.name ?? "nobody")'s turn!", gameState.isWaitingOnUserToMakeMove())
         self.players.first!.startMove(withBoard: chessBoard)
     }
     
@@ -115,16 +114,21 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     }
     
     func userTappedPosition(_ position: Position) {
+        let animation = Animation.linear(duration: 0.1)
         if gameState.isWaitingOnUserToMakeMove() {
             if (position == userFocusedPosition) {
-                userFocusedPosition = nil
+                withAnimation(animation) {
+                    userFocusedPosition = nil
+                }
             } else if (potentialMoveDestinations.contains(position)) {
                 if let userMove = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position}).first,
                    let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
                     
-                    potentialMoveDestinations.removeAll()
-                    potentialMovesForCurrentPiece.removeAll()
-                    userFocusedPosition = nil
+                    withAnimation(animation) {
+                        potentialMoveDestinations.removeAll()
+                        potentialMovesForCurrentPiece.removeAll()
+                        userFocusedPosition = nil
+                    }
                     onDevicePlayer.handleOnDeviceMove(userMove)
                 }
             } else {
@@ -132,29 +136,40 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                    let piece = chessBoard.board[position],
                    piece.player == currentPlayer.identity {
     
-                    userFocusedPosition = position
-                    potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
-                    potentialMoveDestinations.removeAll()
-                    potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
+                    withAnimation(animation) {
+                        userFocusedPosition = position
+                        potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
+                        potentialMoveDestinations.removeAll()
+                        potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
+                    }
                 }
             }
         }
     }
     
     func handleMove(_ move: Move) {
-        if currentPlayer != nil {
+        if let firstPlayer = currentPlayer {
             // Make this move
             let _ = withAnimation(.interactiveSpring()) {
                 chessBoard = chessBoard.doMove(move)
             }
             
-            updateGameState()
+            withAnimation(.linear(duration: 0.1)) {
+                if let oldLastMove = firstPlayer.lastMove {
+                    lastMoves.remove(oldLastMove.primaryDestination)
+                }
+                lastMoves.insert(move.primaryDestination)
+                players[firstPlayer.index].lastMove = move
+                
+                updateGameState()
+            }
             objectWillChange.send()
             
             if let nextPlayer = currentPlayer {
                 nextPlayer.startMove(withBoard: chessBoard)
+            } else {
+                print("Game Over")
             }
-            
         }
 
     }
@@ -190,10 +205,21 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 return nil
             }
         }
+        
+        var gameOver: Bool {
+            switch self {
+            case .endedStalemate:
+                return true
+            case .endedVictory(_):
+                return true
+            default:
+                return false
+            }
+        }
     }
     
     func updateGameState() {
-        if let currentPlayerID = currentPlayer?.identity {
+        if let next = nextPlayer {
             ChessGameStore.instance.gameWillChange()
             playersInCheck.removeAll()
             warningPositions.removeAll()
@@ -205,16 +231,16 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 }
             }
             
-            if chessBoard.canPlayerMakeMove(player: currentPlayerID) {
-                gameState = .waitingOnPlayer(player: nextPlayer!)
+            if chessBoard.canPlayerMakeMove(player: next.identity) {
+                gameState = .waitingOnPlayer(player: next)
             } else {
-                if playersInCheck.contains(currentPlayerID) {
-                    eliminatePlayer(playerID: currentPlayerID) // Player eliminated when can't make a move and in check
+                if playersInCheck.contains(next.identity) {
+                    eliminatePlayer(playerID: next.identity) // Player eliminated when can't make a move and in check
                 } else {
                     if players.count == 2 {
                         gameState = .endedStalemate // 1v1 Games stalemated when player can't make move and isn't in check
                     } else {
-                        eliminatePlayer(playerID: currentPlayerID) // Non 1v1 games eliminate player when they can't make a move
+                        eliminatePlayer(playerID: next.identity) // Non 1v1 games eliminate player when they can't make a move
                     }
                 }
             }
