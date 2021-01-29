@@ -6,30 +6,41 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ChessBoardView: View {
     @ObservedObject var chessGame: ChessGame
     @EnvironmentObject var settings: AppSettings
-//    @Binding var showingGameOver: Binding<Bool>
-    
-    var orientation: Orientation = .up
-    
+    @State var showingGameOver = false
+//    @State var gameStateSink: AnyCancellable?
 
     var body: some View {
-        return ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
+        ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
             boardGrid
             selections
             pieces
         }
-//        .alert(isPresented: showingGameOver) {
-//            var message = ""
-//            if case ChessGame.GameState.endedVictory(let team) = chessGame.gameState {
-//                message = "Team \(team.id) won!"
-//            } else if case ChessGame.GameState.endedStalemate = chessGame.gameState {
-//                message = "It was a stalemate!"
+        .onAppear {
+            if chessGame.gameState.gameOver && !chessGame.hasDisplayedGameOver {
+                showingGameOver = true
+                chessGame.hasDisplayedGameOver = true
+            }
+//            gameStateSink = chessGame.$gameState.sink { state in
+//                if !chessGame.hasDisplayedGameOver && state.gameOver {
+//                    showingGameOver = true
+//                    chessGame.hasDisplayedGameOver = true
+//                }
 //            }
-//            return Alert(title: Text("Game Over"), message: Text(message))
-//        }
+        }
+        .alert(isPresented: $showingGameOver) {
+            var message = ""
+            if case ChessGame.GameState.endedVictory(let team) = chessGame.gameState {
+                message = "\(chessGame.playersInTeam(team).map {$0.name}.englishDescription) won the game!"
+            } else if case ChessGame.GameState.endedStalemate = chessGame.gameState {
+                message = "It was a stalemate!"
+            }
+            return Alert(title: Text("Game Over"), message: Text(message))
+        }
     }
 
     var boardGrid: some View {
@@ -116,9 +127,15 @@ struct ChessBoardView: View {
         return CGPoint(x: tileSize*(CGFloat(position.column)+0.5), y: tileSize*(CGFloat(position.row)+0.5))
     }
     
-    // MARK: - User Intents
+    // MARK: - Events
     func userTappedTile(at position: Position) {
         chessGame.userTappedPosition(position)
+    }
+    
+    mutating func handleGameOver() {
+        self.showingGameOver = true
+        self._showingGameOver.wrappedValue = true
+        print("showing?", self.showingGameOver)
     }
 
     enum Orientation {

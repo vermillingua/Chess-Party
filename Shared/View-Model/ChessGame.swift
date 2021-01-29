@@ -21,9 +21,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     private(set) var history: [ChessBoard]
     private(set) var playersInCheck: Set<PlayerID>
     
-
     @Published private(set) var chessBoard: ChessBoard
-    @Published private(set) var gameState: GameState
+    @Published  var gameState: GameState
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -36,6 +35,9 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         players.filter { !$0.hasBeenEliminated }
             .forEach { player in identities.append(player.identity)}
         return identities
+    }
+    func playersInTeam(_ team: TeamID) -> [Player] {
+        players.filter({player in player.team == team})
     }
 
     var renderedChessPieces: [RenderablePiece] {
@@ -67,6 +69,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         }
         gameState = .waitingOnPlayer(player: self.players.first!)
         self.players.first!.startMove(withBoard: chessBoard)
+        print("\(players.map {$0.name}.englishDescription) won the game!")
     }
     
     var description: String {
@@ -163,13 +166,11 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 
                 updateGameState()
             }
-            objectWillChange.send()
-            
+
             if let nextPlayer = currentPlayer {
                 nextPlayer.startMove(withBoard: chessBoard)
-            } else {
-                print("Game Over")
-            }
+            } 
+            objectWillChange.send()
         }
 
     }
@@ -244,11 +245,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                     }
                 }
             }
-            
-            
         }
-
-        
     }
     
     func eliminatePlayer(playerID: PlayerID) {
@@ -257,6 +254,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         players[playerID.index].hasBeenEliminated = true
         players[player.previousPlayer.id].nextPlayer = player.nextPlayer
         players[player.nextPlayer.id].previousPlayer = player.previousPlayer
+        gameState = .waitingOnPlayer(player: nextPlayer!)
         
         let inGame = playersStillInGame
         if inGame.count == 1 {
@@ -267,5 +265,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             updateGameState()
         }
     }
+    
+    var hasDisplayedGameOver = false
 }
 

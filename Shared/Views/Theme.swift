@@ -90,6 +90,18 @@ private struct ThemeFactory {
             case .king: return Image("Theme-D-\(playerID)-King")
             }
         }
-        return Theme(themeType: .themeD, primaryBoardColor: .black, secondaryBoardColor: .gray, pieceImageGetter: getPieceImage)
+        let selectionColorGetter: Theme.SelectionColorGetter = { type in
+            switch type {
+            case .lastMove:
+                return Color.blue
+            case .potentialMove:
+                return Color.white
+            case .userFocus:
+                return Color.yellow
+            case .warning:
+                return Color.red
+            }
+        }
+        return Theme(themeType: .themeD, primaryBoardColor: .black, secondaryBoardColor: .gray, pieceImageGetter: getPieceImage, selectionColorGetter: selectionColorGetter)
     }
 }

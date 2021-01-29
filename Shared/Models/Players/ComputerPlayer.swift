@@ -22,7 +22,7 @@ struct ComputerPlayer: Player {
     
     func startMove(withBoard chessBoard: ChessBoard) {
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             for position in chessBoard.board.keys {
                 if let piece = chessBoard.board[position], piece.player == identity, piece.type != .king {
                     if let move = chessBoard.getMoves(from: position).first {

@@ -91,6 +91,8 @@
 		EBAE198D25B78431008AF991 /* BattleGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE198B25B78431008AF991 /* BattleGameMaker.swift */; };
 		EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
 		EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAE199625B786F0008AF991 /* ChessGameType.swift */; };
+		EBC6F3B125C493150083B826 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F3B025C493150083B826 /* ArrayExtensions.swift */; };
+		EBC6F3B225C493150083B826 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F3B025C493150083B826 /* ArrayExtensions.swift */; };
 		EBF7574825BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
 		EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
 		EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
@@ -157,6 +159,7 @@
 		EBAE195425B7659F008AF991 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EBAE198B25B78431008AF991 /* BattleGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleGameMaker.swift; sourceTree = "<group>"; };
 		EBAE199625B786F0008AF991 /* ChessGameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameType.swift; sourceTree = "<group>"; };
+		EBC6F3B025C493150083B826 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 		EBF7574F25BD3D350042CF57 /* DuelGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuelGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				AB824B3E25A643D400C5A513 /* ChessPartyApp.swift */,
+				EBC6F3AF25C492FF0083B826 /* Extensions */,
 				EB28541825ACC41D00B9150F /* Views */,
 				EB32C2D325ACBAEA009EF1DB /* View-Model */,
 				ABE50C7925A912A90093AE52 /* Models */,
@@ -305,7 +309,6 @@
 		EB28541825ACC41D00B9150F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB869E5625C2618F005F683B /* CGSizeExtensions.swift */,
 				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
 				EBAE195425B7659F008AF991 /* SettingsView.swift */,
 				EBAE191925B74136008AF991 /* Menus */,
@@ -352,6 +355,15 @@
 				EBAE198B25B78431008AF991 /* BattleGameMaker.swift */,
 			);
 			path = Menus;
+			sourceTree = "<group>";
+		};
+		EBC6F3AF25C492FF0083B826 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EB869E5625C2618F005F683B /* CGSizeExtensions.swift */,
+				EBC6F3B025C493150083B826 /* ArrayExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EBF7574E25BD3CE10042CF57 /* GameViews */ = {
@@ -540,6 +552,7 @@
 				EB6A85AE25B892A000B24CB0 /* ChessGameStore.swift in Sources */,
 				ABE50C9825A914320093AE52 /* Move.swift in Sources */,
 				EB1CFEF225AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
+				EBC6F3B125C493150083B826 /* ArrayExtensions.swift in Sources */,
 				EBAE192D25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAE25A9154E0093AE52 /* Piece.swift in Sources */,
 				EB869E6D25C28397005F683B /* SelectTileViewModifier.swift in Sources */,
@@ -575,6 +588,7 @@
 				EB1CFEFC25AA486D002BA365 /* RemotePlayer.swift in Sources */,
 				ABE50C9925A914320093AE52 /* Move.swift in Sources */,
 				EB1CFEF325AA47B0002BA365 /* ComputerPlayer.swift in Sources */,
+				EBC6F3B225C493150083B826 /* ArrayExtensions.swift in Sources */,
 				EBAE192E25B754C7008AF991 /* DuelGameMaker.swift in Sources */,
 				ABE50CAF25A9154E0093AE52 /* Piece.swift in Sources */,
 				EB869E6E25C28397005F683B /* SelectTileViewModifier.swift in Sources */,

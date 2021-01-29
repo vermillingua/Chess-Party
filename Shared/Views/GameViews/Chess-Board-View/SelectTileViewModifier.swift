@@ -15,7 +15,7 @@ struct SelectTileView: View {
     var body: some View {
         Rectangle()
 //            .strokeBorder(theme.selectionColorGetter(selectionType), lineWidth: theme.selectionBorderWidth)
-            .fill(theme.selectionColorGetter(selectionType).opacity(0.50))
+            .fill(theme.selectionColorGetter(selectionType).opacity(0.5))
 //            .transition(.scale)
     }
 }

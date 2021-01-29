@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Move {
+struct Move: CustomStringConvertible {
     private(set) var actions: [MoveAction]
     
     /// The first travel actions's destination in the move. Note: Moves with multiple travel actions must order those MoveActions correctly.
@@ -36,10 +36,32 @@ struct Move {
         }
         return nil
     }
+    
+    var description: String {
+        var desc = ""
+        for i in 0..<actions.count {
+            desc += "\(actions[i])"
+            if i < actions.count-1 {
+                desc += ", "
+            }
+        }
+        return desc
+    }
 }
 
-enum MoveAction {
+enum MoveAction: CustomStringConvertible {
     case travel(from: Position, to: Position)
     case remove(at: Position)
     case spawn(at: Position, piece: Piece)
+    
+    var description: String {
+        switch self {
+        case .travel(let from, let to):
+            return "Travel \(from) --> \(to)"
+        case .remove(let at):
+            return "Remove Piece at \(at)"
+        case .spawn(let at, let piece):
+            return "Spawn \(piece.type) at \(at)"
+        }
+    }
 }

@@ -11,7 +11,7 @@ enum ChessGameType: String, CaseIterable {
     case duel = "Duel"
     case battle = "Battle"
  
-    func description() -> String {
+    var description: String {
         switch self {
         case .duel:
             return "1v1 chess game following normal rules"
@@ -20,7 +20,7 @@ enum ChessGameType: String, CaseIterable {
         }
     }
     
-    func icon() -> Image {
+    var icon: Image {
         switch self {
         case .duel:
             return Image(systemName: "person.2")
@@ -29,8 +29,17 @@ enum ChessGameType: String, CaseIterable {
         }
     }
     
-    func gameMaker() -> some View {
+    var gameMaker: some View {
         DuelGameMaker()
+    }
+    
+    var isTeamStyle: Bool {
+        switch self {
+        case .duel:
+            return false
+        case .battle:
+            return true
+        }
     }
     
 }

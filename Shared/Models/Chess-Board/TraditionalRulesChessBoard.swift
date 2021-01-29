@@ -44,8 +44,9 @@ extension TraditionalRulesChessBoard {
     }
     
     func isKingInCheck(player: PlayerID) -> Bool {
-        let positionOfKing = kingPosition[player]!
-        return isPositionSafe(positionOfKing, for: board[positionOfKing]!.team)
+        return true
+//        let positionOfKing = kingPosition[player]!
+//        return isPositionSafe(positionOfKing, for: board[positionOfKing]!.team)
     }
     
     func isPositionSafe(_ position: Position, for team: TeamID) -> Bool {
