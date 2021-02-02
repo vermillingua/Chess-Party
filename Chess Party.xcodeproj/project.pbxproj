@@ -477,7 +477,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1230;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					AB824B4425A643D900C5A513 = {
 						CreatedOnToolsVersion = 12.3;
@@ -634,7 +634,6 @@
 				ABE50C9A25A914320093AE52 /* Move.swift in Sources */,
 				ABE50CC225A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABBEB76525B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
-				ABE50CC225A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB025A9154E0093AE52 /* Piece.swift in Sources */,
 				EB1CFED125AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0C25AA49DF002BA365 /* ChessGame.swift in Sources */,
@@ -655,7 +654,6 @@
 				ABE50C9B25A914320093AE52 /* Move.swift in Sources */,
 				ABE50CC325A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABBEB76625B09D9700D3DDEE /* TraditionalChessBoard.swift in Sources */,
-				ABE50CC325A9FE430093AE52 /* TraditionalRulesChessBoard.swift in Sources */,
 				ABE50CB125A9154E0093AE52 /* Piece.swift in Sources */,
 				EB1CFED225AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0D25AA49DF002BA365 /* ChessGame.swift in Sources */,

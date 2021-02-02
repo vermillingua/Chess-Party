@@ -51,9 +51,6 @@ struct MainMenu: View {
             return AnyView(Section (header: Text("Finished Games")) {
                 ForEach (finishedGames) { game in
                     currentGameLink(game: game)
-                        .onDeleteCommand(perform: {
-                            print("delete")
-                        })
                 }
             })
         }
