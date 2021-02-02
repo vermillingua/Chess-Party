@@ -23,6 +23,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     
     @Published private(set) var chessBoard: ChessBoard
     @Published  var gameState: GameState
+    @EnvironmentObject var settings: AppSettings
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -59,6 +60,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         gameType = type(of: chessBoard).gameType
         gameState = .paused
 
+        // Initialize Players
         players = []
         let playerCount = playerBuilders.count
         for builder in playerBuilders {
@@ -67,9 +69,10 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             let responseHandler: PlayerResponseHandler = {move in self.handleMove(move)}
             players.append(builder.buildPlayer(atIndex: players.count, previousPlayer: previousPlayer, nextPlayerIndex: nextPlayer, withResponseHandler: responseHandler))
         }
+        
+        // Set game state and start game
         gameState = .waitingOnPlayer(player: self.players.first!)
         self.players.first!.startMove(withBoard: chessBoard)
-        print("\(players.map {$0.name}.englishDescription) won the game!")
     }
     
     var description: String {
@@ -116,6 +119,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         case lastMove
     }
     
+    
+    
     func userTappedPosition(_ position: Position) {
         let animation = Animation.linear(duration: 0.1)
         if gameState.isWaitingOnUserToMakeMove() {
@@ -124,28 +129,36 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                     userFocusedPosition = nil
                 }
             } else if (potentialMoveDestinations.contains(position)) {
-                if let userMove = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position}).first,
-                   let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
-                    
-                    withAnimation(animation) {
-                        potentialMoveDestinations.removeAll()
-                        potentialMovesForCurrentPiece.removeAll()
-                        userFocusedPosition = nil
-                    }
-                    onDevicePlayer.handleOnDeviceMove(userMove)
-                }
+                handleTappedPotentialMove(atPosition: position)
             } else {
-                if case .waitingOnPlayer(let currentPlayer) = gameState,
-                   let piece = chessBoard.board[position],
-                   piece.player == currentPlayer.identity {
+                handleSelectedOtherPosition(position)
+            }
+        }
+    }
     
-                    withAnimation(animation) {
-                        userFocusedPosition = position
-                        potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
-                        potentialMoveDestinations.removeAll()
-                        potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
-                    }
-                }
+    func handleTappedPotentialMove(atPosition position: Position) {
+        if let userMove = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position}).first,
+           let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
+            
+            withAnimation(.linear(duration: settings.theme.animationDuration)) {
+                potentialMoveDestinations.removeAll()
+                potentialMovesForCurrentPiece.removeAll()
+                userFocusedPosition = nil
+            }
+            onDevicePlayer.handleOnDeviceMove(userMove)
+        }
+    }
+    
+    func handleSelectedOtherPosition(_ position: Position) {
+        if case .waitingOnPlayer(let currentPlayer) = gameState,
+           let piece = chessBoard.board[position],
+           piece.player == currentPlayer.identity {
+
+            withAnimation(.linear(duration: settings.theme.animationDuration)) {
+                userFocusedPosition = position
+                potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
+                potentialMoveDestinations.removeAll()
+                potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
             }
         }
     }

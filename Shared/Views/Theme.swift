@@ -10,15 +10,17 @@ import SwiftUI
 struct Theme {
     var themeType: ThemeType
     
-    var primaryBoardColor: Color
-    var secondaryBoardColor: Color
+    let primaryBoardColor: Color
+    let secondaryBoardColor: Color
     
-    typealias PieceImageGetter = (Piece) -> Image
-    var pieceImageGetter: PieceImageGetter
+    typealias PieceImageGetter = (PieceType, PlayerID) -> Image
+    let pieceImageGetter: PieceImageGetter
     
     typealias SelectionColorGetter = (ChessGame.SelectionType) -> Color
-    var selectionColorGetter: SelectionColorGetter
-    var selectionBorderWidth: CGFloat
+    let selectionColorGetter: SelectionColorGetter
+    let selectionBorderWidth: CGFloat
+    
+    let animationDuration: Double
     
     init(themeType: ThemeType) {
         switch themeType {
@@ -31,9 +33,8 @@ struct Theme {
     
     // MARK: - Default Theme
     
-    static let defaultPieceImageGetter: PieceImageGetter = { piece in
-        let playerID = piece.player.id
-        switch piece.type {
+    static let defaultPieceImageGetter: PieceImageGetter = { (pieceType, playerID) in
+        switch pieceType {
         case .bishop: return Image("Theme-R-\(playerID)-Bishop")
         case .knight: return Image("Theme-R-\(playerID)-Knight")
         case .rook: return Image("Theme-R-\(playerID)-Rook")
@@ -57,7 +58,8 @@ struct Theme {
         secondaryBoardColor: Color = Color.init(red: 67/255, green: 145/255, blue: 199/255),
         pieceImageGetter: @escaping PieceImageGetter = Theme.defaultPieceImageGetter,
         selectionColorGetter: @escaping SelectionColorGetter = Theme.defaultSelectionColorGetter,
-        selectionBorderWidth: CGFloat = 5) {
+        selectionBorderWidth: CGFloat = 5,
+        animationDuration: Double = 0.1) {
         
         self.themeType = themeType
         self.primaryBoardColor = primaryBoardColor
@@ -65,6 +67,7 @@ struct Theme {
         self.pieceImageGetter = pieceImageGetter
         self.selectionColorGetter = selectionColorGetter
         self.selectionBorderWidth = selectionBorderWidth
+        self.animationDuration = animationDuration
     }
 }
 
@@ -79,9 +82,8 @@ enum ThemeType: String, CaseIterable {
 
 private struct ThemeFactory {
     static func themeD() -> Theme {
-        let getPieceImage: (Piece) -> Image = { piece in
-            let playerID = piece.player.id
-            switch piece.type {
+        let getPieceImage: (PieceType, PlayerID) -> Image = { (pieceType, playerID) in
+            switch pieceType {
             case .bishop: return Image("Theme-D-\(playerID)-Bishop")
             case .knight: return Image("Theme-D-\(playerID)-Knight")
             case .rook: return Image("Theme-D-\(playerID)-Rook")

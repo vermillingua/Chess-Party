@@ -47,6 +47,18 @@ struct Move: CustomStringConvertible {
         }
         return desc
     }
+    
+    var promotionType: PieceType? {
+        for action in actions {
+            switch action {
+            case .spawn(_, let piece):
+                return piece.type
+            default:
+                continue
+            }
+        }
+        return nil
+    }
 }
 
 enum MoveAction: CustomStringConvertible {

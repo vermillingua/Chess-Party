@@ -13,7 +13,7 @@ struct PieceView: View {
     var size: CGSize
     
     var body: some View {
-        settings.theme.pieceImageGetter(piece).resizable()
+        settings.theme.pieceImageGetter(piece.type, piece.player).resizable()
         .frame(width: size.width, height: size.height, alignment: .center)
     }
 }
