@@ -25,6 +25,18 @@ struct Move: CustomStringConvertible {
         return destination!
     }
     
+    var promotionType: PieceType? {
+        for action in actions {
+            switch action {
+            case .spawn(_, let piece):
+                return piece.type
+            default:
+                continue
+            }
+        }
+        return nil
+    }
+    
     var captureSquare: Position? {
         for action in actions {
             switch action {
