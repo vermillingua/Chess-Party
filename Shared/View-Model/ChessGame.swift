@@ -24,6 +24,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     @Published private(set) var chessBoard: ChessBoard
     @Published  var gameState: GameState
     @EnvironmentObject var settings: AppSettings
+    let animationDuration = 0.1
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -140,7 +141,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         if let userMove = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position}).first,
            let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
             
-            withAnimation(.linear(duration: settings.theme.animationDuration)) {
+            withAnimation(.linear(duration: animationDuration)) {
                 potentialMoveDestinations.removeAll()
                 potentialMovesForCurrentPiece.removeAll()
                 userFocusedPosition = nil
@@ -154,7 +155,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
            let piece = chessBoard.board[position],
            piece.player == currentPlayer.identity {
 
-            withAnimation(.linear(duration: settings.theme.animationDuration)) {
+            withAnimation(.linear(duration: animationDuration)) {
                 userFocusedPosition = position
                 potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
                 potentialMoveDestinations.removeAll()
@@ -170,7 +171,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 chessBoard = chessBoard.doMove(move)
             }
             
-            withAnimation(.linear(duration: 0.1)) {
+            withAnimation(.linear(duration: animationDuration)) {
                 if let oldLastMove = firstPlayer.lastMove {
                     lastMoves.remove(oldLastMove.primaryDestination)
                 }

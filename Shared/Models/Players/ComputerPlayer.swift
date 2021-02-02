@@ -23,21 +23,14 @@ struct ComputerPlayer: Player {
     func startMove(withBoard chessBoard: ChessBoard) {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            for position in chessBoard.board.keys {
-                if let piece = chessBoard.board[position], piece.player == identity, piece.type != .king {
-                    if let move = chessBoard.getMoves(from: position).first {
-                        playerResponseHandler(move)
-                        return
-                    }
-                }
-            }
+            makeArbitraryMove(withBoard: chessBoard)
         }
         
     }
     
     private func makeArbitraryMove(withBoard chessBoard: ChessBoard) {
         for position in chessBoard.board.keys {
-            if let piece = chessBoard.board[position], piece.player == identity, piece.type != .king {
+            if let piece = chessBoard.board[position], piece.player == identity {
                 if let move = chessBoard.getMoves(from: position).first {
                     playerResponseHandler(move)
                     return

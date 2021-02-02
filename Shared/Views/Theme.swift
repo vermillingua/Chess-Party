@@ -20,7 +20,6 @@ struct Theme {
     let selectionColorGetter: SelectionColorGetter
     let selectionBorderWidth: CGFloat
     
-    let animationDuration: Double
     
     init(themeType: ThemeType) {
         switch themeType {
@@ -35,12 +34,12 @@ struct Theme {
     
     static let defaultPieceImageGetter: PieceImageGetter = { (pieceType, playerID) in
         switch pieceType {
-        case .bishop: return Image("Theme-R-\(playerID)-Bishop")
-        case .knight: return Image("Theme-R-\(playerID)-Knight")
-        case .rook: return Image("Theme-R-\(playerID)-Rook")
-        case .pawn: return Image("Theme-R-\(playerID)-Pawn")
-        case .queen: return Image("Theme-R-\(playerID)-Queen")
-        case .king: return Image("Theme-R-\(playerID)-King")
+        case .bishop: return Image("Theme-R-\(playerID.id)-Bishop")
+        case .knight: return Image("Theme-R-\(playerID.id)-Knight")
+        case .rook: return Image("Theme-R-\(playerID.id)-Rook")
+        case .pawn: return Image("Theme-R-\(playerID.id)-Pawn")
+        case .queen: return Image("Theme-R-\(playerID.id)-Queen")
+        case .king: return Image("Theme-R-\(playerID.id)-King")
         }
     }
     static let defaultSelectionColorGetter: SelectionColorGetter = { selection in
@@ -58,8 +57,7 @@ struct Theme {
         secondaryBoardColor: Color = Color.init(red: 67/255, green: 145/255, blue: 199/255),
         pieceImageGetter: @escaping PieceImageGetter = Theme.defaultPieceImageGetter,
         selectionColorGetter: @escaping SelectionColorGetter = Theme.defaultSelectionColorGetter,
-        selectionBorderWidth: CGFloat = 5,
-        animationDuration: Double = 0.1) {
+        selectionBorderWidth: CGFloat = 5) {
         
         self.themeType = themeType
         self.primaryBoardColor = primaryBoardColor
@@ -67,7 +65,6 @@ struct Theme {
         self.pieceImageGetter = pieceImageGetter
         self.selectionColorGetter = selectionColorGetter
         self.selectionBorderWidth = selectionBorderWidth
-        self.animationDuration = animationDuration
     }
 }
 
@@ -84,12 +81,12 @@ private struct ThemeFactory {
     static func themeD() -> Theme {
         let getPieceImage: (PieceType, PlayerID) -> Image = { (pieceType, playerID) in
             switch pieceType {
-            case .bishop: return Image("Theme-D-\(playerID)-Bishop")
-            case .knight: return Image("Theme-D-\(playerID)-Knight")
-            case .rook: return Image("Theme-D-\(playerID)-Rook")
-            case .pawn: return Image("Theme-D-\(playerID)-Pawn")
-            case .queen: return Image("Theme-D-\(playerID)-Queen")
-            case .king: return Image("Theme-D-\(playerID)-King")
+            case .bishop: return Image("Theme-D-\(playerID.id)-Bishop")
+            case .knight: return Image("Theme-D-\(playerID.id)-Knight")
+            case .rook: return Image("Theme-D-\(playerID.id)-Rook")
+            case .pawn: return Image("Theme-D-\(playerID.id)-Pawn")
+            case .queen: return Image("Theme-D-\(playerID.id)-Queen")
+            case .king: return Image("Theme-D-\(playerID.id)-King")
             }
         }
         let selectionColorGetter: Theme.SelectionColorGetter = { type in
