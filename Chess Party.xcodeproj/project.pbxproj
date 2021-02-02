@@ -97,6 +97,7 @@
 		EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
 		EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
 		EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
+		EBFAA1E525C4FD3A00A293A6 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFAA1E425C4FD3A00A293A6 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,8 @@
 		EBC6F3B025C493150083B826 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 		EBF7574F25BD3D350042CF57 /* DuelGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuelGameView.swift; sourceTree = "<group>"; };
+		EBFAA1E425C4FD3A00A293A6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
+		EBFAA1EA25C4FD6100A293A6 /* Chess Party.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Chess Party.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBFAA1E525C4FD3A00A293A6 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +203,7 @@
 		AB824B3825A643D400C5A513 = {
 			isa = PBXGroup;
 			children = (
+				EBFAA1EA25C4FD6100A293A6 /* Chess Party.entitlements */,
 				EBA285DB25A64DA40010AEBF /* README.md */,
 				EBA7114825ACED7400EA6F79 /* Assets */,
 				AB824B3D25A643D400C5A513 /* Shared */,
@@ -214,6 +219,7 @@
 		AB824B3D25A643D400C5A513 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EBFAA1EF25C51B4B00A293A6 /* Multiplayer */,
 				AB824B3E25A643D400C5A513 /* ChessPartyApp.swift */,
 				EBC6F3AF25C492FF0083B826 /* Extensions */,
 				EB28541825ACC41D00B9150F /* Views */,
@@ -376,9 +382,17 @@
 			path = GameViews;
 			sourceTree = "<group>";
 		};
+		EBFAA1EF25C51B4B00A293A6 /* Multiplayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Multiplayer;
+			sourceTree = "<group>";
+		};
 		EBFBAA5A25BB83EA001F2209 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBFAA1E425C4FD3A00A293A6 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -786,6 +800,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Chess Party.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -807,6 +822,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Chess Party.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
