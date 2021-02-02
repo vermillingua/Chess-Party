@@ -9,7 +9,7 @@ import Foundation
 
 protocol TraditionalRulesChessBoard: ChessBoard {
     var board: [Position: Piece] { get set }
-    var kingPosition: [PlayerID: Position] { get }
+    var kingPosition: [PlayerID: Position] { get set }
     var enPassentPosition: Position? { get set } // MARK: TODO Make this a PlayerID dictionary.
     var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
     
@@ -44,9 +44,8 @@ extension TraditionalRulesChessBoard {
     }
     
     func isKingInCheck(player: PlayerID) -> Bool {
-        return true
-//        let positionOfKing = kingPosition[player]!
-//        return isPositionSafe(positionOfKing, for: board[positionOfKing]!.team)
+        let positionOfKing = kingPosition[player]!
+        return !isPositionSafe(positionOfKing, for: board[positionOfKing]!.team)
     }
     
     func isPositionSafe(_ position: Position, for team: TeamID) -> Bool {
@@ -88,6 +87,9 @@ extension TraditionalRulesChessBoard {
             assert(board[start] != nil)
             assert(board[end] == nil, "\(String(describing: board[end])) && \(end)")
             assert(positionInBounds(end))
+            if board[start]!.type == .king {
+                kingPosition[board[start]!.player] = end
+            }
             board[end] = board.removeValue(forKey: start)
         }
     }
@@ -97,7 +99,7 @@ extension TraditionalRulesChessBoard {
         let piece = board[position]!
         var moves = getUnsafeMoves(from: position)
         moves += getCastleMoves(from: position)
-        return moves.filter { move in doMove(move).isKingInCheck(player: piece.player) }
+        return moves.filter { move in !doMove(move).isKingInCheck(player: piece.player) }
     }
     
     func getUnsafeMoves(from start: Position) -> [Move] {
