@@ -11,10 +11,9 @@ struct DuelGameView: View {
     @ObservedObject var game: ChessGame
     var boardView: ChessBoardView
     
-
     init (game: ChessGame) {
         self.game = game
-        self.boardView = ChessBoardView(chessGame: game)
+        self.boardView = ChessBoardView(chessGame: game, pieceShowingPromotionView: game.$pieceShowingPromotionView, promotionPieceTypes: game.$promotionPieceTypes)
     }
     
     var body: some View {

@@ -22,3 +22,29 @@ struct PromotionView: View {
         }
     }
 }
+
+struct PromotionViewModifier: ViewModifier {
+    let renderblePiece: RenderablePiece
+    let chessGame: ChessGame
+    
+    @Binding var pieceTypes: [PieceType]
+    @Binding var pieceIDShowingPromotionView: Int?
+    
+    func body(content: Content) -> some View {
+        content.popover(isPresented: promotionViewIsPresented) {
+            Text("Promotion View")
+        }
+    }
+    
+    private var promotionViewIsPresented: Binding<Bool> {
+        Binding(get: { pieceIDShowingPromotionView == renderblePiece.id },
+                set: { value in pieceIDShowingPromotionView = (value ? renderblePiece.id : nil) })
+    }
+}
+
+extension View {
+    func promotionView(forRenderablePiece piece: RenderablePiece, chessGame: ChessGame, pieceTypes: Binding<[PieceType]>, pieceIDShowingPromotionView: Binding<Int?>) -> some View {
+        let modifer = PromotionViewModifier(renderblePiece: piece, chessGame: chessGame, pieceTypes: pieceTypes, pieceIDShowingPromotionView: pieceIDShowingPromotionView)
+        return self.modifier(modifer)
+    }
+}

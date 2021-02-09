@@ -12,7 +12,8 @@ struct ChessBoardView: View {
     @ObservedObject var chessGame: ChessGame
     @EnvironmentObject var settings: AppSettings
     @State var showingGameOver = false
-//    @State var gameStateSink: AnyCancellable?
+    @Binding var pieceShowingPromotionView: Int?
+    @Binding var promotionPieceTypes: [PieceType]
 
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
@@ -25,12 +26,6 @@ struct ChessBoardView: View {
                 showingGameOver = true
                 chessGame.hasDisplayedGameOver = true
             }
-//            gameStateSink = chessGame.$gameState.sink { state in
-//                if !chessGame.hasDisplayedGameOver && state.gameOver {
-//                    showingGameOver = true
-//                    chessGame.hasDisplayedGameOver = true
-//                }
-//            }
         }
         .alert(isPresented: $showingGameOver) {
             var message = ""
@@ -49,14 +44,14 @@ struct ChessBoardView: View {
                 HStack (spacing: 0.0) {
                     ForEach(0..<chessGame.chessBoard.columns) { col in
                         TileView(tileType: getTileType(atPosition: Position(row: row, column: col)))
-//                            .selectView(selectionType: getDisplayedSelectionType(atPosition: Position(row: row, column: col)), theme: settings.theme)
                             .onTapGesture { userTappedTile(at: Position(row: row, column: col)) }
-//                            .transition(.asymmetric(insertion: .opacity, removal: .identity))
                     }
                 }
             }
         }
     }
+    
+    
     
     var pieces: some View {
         ZStack {
@@ -67,6 +62,7 @@ struct ChessBoardView: View {
                                   size: getPieceSize(withBoardSize: geometry.size))
                             .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
                             .onTapGesture { userTappedTile(at: position) }
+                            .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: $promotionPieceTypes, pieceIDShowingPromotionView: $pieceShowingPromotionView)
                     }
                 }
             }

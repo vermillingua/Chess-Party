@@ -25,6 +25,9 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     @Published  var gameState: GameState
     @EnvironmentObject var settings: AppSettings
     let animationDuration = 0.1
+    
+    @State var pieceShowingPromotionView: Int? = nil
+    @State var promotionPieceTypes: [PieceType] = []
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -138,15 +141,29 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     }
     
     func handleTappedPotentialMove(atPosition position: Position) {
-        if let userMove = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position}).first,
-           let onDevicePlayer = gameState.getCurrentPlayer() as? OnDevicePlayer {
-            
-            withAnimation(.linear(duration: animationDuration)) {
-                potentialMoveDestinations.removeAll()
-                potentialMovesForCurrentPiece.removeAll()
-                userFocusedPosition = nil
+        let userMoves = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position})
+        let onDevicePlayer = gameState.getCurrentPlayer() as! OnDevicePlayer
+        
+        if userMoves.count == 1 {
+            onDevicePlayer.handleOnDeviceMove(userMoves.first!)
+        } else if userMoves.count > 1 {
+            pieceShowingPromotionView = chessBoard.board[position]?.id
+            for move in userMoves {
+                if let promotionType = move.promotionType {
+                    promotionPieceTypes.append(promotionType)
+                }
             }
-            onDevicePlayer.handleOnDeviceMove(userMove)
+        }
+            
+        clearHighlights()
+        
+    }
+    
+    func clearHighlights() {
+        withAnimation(.linear(duration: animationDuration)) {
+            potentialMoveDestinations.removeAll()
+            potentialMovesForCurrentPiece.removeAll()
+            userFocusedPosition = nil
         }
     }
     
