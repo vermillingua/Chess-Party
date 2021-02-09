@@ -18,6 +18,9 @@ struct Move: CustomStringConvertible {
             case .travel(_, let end):
                 destination = end
                 break forloop
+            case .spawn(let at, _):
+                destination = at
+                break forloop
             default:
                 continue
             }

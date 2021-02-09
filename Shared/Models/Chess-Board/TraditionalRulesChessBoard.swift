@@ -12,6 +12,7 @@ protocol TraditionalRulesChessBoard: ChessBoard {
     var kingPosition: [PlayerID: Position] { get set }
     var enPassentPosition: Position? { get set } // MARK: TODO Make this a PlayerID dictionary.
     var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
+    var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
     
     var queenMoveDirections: [Displacement] { get }
     var rookMoveDirections: [Displacement] { get }
@@ -166,9 +167,38 @@ extension TraditionalRulesChessBoard {
             }
         }
         
-        // MARK: TODO Generate promotion moves
+        var finalMoves = [Move]()
+        for move in moves {
+            if pawnPromotionPositions[pawn.player]!.contains(move.primaryDestination) {
+                var promotionActions = [[MoveAction]]()
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                for action in move.actions {
+                    switch action {
+                    case .travel(let from, let to):
+                        promotionActions[0] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .queen, team: pawn.team))]
+                        promotionActions[1] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .rook, team: pawn.team))]
+                        promotionActions[2] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .bishop, team: pawn.team))]
+                        promotionActions[3] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .knight, team: pawn.team))]
+                    default:
+                        promotionActions[0].append(action)
+                        promotionActions[1].append(action)
+                        promotionActions[2].append(action)
+                        promotionActions[3].append(action)
+                    }
+                }
+                for actions in promotionActions {
+                    finalMoves.append(Move(actions: actions))
+                }
+                
+            } else {
+                finalMoves.append(move)
+            }
+        }
         
-        return moves
+        return finalMoves
     }
     
     func getSlidingMoves(from start: Position, towards displacements: [Displacement]) -> [Move] {
