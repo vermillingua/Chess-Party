@@ -18,6 +18,24 @@ struct Move: CustomStringConvertible {
             case .travel(_, let end):
                 destination = end
                 break forloop
+            case .spawn(let at, _):
+                destination = at
+                break forloop
+            default:
+                continue
+            }
+        }
+        return destination!
+    }
+    
+    // Potential problem if pawn double jumps into promotion square
+    var primaryStart: Position {
+        var destination: Position?
+        forloop: for action in actions {
+            switch action {
+            case .travel(let from, _):
+                destination = from
+                break forloop
             default:
                 continue
             }

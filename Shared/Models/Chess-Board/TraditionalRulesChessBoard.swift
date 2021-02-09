@@ -12,6 +12,7 @@ protocol TraditionalRulesChessBoard: ChessBoard {
     var kingPosition: [PlayerID: Position] { get set }
     var enPassentPosition: Position? { get set } // MARK: TODO Make this a PlayerID dictionary.
     var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
+    var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
     
     var queenMoveDirections: [Displacement] { get }
     var rookMoveDirections: [Displacement] { get }
@@ -65,9 +66,15 @@ extension TraditionalRulesChessBoard {
     func doMove(_ move: Move) -> ChessBoard {
         var newBoard = self.copy
         
-        // MARK: TODO If this is an en passent move we need to change the state of the enpassent square.
+        let start = move.primaryStart
+        let end = move.primaryDestination
+        let piece = newBoard.board[start]!
         
-        newBoard.enPassentPosition = nil
+        if piece.type == PieceType.pawn, Position.getDisplacement(from: start, to: end) == newBoard.pawnMoveDirection[piece.player]!.scale(by: 2) {
+            newBoard.enPassentPosition = end
+        } else {
+            newBoard.enPassentPosition = nil
+        }
         
         for action in move.actions {
             newBoard.doMoveAction(action)
@@ -160,15 +167,43 @@ extension TraditionalRulesChessBoard {
         if positionInBounds(up), board[up] == nil {
             moves.append(Move.getTransitionMove(from: start, to: up))
             let upTwo = up.shift(by: displacement)
-            print(start)
             if positionInBounds(upTwo), board[upTwo] == nil, pawnDoubleJumpPositions[pawn.player]!.contains(start) {
                 moves.append(Move.getTransitionMove(from: start, to: upTwo))
             }
         }
         
-        // MARK: TODO Generate promotion moves
+        var finalMoves = [Move]()
+        for move in moves {
+            if pawnPromotionPositions[pawn.player]!.contains(move.primaryDestination) {
+                var promotionActions = [[MoveAction]]()
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                promotionActions.append([MoveAction]())
+                for action in move.actions {
+                    switch action {
+                    case .travel(let from, let to):
+                        promotionActions[0] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .queen, team: pawn.team))]
+                        promotionActions[1] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .rook, team: pawn.team))]
+                        promotionActions[2] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .bishop, team: pawn.team))]
+                        promotionActions[3] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .knight, team: pawn.team))]
+                    default:
+                        promotionActions[0].append(action)
+                        promotionActions[1].append(action)
+                        promotionActions[2].append(action)
+                        promotionActions[3].append(action)
+                    }
+                }
+                for actions in promotionActions {
+                    finalMoves.append(Move(actions: actions))
+                }
+                
+            } else {
+                finalMoves.append(move)
+            }
+        }
         
-        return moves
+        return finalMoves
     }
     
     func getSlidingMoves(from start: Position, towards displacements: [Displacement]) -> [Move] {
