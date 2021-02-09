@@ -66,9 +66,15 @@ extension TraditionalRulesChessBoard {
     func doMove(_ move: Move) -> ChessBoard {
         var newBoard = self.copy
         
-        // MARK: TODO If this is an en passent move we need to change the state of the enpassent square.
+        let start = move.primaryStart
+        let end = move.primaryDestination
+        let piece = newBoard.board[start]!
         
-        newBoard.enPassentPosition = nil
+        if piece.type == PieceType.pawn, Position.getDisplacement(from: start, to: end) == newBoard.pawnMoveDirection[piece.player]!.scale(by: 2) {
+            newBoard.enPassentPosition = end
+        } else {
+            newBoard.enPassentPosition = nil
+        }
         
         for action in move.actions {
             newBoard.doMoveAction(action)
@@ -161,7 +167,6 @@ extension TraditionalRulesChessBoard {
         if positionInBounds(up), board[up] == nil {
             moves.append(Move.getTransitionMove(from: start, to: up))
             let upTwo = up.shift(by: displacement)
-            print(start)
             if positionInBounds(upTwo), board[upTwo] == nil, pawnDoubleJumpPositions[pawn.player]!.contains(start) {
                 moves.append(Move.getTransitionMove(from: start, to: upTwo))
             }

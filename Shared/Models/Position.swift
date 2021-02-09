@@ -20,10 +20,14 @@ struct Position: Hashable, Identifiable, CustomStringConvertible {
     
     var description: String { "(r: \(row), c: \(column))" }
     
+    static func getDisplacement(from start: Position, to end: Position) -> Displacement {
+        Displacement(x: end.column - start.column, y: end.row - start.row)
+    }
+    
     static func ==(lhs: Position, rhs: Position) -> Bool { lhs.column == rhs.column && lhs.row == rhs.row}
 }
 
-struct Displacement {
+struct Displacement: Equatable {
     static let north = Displacement(x:  0, y:  -1)
     static let south = Displacement(x:  0, y:  1)
     static let east  = Displacement(x:  1, y:  0)
