@@ -20,6 +20,9 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
     var rows: Int = 8
     var columns: Int = 8
     
+    var castleableRooks = [PlayerID: Set<Position>]()
+    var hasKingMoved = [PlayerID: Bool]()
+    
     static var gameType: ChessGameType = .duel
     
     init() {
@@ -63,15 +66,20 @@ struct TraditionalChessBoard: TraditionalRulesChessBoard {
 
         kingPosition[white] = Position(row: 7, column: 4)
         kingPosition[black] = Position(row: 0, column: 4)
+        
+        hasKingMoved[white] = false
+        hasKingMoved[black] = false
+        
+        castleableRooks[white] = [Position(row: 7, column: 7), Position(row: 7, column: 0)]
+        castleableRooks[black] = [Position(row: 0, column: 7), Position(row: 0, column: 0)]
     }
     
-    //var kingPosition: [PlayerID : Position] // MARK: TODO Update automaticially with an onSet watcher on the board struct.
     var enPassentPositions = [PlayerID: Position]()
-    var pawnDoubleJumpPositions: [PlayerID : Set<Position>] = [white: [Position(row: 6, column: 0), Position(row: 6, column: 1), Position(row: 6, column: 2), Position(row: 6, column: 3), Position(row: 6, column: 4), Position(row: 6, column: 5), Position(row: 6, column: 6), Position(row: 6, column: 7)], black: [Position(row: 1, column: 0), Position(row: 1, column: 1), Position(row: 1, column: 2), Position(row: 1, column: 3), Position(row: 1, column: 4), Position(row: 1, column: 5), Position(row: 1, column: 6), Position(row: 1, column: 7)]]
+    let pawnDoubleJumpPositions: [PlayerID : Set<Position>] = [white: [Position(row: 6, column: 0), Position(row: 6, column: 1), Position(row: 6, column: 2), Position(row: 6, column: 3), Position(row: 6, column: 4), Position(row: 6, column: 5), Position(row: 6, column: 6), Position(row: 6, column: 7)], black: [Position(row: 1, column: 0), Position(row: 1, column: 1), Position(row: 1, column: 2), Position(row: 1, column: 3), Position(row: 1, column: 4), Position(row: 1, column: 5), Position(row: 1, column: 6), Position(row: 1, column: 7)]]
     
-    var pawnPromotionPositions: [PlayerID : Set<Position>] = [white: [Position(row: 0, column: 0), Position(row: 0, column: 1), Position(row: 0, column: 2), Position(row: 0, column: 3), Position(row: 0, column: 4), Position(row: 0, column: 5), Position(row: 0, column: 6), Position(row: 0, column: 7)], black: [Position(row: 7, column: 0), Position(row: 7, column: 1), Position(row: 7, column: 2), Position(row: 7, column: 3), Position(row: 7, column: 4), Position(row: 7, column: 5), Position(row: 7, column: 6), Position(row: 7, column: 7)]]
+    let pawnPromotionPositions: [PlayerID : Set<Position>] = [white: [Position(row: 0, column: 0), Position(row: 0, column: 1), Position(row: 0, column: 2), Position(row: 0, column: 3), Position(row: 0, column: 4), Position(row: 0, column: 5), Position(row: 0, column: 6), Position(row: 0, column: 7)], black: [Position(row: 7, column: 0), Position(row: 7, column: 1), Position(row: 7, column: 2), Position(row: 7, column: 3), Position(row: 7, column: 4), Position(row: 7, column: 5), Position(row: 7, column: 6), Position(row: 7, column: 7)]]
 
-    var pawnMoveDirection: [PlayerID : Displacement] = [white: .north, black: .south]
+    let pawnMoveDirection: [PlayerID : Displacement] = [white: .north, black: .south]
     
     func getPositionName(_ position: Position) -> String {
         // MARK: TODO Again... all the things!

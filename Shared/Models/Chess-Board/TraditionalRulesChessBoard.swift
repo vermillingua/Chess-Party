@@ -14,6 +14,9 @@ protocol TraditionalRulesChessBoard: ChessBoard {
     var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
     var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
     
+    var castleableRooks: [PlayerID: Set<Position>] { get set }
+    var hasKingMoved: [PlayerID: Bool] { get set }
+    
     var queenMoveDirections: [Displacement] { get }
     var rookMoveDirections: [Displacement] { get }
     var bishopMoveDirections: [Displacement] { get }
@@ -54,7 +57,7 @@ extension TraditionalRulesChessBoard {
             if piece.team != team {
                 let moves = getUnsafeMoves(from: pos)
                 for move in moves {
-                    if move.captureSquare == position {
+                    if move.primaryDestination == position {
                         return false
                     }
                 }
@@ -80,8 +83,6 @@ extension TraditionalRulesChessBoard {
             newBoard.enPassentPositions.removeValue(forKey: board[captureSquare]!.player)
         }
         
-        print(newBoard.enPassentPositions)
-        
         for action in move.actions {
             newBoard.doMoveAction(action)
         }
@@ -101,8 +102,12 @@ extension TraditionalRulesChessBoard {
             assert(board[start] != nil)
             assert(board[end] == nil, "\(String(describing: board[end])) && \(end)")
             assert(positionInBounds(end))
-            if board[start]!.type == .king {
-                kingPosition[board[start]!.player] = end
+            let piece = board[start]!
+            if piece.type == .king {
+                kingPosition[piece.player] = end
+                hasKingMoved[piece.player]! = true
+            } else if board[start]!.type == PieceType.rook {
+                castleableRooks[piece.player]!.remove(start)
             }
             board[end] = board.removeValue(forKey: start)
         }
@@ -111,9 +116,7 @@ extension TraditionalRulesChessBoard {
     func getMoves(from position: Position) -> [Move] {
         guard board[position] != nil else { return [Move]() }
         let piece = board[position]!
-        print("BEFORE UNSAFE MOVES!")
         var moves = getUnsafeMoves(from: position)
-        print("AFTER UNSAFE MOVES!")
         moves += getCastleMoves(from: position)
         return moves.filter { move in !doMove(move).isKingInCheck(player: piece.player) }
     }
@@ -140,8 +143,37 @@ extension TraditionalRulesChessBoard {
     }
     
     func getCastleMoves(from start: Position) -> [Move] {
-        let moves = [Move]()
-        // MARK: TODO Generate castle moves.
+        guard board[start]!.type == PieceType.king else { return [Move]() }
+        var moves = [Move]()
+        let king = board[start]!
+        for position in castleableRooks[king.player]! {
+            assert(start.row == position.row || start.column == position.column)
+            let kingMoveDirection = Position.getDisplacement(from: start, to: position)
+            let normDirection = kingMoveDirection.normalize
+            var target = start.shift(by: normDirection)
+            var isClear = true
+            for _ in 1..<(kingMoveDirection.scale) {
+                if board[target] != nil {
+                    isClear = false
+                    break
+                }
+                target = target.shift(by: normDirection)
+            }
+            if isClear {
+                target = start
+                var isSafe = true
+                for _ in 0..<((kingMoveDirection.scale + 1) / 2) {
+                    if !isPositionSafe(target, for: king.team) {
+                        isSafe = false
+                        break
+                    }
+                    target = target.shift(by: normDirection)
+                }
+                if isSafe {
+                    moves += [Move(actions: [MoveAction.travel(from: start, to: target), MoveAction.travel(from: position, to: target.shift(by: normDirection.scale(by: -1)))])]
+                }
+            }
+        }
         return moves
     }
     

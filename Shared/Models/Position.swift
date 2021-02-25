@@ -41,7 +41,11 @@ struct Displacement: Equatable {
     
     var x, y: Int
     
-    private var scale: Int { abs(x) + abs(y) }
+    var scale: Int { abs(x) + abs(y) }
+    
+    var normalize: Displacement {
+        Displacement(x: sign(x), y: sign(y))
+    }
     
     var rotatedClockwise: Displacement {
         Displacement(x: (x - y) / scale, y: (x + y) / scale)
@@ -58,4 +62,8 @@ struct Displacement: Equatable {
     static func +(right: Displacement, left: Displacement) -> Displacement {
         Displacement(x: right.x + left.x, y: right.y + left.y)
     }
+}
+
+fileprivate func sign(_ num: Int) -> Int {
+    num < 0 ? -1 : (num > 0 ? 1 : 0)
 }
