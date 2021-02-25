@@ -26,8 +26,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     @EnvironmentObject var settings: AppSettings
     let animationDuration = 0.1
     
-    @State var pieceShowingPromotionView: Int? = nil
-    @State var promotionPieceTypes: [PieceType] = []
+    @Published var pieceShowingPromotionView: Int? = nil
+    @Published var promotionPieceTypes: [PieceType] = []
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -147,7 +147,9 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         if userMoves.count == 1 {
             onDevicePlayer.handleOnDeviceMove(userMoves.first!)
         } else if userMoves.count > 1 {
-            pieceShowingPromotionView = chessBoard.board[position]?.id
+            pieceShowingPromotionView = chessBoard.board[userMoves.first!.primaryStart]?.id
+            print(pieceShowingPromotionView)
+            
             for move in userMoves {
                 if let promotionType = move.promotionType {
                     promotionPieceTypes.append(promotionType)

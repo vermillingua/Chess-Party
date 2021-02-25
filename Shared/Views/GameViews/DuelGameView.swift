@@ -13,7 +13,7 @@ struct DuelGameView: View {
     
     init (game: ChessGame) {
         self.game = game
-        self.boardView = ChessBoardView(chessGame: game, pieceShowingPromotionView: game.$pieceShowingPromotionView, promotionPieceTypes: game.$promotionPieceTypes)
+        self.boardView = ChessBoardView(chessGame: game)
     }
     
     var body: some View {

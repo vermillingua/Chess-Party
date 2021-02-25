@@ -12,8 +12,6 @@ struct ChessBoardView: View {
     @ObservedObject var chessGame: ChessGame
     @EnvironmentObject var settings: AppSettings
     @State var showingGameOver = false
-    @Binding var pieceShowingPromotionView: Int?
-    @Binding var promotionPieceTypes: [PieceType]
 
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .center)) {
@@ -58,17 +56,28 @@ struct ChessBoardView: View {
             GeometryReader { geometry in
                 ForEach (chessGame.renderedChessPieces) { renderedPiece in
                     if let position = renderedPiece.position {
-                        PieceView(piece: renderedPiece.piece,
-                                  size: getPieceSize(withBoardSize: geometry.size))
-                            .position(getPiecePosition(withBoardSize: geometry.size, atPosition: position))
-                            .onTapGesture { userTappedTile(at: position) }
-                            .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: $promotionPieceTypes, pieceIDShowingPromotionView: $pieceShowingPromotionView)
+                        if let promotionID = chessGame.pieceShowingPromotionView, promotionID == renderedPiece.piece.id {
+                            piece(renderedPiece: renderedPiece, size: geometry.size, position: position)
+                                .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: chessGame.promotionPieceTypes)
+
+                        } else {
+                            piece(renderedPiece: renderedPiece, size: geometry.size, position: position)
+                        }
+                            
+//                            .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: $promotionPieceTypes, pieceIDShowingPromotionView: $pieceShowingPromotionView)
                     }
                 }
             }
         }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
     }
 
+    func piece(renderedPiece: RenderablePiece, size: CGSize, position: Position) -> some View {
+        print("rendering", chessGame.pieceShowingPromotionView, renderedPiece.piece.id, chessGame.pieceShowingPromotionView ?? -1 == renderedPiece.piece.id)
+        return PieceView(piece: renderedPiece.piece,
+                  size: getPieceSize(withBoardSize: size))
+            .position(getPiecePosition(withBoardSize: size, atPosition: position))
+            .onTapGesture { userTappedTile(at: position) }
+    }
 
     
     var selections: some View {

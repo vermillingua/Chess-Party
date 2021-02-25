@@ -62,8 +62,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "isWaitingOnUserToMakeMove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,10 +78,304 @@
             filePath = "Shared/Views/GameViews/Chess-Board-View/ChessBoardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "handleGameOver()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E8F55FC-2F37-4E54-A412-C206656A2D99"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E81F08BD-732B-4876-AD03-26C7E137C808"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/View-Model/ChessGame.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "ChessGame"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - 3411f277da303c30"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Chess_Party.ChessGame.promotionPieceTypes : Swift.Array&lt;Chess_Party.PieceType&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - 8474f853c376df9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGame.promotionPieceTypes.getter : Swift.Array&lt;Chess_Party.PieceType&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - ae89939ff6e955e5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGame.promotionPieceTypes.setter : Swift.Array&lt;Chess_Party.PieceType&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - edef2141703f792"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGame.promotionPieceTypes.modify : Swift.Array&lt;Chess_Party.PieceType&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - de17ce5387987d40"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGame.promotionPieceTypes.modify : Swift.Array&lt;Chess_Party.PieceType&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  uuid = "E81F08BD-732B-4876-AD03-26C7E137C808 - 5748433f6bf9f32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGame.$promotionPieceTypes.getter : SwiftUI.Binding&lt;Swift.Array&lt;Chess_Party.PieceType&gt;&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGame.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "280">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5CF5F5D-576F-4C98-8DF5-ACD89E1A70D7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Models/Chess-Board/TraditionalRulesChessBoard.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "getMoves(from:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "body(content:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1 - 153264959366d8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.body(content: SwiftUI._ViewModifier_Content&lt;Chess_Party.PromotionViewModifier&gt;) -&gt; some"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "94">
+               </Location>
+               <Location
+                  uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1 - 353d9ad4a56814fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.Text in Chess_Party.PromotionViewModifier.body(content: SwiftUI._ViewModifier_Content&lt;Chess_Party.PromotionViewModifier&gt;) -&gt; some"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "PromotionViewModifier"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 965b8dd744e74c0e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of Chess_Party.PromotionViewModifier.promotionViewIsPresented : Swift.Bool"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 95d14865c3899efb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.getter : Swift.Bool"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 584fa95440d9b6f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.setter : Swift.Bool"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "138">
+               </Location>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - d9e6ae84baaefcc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.modify : Swift.Bool"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 34c53b6b73394df1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 768ff5e7a7dfabf5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.PromotionViewModifier.$promotionViewIsPresented.getter : SwiftUI.Binding&lt;Swift.Bool&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "137">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

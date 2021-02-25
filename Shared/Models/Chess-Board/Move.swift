@@ -36,6 +36,8 @@ struct Move: CustomStringConvertible {
             case .travel(let from, _):
                 destination = from
                 break forloop
+            case .remove(let at):
+                destination = at
             default:
                 continue
             }
