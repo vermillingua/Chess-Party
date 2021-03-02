@@ -55,28 +55,29 @@ struct ChessBoardView: View {
         ZStack {
             GeometryReader { geometry in
                 ForEach (chessGame.renderedChessPieces) { renderedPiece in
-                    if let position = renderedPiece.position {
-                        if let promotionID = chessGame.pieceShowingPromotionView, promotionID == renderedPiece.piece.id {
-                            piece(renderedPiece: renderedPiece, size: geometry.size, position: position)
-                                .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: chessGame.promotionPieceTypes)
-
-                        } else {
-                            piece(renderedPiece: renderedPiece, size: geometry.size, position: position)
-                        }
-                            
-//                            .promotionView(forRenderablePiece: renderedPiece, chessGame: chessGame, pieceTypes: $promotionPieceTypes, pieceIDShowingPromotionView: $pieceShowingPromotionView)
-                    }
+                    piece(renderablePiece: renderedPiece, size: geometry.size)
                 }
             }
         }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
     }
 
-    func piece(renderedPiece: RenderablePiece, size: CGSize, position: Position) -> some View {
-        print("rendering", chessGame.pieceShowingPromotionView, renderedPiece.piece.id, chessGame.pieceShowingPromotionView ?? -1 == renderedPiece.piece.id)
-        return PieceView(piece: renderedPiece.piece,
-                  size: getPieceSize(withBoardSize: size))
-            .position(getPiecePosition(withBoardSize: size, atPosition: position))
-            .onTapGesture { userTappedTile(at: position) }
+    func piece(renderablePiece: RenderablePiece, size: CGSize) -> some View {
+        var promotionView: PromotionView?
+        let pieceSize = getPieceSize(withBoardSize: size)
+        
+        if let promotionID = chessGame.pieceShowingPromotionView, promotionID == renderablePiece.piece.id {
+            promotionView = PromotionView(
+                pieceTypes: chessGame.promotionPieceTypes,
+                pieceSelectionHandler: {piece in print(piece ?? "no piece type")},
+                playerID: renderablePiece.piece.player, pieceSize: pieceSize)
+        }
+        
+        return PieceView(
+            renderablePiece: renderablePiece,
+            size: pieceSize,
+            promotionView: promotionView)
+            .position(getPiecePosition(withBoardSize: size, atPosition: renderablePiece.position))
+            .onTapGesture { userTappedTile(at: renderablePiece.position) }
     }
 
     

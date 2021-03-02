@@ -148,7 +148,6 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             onDevicePlayer.handleOnDeviceMove(userMoves.first!)
         } else if userMoves.count > 1 {
             pieceShowingPromotionView = chessBoard.board[userMoves.first!.primaryStart]?.id
-            print(pieceShowingPromotionView)
             
             for move in userMoves {
                 if let promotionType = move.promotionType {

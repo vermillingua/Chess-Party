@@ -18,7 +18,6 @@ struct MainMenu: View {
             finishedGames()
         }
         .onAppear(perform: {
-            print("Auto selecting", selectedGame ?? "none", chessGameStore.currentGames.count)
             selectedGame = chessGameStore.currentGames.first?.id
         })
     }
