@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+let player1: PlayerID = PlayerID(id: 0)
+let player2: PlayerID = PlayerID(id: 1)
+let player3: PlayerID = PlayerID(id: 2)
+let player4: PlayerID = PlayerID(id: 3)
+
+let team1: TeamID = TeamID(id: 0)
+let team2: TeamID = TeamID(id: 1)
+let team3: TeamID = TeamID(id: 2)
+let team4: TeamID = TeamID(id: 3)
+
 protocol Player {
     var name: String { get }
     var type: PlayerType { get }
