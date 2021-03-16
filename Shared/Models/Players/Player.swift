@@ -40,12 +40,12 @@ enum PlayerType {
     case onDevice, computer, remote
 }
 
-struct PlayerID: Hashable {
+struct PlayerID: Hashable, Codable {
     var id: Int
     var index: Int { id }
 }
 
-struct TeamID: Hashable {
+struct TeamID: Hashable, Codable {
     var id: Int
 }
 

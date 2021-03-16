@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChessBoard1v1v1v1: TraditionalRulesChessBoard {
+struct ChessBoard1v1v1v1: TraditionalRulesChessBoard, Codable {
     
     var board: [Position : Piece]
     var kingPosition: [PlayerID : Position]

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Hashable, Identifiable, CustomStringConvertible {
+struct Position: Hashable, Identifiable, CustomStringConvertible, Codable {
     var row, column: Int
     
     var id: Int {
@@ -27,7 +27,7 @@ struct Position: Hashable, Identifiable, CustomStringConvertible {
     static func ==(lhs: Position, rhs: Position) -> Bool { lhs.column == rhs.column && lhs.row == rhs.row}
 }
 
-struct Displacement: Equatable {
+struct Displacement: Equatable, Codable {
     static let north = Displacement(x:  0, y:  -1)
     static let south = Displacement(x:  0, y:  1)
     static let east  = Displacement(x:  1, y:  0)
