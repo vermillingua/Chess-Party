@@ -17,6 +17,11 @@ struct ChessBoard2v2: TraditionalRulesChessBoard, Codable {
     
     static var gameType: ChessGameType = .battle
     
+    // Needed for swift to ignore let constants when encoding/decoding
+    private enum CodingKeys: String, CodingKey {
+        case board, kingPosition, enPassentPositions, castleableRooks, hasKingMoved
+    }
+    
     let rows: Int = 8
     let columns: Int = 16
     

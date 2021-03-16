@@ -26,7 +26,7 @@ struct Piece: Identifiable, Codable {
     //MARK: TODO Add easier constructor?
 }
 
-enum PieceType: Codable {
+enum PieceType: String, Codable {
     case pawn
     case knight
     case bishop
