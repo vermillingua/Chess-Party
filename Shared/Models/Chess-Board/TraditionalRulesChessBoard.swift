@@ -183,10 +183,10 @@ extension TraditionalRulesChessBoard {
                 for action in move.actions {
                     switch action {
                     case .travel(let from, let to):
-                        promotionActions[0] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .queen, team: pawn.team))]
-                        promotionActions[1] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .rook, team: pawn.team))]
-                        promotionActions[2] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .bishop, team: pawn.team))]
-                        promotionActions[3] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .knight, team: pawn.team))]
+                        promotionActions[0] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .queen, team: pawn.team, id: pawn.id))]
+                        promotionActions[1] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .rook, team: pawn.team, id: pawn.id))]
+                        promotionActions[2] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .bishop, team: pawn.team, id: pawn.id))]
+                        promotionActions[3] += [MoveAction.remove(at: from), MoveAction.spawn(at: to, piece: Piece(player: pawn.player, type: .knight, team: pawn.team, id: pawn.id))]
                     default:
                         promotionActions[0].append(action)
                         promotionActions[1].append(action)

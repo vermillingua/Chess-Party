@@ -15,6 +15,13 @@ struct Piece: Identifiable {
     
     static var idCount = 0
     
+    init(player: PlayerID, type: PieceType, team: TeamID, id: Int) {
+        self.player = player
+        self.type = type
+        self.team = team
+        self.id = id
+    }
+    
     init(player: PlayerID, type: PieceType, team: TeamID) {
         self.player = player
         self.type = type
