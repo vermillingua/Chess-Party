@@ -12,20 +12,35 @@ struct ChessBoard2v2: TraditionalRulesChessBoard {
     var board: [Position : Piece]
     var kingPosition: [PlayerID : Position]
     var enPassentPositions: [PlayerID : Position]
-    
-    let pawnDoubleJumpPositions: [PlayerID : Set<Position>] = [player1: [Position(row: 6, column: 0), Position(row: 6, column: 1), Position(row: 6, column: 2), Position(row: 6, column: 3), Position(row: 6, column: 4), Position(row: 6, column: 5), Position(row: 6, column: 6), Position(row: 6, column: 7)], player2: [Position(row: 1, column: 0), Position(row: 1, column: 1), Position(row: 1, column: 2), Position(row: 1, column: 3), Position(row: 1, column: 4), Position(row: 1, column: 5), Position(row: 1, column: 6), Position(row: 1, column: 7)], player3: [Position(row: 6, column: 8), Position(row: 6, column: 9), Position(row: 6, column: 10), Position(row: 6, column: 11), Position(row: 6, column: 12), Position(row: 6, column: 13), Position(row: 6, column: 14), Position(row: 6, column: 15)], player4: [Position(row: 1, column: 8), Position(row: 1, column: 9), Position(row: 1, column: 10), Position(row: 1, column: 11), Position(row: 1, column: 12), Position(row: 1, column: 13), Position(row: 1, column: 14), Position(row: 1, column: 15)]]
-    
-    let pawnPromotionPositions: [PlayerID : Set<Position>] = [player1: [Position(row: 0, column: 0), Position(row: 0, column: 1), Position(row: 0, column: 2), Position(row: 0, column: 3), Position(row: 0, column: 4), Position(row: 0, column: 5), Position(row: 0, column: 6), Position(row: 0, column: 7)], player2: [Position(row: 7, column: 0), Position(row: 7, column: 1), Position(row: 7, column: 2), Position(row: 7, column: 3), Position(row: 7, column: 4), Position(row: 7, column: 5), Position(row: 7, column: 6), Position(row: 7, column: 7)], player3: [Position(row: 0, column: 8), Position(row: 0, column: 9), Position(row: 0, column: 10), Position(row: 0, column: 11), Position(row: 0, column: 12), Position(row: 0, column: 13), Position(row: 0, column: 14), Position(row: 0, column: 15)], player4: [Position(row: 7, column: 8), Position(row: 7, column: 9), Position(row: 7, column: 10), Position(row: 7, column: 11), Position(row: 7, column: 12), Position(row: 7, column: 13), Position(row: 7, column: 14), Position(row: 7, column: 15)]]
-    
-    var castleableRooks: [PlayerID : Set<Position>] 
-    
+    var castleableRooks: [PlayerID : Set<Position>]
     var hasKingMoved: [PlayerID : Bool]
+    
+    static var gameType: ChessGameType = .battle
+    
+    let rows: Int = 8
+    let columns: Int = 16
     
     let pawnMoveDirection: [PlayerID : Displacement] = [player1: .north, player2: .south, player3: .north, player4: .south]
     
-    var rows: Int = 8
-    var columns: Int = 16
-    static var gameType: ChessGameType = .battle
+    let pawnDoubleJumpPositions: [PlayerID : Set<Position>] =
+        [player1: [Position(row: 6, column: 0),  Position(row: 6, column: 1),  Position(row: 6, column: 2),  Position(row: 6, column: 3),
+                   Position(row: 6, column: 4),  Position(row: 6, column: 5),  Position(row: 6, column: 6),  Position(row: 6, column: 7)],
+         player2: [Position(row: 1, column: 0),  Position(row: 1, column: 1),  Position(row: 1, column: 2),  Position(row: 1, column: 3),
+                   Position(row: 1, column: 4),  Position(row: 1, column: 5),  Position(row: 1, column: 6),  Position(row: 1, column: 7)],
+         player3: [Position(row: 6, column: 8),  Position(row: 6, column: 9),  Position(row: 6, column: 10), Position(row: 6, column: 11),
+                   Position(row: 6, column: 12), Position(row: 6, column: 13), Position(row: 6, column: 14), Position(row: 6, column: 15)],
+         player4: [Position(row: 1, column: 8),  Position(row: 1, column: 9),  Position(row: 1, column: 10), Position(row: 1, column: 11),
+                   Position(row: 1, column: 12), Position(row: 1, column: 13), Position(row: 1, column: 14), Position(row: 1, column: 15)]]
+    
+    let pawnPromotionPositions: [PlayerID : Set<Position>] =
+        [player1: [Position(row: 0, column: 0),  Position(row: 0, column: 1),  Position(row: 0, column: 2),  Position(row: 0, column: 3),
+                   Position(row: 0, column: 4),  Position(row: 0, column: 5),  Position(row: 0, column: 6),  Position(row: 0, column: 7)],
+         player2: [Position(row: 7, column: 0),  Position(row: 7, column: 1),  Position(row: 7, column: 2),  Position(row: 7, column: 3),
+                   Position(row: 7, column: 4),  Position(row: 7, column: 5),  Position(row: 7, column: 6),  Position(row: 7, column: 7)],
+         player3: [Position(row: 0, column: 8),  Position(row: 0, column: 9),  Position(row: 0, column: 10), Position(row: 0, column: 11),
+                   Position(row: 0, column: 12), Position(row: 0, column: 13), Position(row: 0, column: 14), Position(row: 0, column: 15)],
+         player4: [Position(row: 7, column: 8),  Position(row: 7, column: 9),  Position(row: 7, column: 10), Position(row: 7, column: 11),
+                   Position(row: 7, column: 12), Position(row: 7, column: 13), Position(row: 7, column: 14), Position(row: 7, column: 15)]]
     
     init() {
         board = [Position: Piece]()

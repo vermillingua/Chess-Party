@@ -11,11 +11,11 @@ protocol TraditionalRulesChessBoard: ChessBoard {
     var board: [Position: Piece] { get set }
     var kingPosition: [PlayerID: Position] { get set }
     var enPassentPositions: [PlayerID: Position] { get set }
-    var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
-    var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
-    
     var castleableRooks: [PlayerID: Set<Position>] { get set }
     var hasKingMoved: [PlayerID: Bool] { get set }
+    
+    var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
+    var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
     
     var queenMoveDirections: [Displacement] { get }
     var rookMoveDirections: [Displacement] { get }
