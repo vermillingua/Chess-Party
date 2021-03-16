@@ -28,6 +28,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     
     @Published var pieceShowingPromotionView: Int? = nil
     @Published var promotionPieceTypes: [PieceType] = []
+    var potentialPromotionFromPosition: Position? = nil
+    var potentialPromotionDestination: Position? = nil
 
     var currentPlayer: Player? { gameState.getCurrentPlayer()}
     var nextPlayer: Player? {
@@ -144,10 +146,15 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         let userMoves = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position})
         let onDevicePlayer = gameState.getCurrentPlayer() as! OnDevicePlayer
         
+        potentialPromotionDestination = nil
+        potentialPromotionFromPosition = nil
+        
         if userMoves.count == 1 {
             onDevicePlayer.handleOnDeviceMove(userMoves.first!)
         } else if userMoves.count > 1 {
             pieceShowingPromotionView = chessBoard.board[userMoves.first!.primaryStart]?.id
+            potentialPromotionFromPosition = userFocusedPosition
+            potentialPromotionDestination = position
             
             for move in userMoves {
                 if let promotionType = move.promotionType {
@@ -157,7 +164,25 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         }
             
         clearHighlights()
+    }
+    
+    func handlePromotionSelection(pieceType: PieceType?) {
+        pieceShowingPromotionView = nil
+        promotionPieceTypes.removeAll()
+        objectWillChange.send()
         
+        if let type = pieceType {
+            let promotionMoves = chessBoard.getMoves(from: potentialPromotionFromPosition!).filter({ $0.promotionType == type && $0.primaryDestination == potentialPromotionDestination!})
+            let onDevicePlayer = gameState.getCurrentPlayer() as! OnDevicePlayer
+            let move = promotionMoves.first!
+            onDevicePlayer.handleOnDeviceMove(move)
+
+        }
+        
+        
+       
+
+
     }
     
     func clearHighlights() {

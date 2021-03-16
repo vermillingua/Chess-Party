@@ -68,14 +68,17 @@ struct ChessBoardView: View {
         if let promotionID = chessGame.pieceShowingPromotionView, promotionID == renderablePiece.piece.id {
             promotionView = PromotionView(
                 pieceTypes: chessGame.promotionPieceTypes,
-                pieceSelectionHandler: {piece in print(piece ?? "no piece type")},
+                pieceSelectionHandler: {piece in
+                    chessGame.handlePromotionSelection(pieceType: piece)
+                },
                 playerID: renderablePiece.piece.player, pieceSize: pieceSize)
         }
         
         return PieceView(
             renderablePiece: renderablePiece,
             size: pieceSize,
-            promotionView: promotionView)
+            promotionView: promotionView,
+            promotionViewIsPresented: promotionView != nil)
             .position(getPiecePosition(withBoardSize: size, atPosition: renderablePiece.position))
             .onTapGesture { userTappedTile(at: renderablePiece.position) }
     }

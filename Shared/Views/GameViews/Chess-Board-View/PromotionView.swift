@@ -19,8 +19,9 @@ struct PromotionView: View {
             ForEach (0..<pieceTypes.count) { i in
                 settings.theme.pieceImageGetter(pieceTypes[i], playerID).resizable()
                     .frame(width: pieceSize.width, height: pieceSize.height, alignment: .center)
-                    .onTapGesture { pieceSelectionHandler(pieceTypes[i]) }
-                    
+                    .onTapGesture {
+                        pieceSelectionHandler(pieceTypes[i]) 
+                    }
             }
         }
     }

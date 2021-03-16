@@ -13,15 +13,35 @@ struct PieceView: View {
     var size: CGSize
     
     var promotionView: PromotionView?
-    @State var promotionViewIsPresented = true
+    @State var promotionViewIsPresented: Bool = true
 
+    init(
+        renderablePiece: RenderablePiece,
+        size: CGSize,
+        promotionView: PromotionView? = nil,
+        promotionViewIsPresented: Bool) {
+        self.renderablePiece = renderablePiece
+        self.size = size
+        self.promotionView = promotionView
+        self.promotionViewIsPresented = promotionViewIsPresented
+    }
     
     var body: some View {
         if let pView = promotionView {
-            image.popover(isPresented: $promotionViewIsPresented, content: {pView})
+            promotionView(pView)
         } else {
             image
         }   
+    }
+    
+    func promotionView(_ pView: PromotionView) -> AnyView {
+        if !promotionViewIsPresented {
+            promotionView?.pieceSelectionHandler(nil)
+            return AnyView(image.onAppear(perform: {
+                promotionViewIsPresented = true
+            }))
+        }
+        return AnyView(image.popover(isPresented: $promotionViewIsPresented, content: {pView}))
     }
     
     var image: some View {

@@ -62,8 +62,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "isWaitingOnUserToMakeMove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Shared/Views/GameViews/Chess-Board-View/ChessBoardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "handleGameOver()"
             landmarkType = "7">
          </BreakpointContent>
@@ -225,157 +225,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1"
-            shouldBeEnabled = "Yes"
+            uuid = "DEA6E8A3-8D01-4E8E-B559-23CB85948DBA"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+            filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "body(content:)"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "handleTappedPotentialMove(atPosition:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1 - 153264959366d8b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.body(content: SwiftUI._ViewModifier_Content&lt;Chess_Party.PromotionViewModifier&gt;) -&gt; some"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "94">
-               </Location>
-               <Location
-                  uuid = "55A3179A-1512-4614-B6E0-E0C99DA34DF1 - 353d9ad4a56814fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.Text in Chess_Party.PromotionViewModifier.body(content: SwiftUI._ViewModifier_Content&lt;Chess_Party.PromotionViewModifier&gt;) -&gt; some"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "31">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5"
-            shouldBeEnabled = "Yes"
+            uuid = "AAEC5433-4340-4A77-AC06-754F4BC478F9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
+            filePath = "Shared/Views/GameViews/Chess-Board-View/ChessBoardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "PromotionViewModifier"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 965b8dd744e74c0e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of Chess_Party.PromotionViewModifier.promotionViewIsPresented : Swift.Bool"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 95d14865c3899efb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.getter : Swift.Bool"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "126">
-               </Location>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 584fa95440d9b6f7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.setter : Swift.Bool"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "138">
-               </Location>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - d9e6ae84baaefcc5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.modify : Swift.Bool"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "57">
-               </Location>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 34c53b6b73394df1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.promotionViewIsPresented.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "17">
-               </Location>
-               <Location
-                  uuid = "B1301E8D-53F5-459F-A5C4-07ADF32918B5 - 768ff5e7a7dfabf5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Chess_Party.PromotionViewModifier.$promotionViewIsPresented.getter : SwiftUI.Binding&lt;Swift.Bool&gt;"
-                  moduleName = "Chess Party"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/GameViews/Chess-Board-View/PromotionView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "137">
-               </Location>
-            </Locations>
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "piece(renderablePiece:size:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
