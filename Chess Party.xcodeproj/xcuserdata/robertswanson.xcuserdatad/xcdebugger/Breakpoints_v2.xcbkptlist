@@ -218,7 +218,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "getMoves(from:)"
+            landmarkName = "doMoveAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
