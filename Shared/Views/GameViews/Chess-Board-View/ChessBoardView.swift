@@ -58,7 +58,7 @@ struct ChessBoardView: View {
                     piece(renderablePiece: renderedPiece, size: geometry.size)
                 }
             }
-        }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
+        }.aspectRatio(CGFloat(chessGame.chessBoard.columns)/CGFloat(chessGame.chessBoard.rows), contentMode: .fit)
     }
 
     func piece(renderablePiece: RenderablePiece, size: CGSize) -> some View {
@@ -95,7 +95,7 @@ struct ChessBoardView: View {
                     }
                 }
             }
-        }.aspectRatio(CGFloat(chessGame.chessBoard.rows)/CGFloat(chessGame.chessBoard.columns), contentMode: .fit)
+        }.aspectRatio(CGFloat(chessGame.chessBoard.columns)/CGFloat(chessGame.chessBoard.rows), contentMode: .fit)
     }
     
     func selectionView(type: ChessGame.SelectionType, atPosition position: Position, boardSize: CGSize) -> some View {

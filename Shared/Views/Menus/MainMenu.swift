@@ -75,6 +75,7 @@ struct MainMenu: View {
             DuelGameView(game: game)
         } else if game.gameType == .battle {
            // TODO: Implement
+            BattleGameView(game: game)
         }
     }
     

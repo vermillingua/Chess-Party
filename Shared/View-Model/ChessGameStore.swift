@@ -25,7 +25,7 @@ class ChessGameStore: ObservableObject {
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, remone]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy, teamy, otherEnemy]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [remone, you]),
-            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, chester, enimy, remone])
+            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, chester, enimy, otherEnemy])
         ]
     }
     
