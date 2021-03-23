@@ -144,7 +144,7 @@ extension TraditionalRulesChessBoard {
     
     //MARK: TODO – Fix this code because it is ugly! Will need to make the Position and Displacement structures' code better and more clear
     func getCastleMoves(from start: Position) -> [Move] {
-        guard board[start]!.type == PieceType.king else { return [Move]() }
+        guard board[start]!.type == PieceType.king, !hasKingMoved[board[start]!.player]! else { return [Move]() }
         var moves = [Move]()
         let king = board[start]!
         for position in castleableRooks[king.player]! {
