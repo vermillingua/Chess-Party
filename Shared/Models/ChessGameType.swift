@@ -7,30 +7,40 @@
 
 import SwiftUI
 
-protocol ChessGameType {
-    static var title: String {get}
-    static var description: String {get}
-    static var icon: Image {get}
-    static var gameMaker: () -> AnyView {get}
-    static var id: Int {get}
-    static var chessBoard: ChessBoard {get}
-}
-
-struct Duel: ChessGameType {
-    static let title = "Duel"
-    static let description = "1v1 chess game following normal rules"
-    static let icon = Image(systemName: "person.2")
-    static let gameMaker = { return AnyView(OneVOneGameMaker()) }
-    static let id = 0
-    static let chessBoard: ChessBoard = TraditionalChessBoard()
-}
-
-struct Battle: ChessGameType {
-    static let title = "Battle"
-    static let description = "2v2 chess game on a 8x16 chess board following normal rules"
-    static let icon = Image(systemName: "square.and.line.vertical.and.square")
-    static let gameMaker = { return AnyView(TwoVTwoGameMaker()) }
-    static let id = 1
-    static let chessBoard: ChessBoard = TraditionalChessBoard() // TODO: Implement battle chess board
+enum ChessGameType: String, CaseIterable {
+    case duel = "Duel"
+    case battle = "Battle"
+ 
+    var description: String {
+        switch self {
+        case .duel:
+            return "1v1 chess game following normal rules"
+        case .battle:
+            return "2v2 chess game on a 8x16 chess board following normal rules"
+        }
+    }
+    
+    var icon: Image {
+        switch self {
+        case .duel:
+            return Image(systemName: "person.2")
+        case .battle:
+            return Image(systemName: "square.and.line.vertical.and.square")
+        }
+    }
+    
+    var gameMaker: some View {
+        DuelGameMaker()
+    }
+    
+    var isTeamStyle: Bool {
+        switch self {
+        case .duel:
+            return false
+        case .battle:
+            return true
+        }
+    }
+    
 }
 

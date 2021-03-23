@@ -10,15 +10,16 @@ import SwiftUI
 struct Theme {
     var themeType: ThemeType
     
-    var primaryBoardColor: Color
-    var secondaryBoardColor: Color
+    let primaryBoardColor: Color
+    let secondaryBoardColor: Color
     
-    typealias PieceImageGetter = (Piece) -> Image
-    var pieceImageGetter: PieceImageGetter
+    typealias PieceImageGetter = (PieceType, PlayerID) -> Image
+    let pieceImageGetter: PieceImageGetter
     
     typealias SelectionColorGetter = (ChessGame.SelectionType) -> Color
-    var selectionColorGetter: SelectionColorGetter
-    var selectionBorderWidth: CGFloat
+    let selectionColorGetter: SelectionColorGetter
+    let selectionBorderWidth: CGFloat
+    
     
     init(themeType: ThemeType) {
         switch themeType {
@@ -31,23 +32,22 @@ struct Theme {
     
     // MARK: - Default Theme
     
-    static let defaultPieceImageGetter: PieceImageGetter = { piece in
-        let playerID = piece.player.id
-        switch piece.type {
-        case .bishop: return Image("Theme-R-\(playerID)-Bishop")
-        case .knight: return Image("Theme-R-\(playerID)-Knight")
-        case .rook: return Image("Theme-R-\(playerID)-Rook")
-        case .pawn: return Image("Theme-R-\(playerID)-Pawn")
-        case .queen: return Image("Theme-R-\(playerID)-Queen")
-        case .king: return Image("Theme-R-\(playerID)-King")
+    static let defaultPieceImageGetter: PieceImageGetter = { (pieceType, playerID) in
+        switch pieceType {
+        case .bishop: return Image("Theme-R-\(playerID.id)-Bishop")
+        case .knight: return Image("Theme-R-\(playerID.id)-Knight")
+        case .rook: return Image("Theme-R-\(playerID.id)-Rook")
+        case .pawn: return Image("Theme-R-\(playerID.id)-Pawn")
+        case .queen: return Image("Theme-R-\(playerID.id)-Queen")
+        case .king: return Image("Theme-R-\(playerID.id)-King")
         }
     }
     static let defaultSelectionColorGetter: SelectionColorGetter = { selection in
         switch selection {
-        case .potentialMove: return Color.blue
+        case .potentialMove: return Color.orange
         case .userFocus: return Color.yellow
         case .warning: return Color.red
-        case .lastMove: return Color.orange
+        case .lastMove: return Color.pink
         }
     }
     
@@ -79,17 +79,28 @@ enum ThemeType: String, CaseIterable {
 
 private struct ThemeFactory {
     static func themeD() -> Theme {
-        let getPieceImage: (Piece) -> Image = { piece in
-            let playerID = piece.player.id
-            switch piece.type {
-            case .bishop: return Image("Theme-D-\(playerID)-Bishop")
-            case .knight: return Image("Theme-D-\(playerID)-Knight")
-            case .rook: return Image("Theme-D-\(playerID)-Rook")
-            case .pawn: return Image("Theme-D-\(playerID)-Pawn")
-            case .queen: return Image("Theme-D-\(playerID)-Queen")
-            case .king: return Image("Theme-D-\(playerID)-King")
+        let getPieceImage: (PieceType, PlayerID) -> Image = { (pieceType, playerID) in
+            switch pieceType {
+            case .bishop: return Image("Theme-D-\(playerID.id)-Bishop")
+            case .knight: return Image("Theme-D-\(playerID.id)-Knight")
+            case .rook: return Image("Theme-D-\(playerID.id)-Rook")
+            case .pawn: return Image("Theme-D-\(playerID.id)-Pawn")
+            case .queen: return Image("Theme-D-\(playerID.id)-Queen")
+            case .king: return Image("Theme-D-\(playerID.id)-King")
             }
         }
-        return Theme(themeType: .themeD, primaryBoardColor: .black, secondaryBoardColor: .gray, pieceImageGetter: getPieceImage)
+        let selectionColorGetter: Theme.SelectionColorGetter = { type in
+            switch type {
+            case .lastMove:
+                return Color.blue
+            case .potentialMove:
+                return Color.white
+            case .userFocus:
+                return Color.yellow
+            case .warning:
+                return Color.red
+            }
+        }
+        return Theme(themeType: .themeD, primaryBoardColor: .black, secondaryBoardColor: .gray, pieceImageGetter: getPieceImage, selectionColorGetter: selectionColorGetter)
     }
 }

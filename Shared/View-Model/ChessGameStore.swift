@@ -7,14 +7,29 @@
 
 import Foundation
 
-class ChessGameStore {
+class ChessGameStore: ObservableObject {
     static var instance: ChessGameStore = ChessGameStore()
+
+    @Published var currentGames: [ChessGame]
+
+    init() {
+        let you = PlayerBuilder(name: "You", type: .onDevice, team: TeamID(id: 0))
+        let chester = PlayerBuilder(name: "Chester", type: .computer, team: TeamID(id: 1))
+        let remone = PlayerBuilder(name: "Remone", type: .remote,  team: TeamID(id: 1))
+        let teamy = PlayerBuilder(name: "Teamy", type: .onDevice,  team: TeamID(id: 0))
+        let enimy = PlayerBuilder(name: "Enimy", type: .onDevice,  team: TeamID(id: 1))
+        let otherEnemy = PlayerBuilder(name: "Other Enimy", type: .onDevice,  team: TeamID(id: 1))
+        currentGames = [
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, chester]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, remone]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy, teamy, otherEnemy]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [remone, you]),
+            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, chester, enimy, remone])
+        ]
+    }
     
-    var currentGames: [ChessGame] {
-         return [
-             ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), ComputerPlayer(name: "Chester", playerID: PlayerID(id: 1))]),
-             ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Remone", playerID: PlayerID(id: 1))]),
-             ChessGame(chessBoard: TraditionalChessBoard(), players: [OnDevicePlayer(name: "You", playerID: PlayerID(id: 0)), RemotePlayer(name: "Teamy", playerID: PlayerID(id: 1)), RemotePlayer(name: "Enemenimy", playerID: PlayerID(id: 2)), RemotePlayer(name: "Secondenimy", playerID: PlayerID(id: 3))])
-         ]
-     }
+    func gameWillChange() {
+        objectWillChange.send()
+    }
 }

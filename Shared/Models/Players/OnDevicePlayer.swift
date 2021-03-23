@@ -5,26 +5,24 @@
 //  Created by Robert Swanson on 1/9/21.
 //
 
-import Foundation
+import SwiftUI
 
 struct OnDevicePlayer: Player {
     var name: String
-    var type: PlayerType = .onDevice
-    var playerID: PlayerID
-    var playerResponseHandler: PlayerResponseHandler?
-    
-    init(name: String, playerID: PlayerID, playerResponsehandler: PlayerResponseHandler? = nil) {
-        self.name = name
-        self.playerID = playerID
-        self.playerResponseHandler = playerResponsehandler
+    let type: PlayerType = .onDevice
+    let identity: PlayerID
+    let team: TeamID
+    var icon: Image
+    var hasBeenEliminated: Bool = false
+    var nextPlayer: PlayerID
+    var lastMove: Move? = nil
+    var previousPlayer: PlayerID
+    let playerResponseHandler: PlayerResponseHandler
+
+    func startMove(withBoard board: ChessBoard) {
     }
     
-    mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler) {
-        playerResponseHandler = handler
+    func handleOnDeviceMove(_ move: Move) {
+        playerResponseHandler(move)
     }
-    
-    func handleOnDeviceMove(_ move: Move) -> Bool {
-        return playerResponseHandler!(move)
-    }
-    
 }

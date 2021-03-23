@@ -16,7 +16,7 @@ struct SettingsView: View {
     @AppStorage(AppSettings.themeKey) var themeSelection: ThemeType = ThemeType.defaultTheme
 
     var body: some View {
-        Form {
+        let form = Form {
             Toggle("Sounds", isOn: $sounds).onChange(of: sounds) { settings.sounds = $0 }
             Toggle("Notifications", isOn: $notifications).onChange(of: notifications) { settings.notifications = $0}
             #if os(macOS)
@@ -29,6 +29,12 @@ struct SettingsView: View {
             }.onChange(of: themeSelection) { settings.theme = Theme(themeType: $0)}
         }
         .frame(minWidth: 300, minHeight: 200)
+        
+        #if os(macOS)
+        return form.padding(.horizontal)
+        #else
+        return form
+        #endif
     }
 }
 

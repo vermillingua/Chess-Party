@@ -7,24 +7,33 @@
 
 import Foundation
 
-struct Piece: Identifiable {
+struct Piece: Identifiable, Codable {
     var player: PlayerID
+    var team: TeamID
     var type: PieceType
     var id: Int
-    var position: Position?
     
     static var idCount = 0
     
-    init(player: PlayerID, type: PieceType, position: Position? = nil) {
+    init(player: PlayerID, type: PieceType, team: TeamID, id: Int) {
         self.player = player
         self.type = type
+        self.team = team
+        self.id = id
+    }
+    
+    init(player: PlayerID, type: PieceType, team: TeamID) {
+        self.player = player
+        self.type = type
+        self.team = team
         id = Piece.idCount
         Piece.idCount += 1
-        self.position = position
     }
+    
+    //MARK: TODO Add easier constructor?
 }
 
-enum PieceType {
+enum PieceType: String, Codable {
     case pawn
     case knight
     case bishop

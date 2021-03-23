@@ -6,17 +6,18 @@
 //
 
 import SwiftUI
+import GameKit
 
 @main
 struct ChessPartyApp: App {
     private var settings = AppSettings()
-
+    
     @SceneBuilder var body: some Scene {
         WindowGroup {
             #if os(iOS)
-            IOSMainMenu().environmentObject(settings)
+            IOSNavigationView().environmentObject(settings)
             #elseif os(macOS)
-            MacOSMainMenu().environmentObject(settings)
+            MacOSNavigationView().environmentObject(settings)
             #endif
         }
         #if os(macOS)

@@ -5,41 +5,48 @@
 //  Created by Robert Swanson on 1/9/21.
 //
 
-import Foundation
+import SwiftUI
+
+let player1: PlayerID = PlayerID(id: 0)
+let player2: PlayerID = PlayerID(id: 1)
+let player3: PlayerID = PlayerID(id: 2)
+let player4: PlayerID = PlayerID(id: 3)
+
+let team1: TeamID = TeamID(id: 0)
+let team2: TeamID = TeamID(id: 1)
+let team3: TeamID = TeamID(id: 2)
+let team4: TeamID = TeamID(id: 3)
 
 protocol Player {
-    var name: String {get}
-    var type: PlayerType {get}
-    var playerID: PlayerID {get}
-    var playerResponseHandler: PlayerResponseHandler? {get set}
-    
-    mutating func startMove(withBoard board: ChessBoard, withPlayerResponseHandler handler: @escaping PlayerResponseHandler)
+    var name: String { get }
+    var type: PlayerType { get }
+    var identity: PlayerID { get }
+    var nextPlayer: PlayerID { get set }
+    var previousPlayer: PlayerID { get set }
+    var lastMove: Move? { get set }
+    var team: TeamID { get }
+    var icon: Image { get set }
+    var hasBeenEliminated: Bool { get set }
+    var playerResponseHandler: PlayerResponseHandler { get }
+
+    func startMove(withBoard board: ChessBoard)
+}
+
+extension Player {
+    var index: Int { identity.id }
 }
 
 enum PlayerType {
     case onDevice, computer, remote
 }
 
-struct PlayerID: Hashable {
+struct PlayerID: Hashable, Codable {
     var id: Int
-    var team: TeamID
-    
-    init(id: Int, teamID: Int) {
-        self.id = id
-        self.team = TeamID(id: teamID)
-    }
-    
-    init(id: Int) {
-        self.init(id: id, teamID: id)
-    }
-
-    func isOnSameTeam(asPlayer otherPlayer: PlayerID) -> Bool {
-        return team == otherPlayer.team
-    }
+    var index: Int { id }
 }
 
-struct TeamID: Hashable {
+struct TeamID: Hashable, Codable {
     var id: Int
 }
 
-typealias PlayerResponseHandler = (Move) -> Bool
+typealias PlayerResponseHandler = (Move) -> Void
