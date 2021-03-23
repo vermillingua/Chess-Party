@@ -20,11 +20,12 @@ class ChessGameStore: ObservableObject {
         let enimy = PlayerBuilder(name: "Enimy", type: .onDevice,  team: TeamID(id: 1))
         let otherEnemy = PlayerBuilder(name: "Other Enimy", type: .onDevice,  team: TeamID(id: 1))
         currentGames = [
-            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, chester]),
-            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, enimy]),
-            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, remone]),
-            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [you, enimy, teamy, otherEnemy]),
-            ChessGame(chessBoard: TraditionalChessBoard(), playerBuilders: [remone, you])
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, chester]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, remone]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy, teamy, otherEnemy]),
+            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [remone, you]),
+            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, chester, enimy, remone])
         ]
     }
     

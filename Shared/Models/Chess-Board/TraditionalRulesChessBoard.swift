@@ -10,7 +10,10 @@ import Foundation
 protocol TraditionalRulesChessBoard: ChessBoard {
     var board: [Position: Piece] { get set }
     var kingPosition: [PlayerID: Position] { get set }
-    var enPassentPosition: Position? { get set } // MARK: TODO Make this a PlayerID dictionary.
+    var enPassentPositions: [PlayerID: Position] { get set }
+    var castleableRooks: [PlayerID: Set<Position>] { get set }
+    var hasKingMoved: [PlayerID: Bool] { get set }
+    
     var pawnDoubleJumpPositions: [PlayerID: Set<Position>] { get }
     var pawnPromotionPositions: [PlayerID: Set<Position>] { get }
     
@@ -54,7 +57,7 @@ extension TraditionalRulesChessBoard {
             if piece.team != team {
                 let moves = getUnsafeMoves(from: pos)
                 for move in moves {
-                    if move.captureSquare == position {
+                    if move.primaryDestination == position {
                         return false
                     }
                 }
@@ -71,14 +74,19 @@ extension TraditionalRulesChessBoard {
         let piece = newBoard.board[start]!
         
         if piece.type == PieceType.pawn, Position.getDisplacement(from: start, to: end) == newBoard.pawnMoveDirection[piece.player]!.scale(by: 2) {
-            newBoard.enPassentPosition = end
+            newBoard.enPassentPositions[piece.player] = end
         } else {
-            newBoard.enPassentPosition = nil
+            newBoard.enPassentPositions.removeValue(forKey: piece.player)
+        }
+        
+        if let captureSquare = move.captureSquare {
+            newBoard.enPassentPositions.removeValue(forKey: board[captureSquare]!.player)
         }
         
         for action in move.actions {
             newBoard.doMoveAction(action)
         }
+        
         return newBoard
     }
     
@@ -86,7 +94,7 @@ extension TraditionalRulesChessBoard {
         switch action {
         case .remove(let position):
             assert(board[position] != nil)
-            board[position] = nil
+            board.removeValue(forKey: position)
         case .spawn(let position, let piece):
             assert(board[position] == nil && positionInBounds(position))
             board[position] = piece
@@ -94,8 +102,12 @@ extension TraditionalRulesChessBoard {
             assert(board[start] != nil)
             assert(board[end] == nil, "\(String(describing: board[end])) && \(end)")
             assert(positionInBounds(end))
-            if board[start]!.type == .king {
-                kingPosition[board[start]!.player] = end
+            let piece = board[start]!
+            if piece.type == .king {
+                kingPosition[piece.player] = end
+                hasKingMoved[piece.player]! = true
+            } else if board[start]!.type == PieceType.rook {
+                castleableRooks[piece.player]!.remove(start)
             }
             board[end] = board.removeValue(forKey: start)
         }
@@ -130,9 +142,39 @@ extension TraditionalRulesChessBoard {
         return moves
     }
     
+    //MARK: TODO – Fix this code because it is ugly! Will need to make the Position and Displacement structures' code better and more clear
     func getCastleMoves(from start: Position) -> [Move] {
-        let moves = [Move]()
-        // MARK: TODO Generate castle moves.
+        guard board[start]!.type == PieceType.king else { return [Move]() }
+        var moves = [Move]()
+        let king = board[start]!
+        for position in castleableRooks[king.player]! {
+            assert(start.row == position.row || start.column == position.column)
+            let kingMoveDirection = Position.getDisplacement(from: start, to: position)
+            let normDirection = kingMoveDirection.normalize
+            var target = start.shift(by: normDirection)
+            var isClear = true
+            for _ in 1..<(kingMoveDirection.scale) {
+                if board[target] != nil {
+                    isClear = false
+                    break
+                }
+                target = target.shift(by: normDirection)
+            }
+            if isClear {
+                target = start
+                var isSafe = true
+                for _ in 0..<((kingMoveDirection.scale + 1) / 2) {
+                    if !isPositionSafe(target, for: king.team) {
+                        isSafe = false
+                        break
+                    }
+                    target = target.shift(by: normDirection)
+                }
+                if isSafe {
+                    moves += [Move(actions: [MoveAction.travel(from: start, to: target), MoveAction.travel(from: position, to: target.shift(by: normDirection.scale(by: -1)))])]
+                }
+            }
+        }
         return moves
     }
     
@@ -147,9 +189,13 @@ extension TraditionalRulesChessBoard {
         if let captee = board[upperRight], captee.team != pawn.team {
             moves.append(Move.getCaptureMove(from: start, to: upperRight))
         } else {
-            let right = start.shift(by: displacement.rotatedClockwise.rotatedClockwise)
-            if positionInBounds(upperRight), board[upperRight] == nil, right == enPassentPosition {
-                moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: right))
+            for enPassentPosition in enPassentPositions.values {
+                if pawn.team != board[enPassentPosition]!.team {
+                    let right = start.shift(by: displacement.rotatedClockwise.rotatedClockwise)
+                    if positionInBounds(upperRight), board[upperRight] == nil, right == enPassentPosition {
+                        moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: right))
+                    }
+                }
             }
         }
         
@@ -157,9 +203,13 @@ extension TraditionalRulesChessBoard {
         if let captee = board[upperLeft], captee.team != pawn.team {
             moves.append(Move.getCaptureMove(from: start, to: upperLeft))
         } else {
-            let left = start.shift(by: displacement.rotatedCounterClockwise.rotatedCounterClockwise)
-            if positionInBounds(upperLeft), board[upperLeft] == nil, left == enPassentPosition {
-                moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: left))
+            for enPassentPosition in enPassentPositions.values {
+                if pawn.team != board[enPassentPosition]!.team {
+                    let left = start.shift(by: displacement.rotatedCounterClockwise.rotatedCounterClockwise)
+                    if positionInBounds(upperLeft), board[upperLeft] == nil, left == enPassentPosition {
+                        moves.append(Move.getEnPassentMove(from: start, to: upperRight, capturing: left))
+                    }
+                }
             }
         }
         

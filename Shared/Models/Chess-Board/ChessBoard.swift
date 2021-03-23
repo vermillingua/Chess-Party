@@ -12,8 +12,6 @@ protocol ChessBoard {
     var rows: Int { get }
     var columns: Int { get }
     static var gameType: ChessGameType { get }
-    
-    var enPassentPosition: Position? { get set } // MARK: TODO Make this a PlayerID dictionary.
 
     func getMoves(from position: Position) -> [Move]
     func doMove(_ move: Move) -> ChessBoard

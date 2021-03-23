@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Position: Hashable, Identifiable, CustomStringConvertible {
+struct Position: Hashable, Identifiable, CustomStringConvertible, Codable {
     var row, column: Int
     
     var id: Int {
@@ -27,7 +27,7 @@ struct Position: Hashable, Identifiable, CustomStringConvertible {
     static func ==(lhs: Position, rhs: Position) -> Bool { lhs.column == rhs.column && lhs.row == rhs.row}
 }
 
-struct Displacement: Equatable {
+struct Displacement: Equatable, Codable {
     static let north = Displacement(x:  0, y:  -1)
     static let south = Displacement(x:  0, y:  1)
     static let east  = Displacement(x:  1, y:  0)
@@ -41,7 +41,11 @@ struct Displacement: Equatable {
     
     var x, y: Int
     
-    private var scale: Int { abs(x) + abs(y) }
+    var scale: Int { abs(x) + abs(y) }
+    
+    var normalize: Displacement {
+        Displacement(x: sign(x), y: sign(y))
+    }
     
     var rotatedClockwise: Displacement {
         Displacement(x: (x - y) / scale, y: (x + y) / scale)
@@ -58,4 +62,8 @@ struct Displacement: Equatable {
     static func +(right: Displacement, left: Displacement) -> Displacement {
         Displacement(x: right.x + left.x, y: right.y + left.y)
     }
+}
+
+fileprivate func sign(_ num: Int) -> Int {
+    num < 0 ? -1 : (num > 0 ? 1 : 0)
 }

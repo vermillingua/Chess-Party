@@ -28,7 +28,6 @@ struct Move: CustomStringConvertible {
         return destination!
     }
     
-    // Potential problem if pawn double jumps into promotion square
     var primaryStart: Position {
         var destination: Position?
         forloop: for action in actions {

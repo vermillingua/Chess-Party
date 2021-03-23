@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Piece: Identifiable {
+struct Piece: Identifiable, Codable {
     var player: PlayerID
     var team: TeamID
     var type: PieceType
@@ -33,7 +33,7 @@ struct Piece: Identifiable {
     //MARK: TODO Add easier constructor?
 }
 
-enum PieceType {
+enum PieceType: String, Codable {
     case pawn
     case knight
     case bishop
