@@ -18,7 +18,7 @@ struct BattleGameView: View {
     
     var body: some View {
         GeometryReader { reader in
-            if reader.size.reccomendedLayoutOrientation == LayoutOrientation.vertical {
+            if reader.size.reccomendedLayoutOrinetationForShape(width: (CGFloat)(game.chessBoard.columns), height: (CGFloat)(game.chessBoard.rows)) == .vertical {
                 verticalLayout
             } else {
                 horizontalLayout
@@ -31,13 +31,23 @@ struct BattleGameView: View {
         let currentPlayer = game.currentPlayer
         let firstPlayer = game.players[0]
         let secondPlayer = game.players[1]
+        let thirdPlayer = game.players[2]
+        let fourthPlayer = game.players[3]
         return HStack {
             Spacer()
             VStack (alignment: .center) {
                 Spacer()
-                PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity)
+                HStack {
+                    PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity)
+                    Spacer()
+                    PlayerInfoView(player: fourthPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == fourthPlayer.identity)
+                }
                 boardView.layoutPriority(1).background(Color.black)
-                PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
+                HStack {
+                    PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
+                    Spacer()
+                    PlayerInfoView(player: thirdPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == thirdPlayer.identity)
+                }
                 Spacer()
             }
             Spacer()
@@ -48,6 +58,8 @@ struct BattleGameView: View {
         let currentPlayer = game.currentPlayer
         let firstPlayer = game.players[0]
         let secondPlayer = game.players[1]
+        let thirdPlayer = game.players[2]
+        let fourthPlayer = game.players[3]
         return HStack {
             Spacer()
             VStack {
@@ -56,6 +68,11 @@ struct BattleGameView: View {
                 PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
             }
             boardView.layoutPriority(1)
+            VStack {
+                PlayerInfoView(player: fourthPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == fourthPlayer.identity)
+                Spacer()
+                PlayerInfoView(player: thirdPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == thirdPlayer.identity)
+            }
             Spacer()
         }
         

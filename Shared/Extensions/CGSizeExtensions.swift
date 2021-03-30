@@ -21,7 +21,11 @@ extension CGSize {
         CGSize(width: width*multipler, height: height*multipler)
     }
     
-    var reccomendedLayoutOrientation: LayoutOrientation {
+    var reccomendedLayoutOrientationForSquare: LayoutOrientation {
         (height > width ? .vertical : .horizontal)
+    }
+    
+    func reccomendedLayoutOrinetationForShape(width: CGFloat, height: CGFloat) -> LayoutOrientation {
+        (height / width < self.height / self.width ? .vertical : .horizontal)
     }
 }

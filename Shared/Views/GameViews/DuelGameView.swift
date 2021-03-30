@@ -18,7 +18,7 @@ struct DuelGameView: View {
     
     var body: some View {
         GeometryReader { reader in
-            if reader.size.reccomendedLayoutOrientation == LayoutOrientation.vertical {
+            if reader.size.reccomendedLayoutOrientationForSquare == LayoutOrientation.vertical {
                 verticalLayout
             } else {
                 horizontalLayout
