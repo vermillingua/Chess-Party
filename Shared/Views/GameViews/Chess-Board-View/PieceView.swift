@@ -46,6 +46,6 @@ struct PieceView: View {
     
     var image: some View {
         settings.theme.pieceImageGetter(renderablePiece.piece.type, renderablePiece.piece.player).resizable()
-            .frame(width: size.width, height: size.height, alignment: .center)
+            .frame(width: size.width*settings.theme.pieceSizePorportion, height: size.height*settings.theme.pieceSizePorportion, alignment: .center)
     }
 }

@@ -15,6 +15,7 @@ struct Theme {
     
     typealias PieceImageGetter = (PieceType, PlayerID) -> Image
     let pieceImageGetter: PieceImageGetter
+    let pieceSizePorportion: CGFloat
     
     typealias SelectionColorGetter = (ChessGame.SelectionType) -> Color
     let selectionColorGetter: SelectionColorGetter
@@ -56,6 +57,7 @@ struct Theme {
         primaryBoardColor: Color = Color.init(red: 62/255, green: 40/255, blue: 104/255),
         secondaryBoardColor: Color = Color.init(red: 67/255, green: 145/255, blue: 199/255),
         pieceImageGetter: @escaping PieceImageGetter = Theme.defaultPieceImageGetter,
+
         selectionColorGetter: @escaping SelectionColorGetter = Theme.defaultSelectionColorGetter,
         selectionBorderWidth: CGFloat = 5) {
         
@@ -63,6 +65,7 @@ struct Theme {
         self.primaryBoardColor = primaryBoardColor
         self.secondaryBoardColor = secondaryBoardColor
         self.pieceImageGetter = pieceImageGetter
+        self.pieceSizePorportion = 0.9
         self.selectionColorGetter = selectionColorGetter
         self.selectionBorderWidth = selectionBorderWidth
     }
@@ -81,12 +84,12 @@ private struct ThemeFactory {
     static func themeD() -> Theme {
         let getPieceImage: (PieceType, PlayerID) -> Image = { (pieceType, playerID) in
             switch pieceType {
-            case .bishop: return Image("Theme-D-\(playerID.id%2)-Bishop")
-            case .knight: return Image("Theme-D-\(playerID.id%2)-Knight")
-            case .rook: return Image("Theme-D-\(playerID.id%2)-Rook")
-            case .pawn: return Image("Theme-D-\(playerID.id%2)-Pawn")
-            case .queen: return Image("Theme-D-\(playerID.id%2)-Queen")
-            case .king: return Image("Theme-D-\(playerID.id%2)-King")
+            case .bishop: return Image("Theme-D-\(playerID.id)-Bishop")
+            case .knight: return Image("Theme-D-\(playerID.id)-Knight")
+            case .rook: return Image("Theme-D-\(playerID.id)-Rook")
+            case .pawn: return Image("Theme-D-\(playerID.id)-Pawn")
+            case .queen: return Image("Theme-D-\(playerID.id)-Queen")
+            case .king: return Image("Theme-D-\(playerID.id)-King")
             }
         }
         let selectionColorGetter: Theme.SelectionColorGetter = { type in

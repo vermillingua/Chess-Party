@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 402 479" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-56,-10)">
+        <g id="Bishop" transform="matrix(5.44373,0,0,5.44373,-2192.7,-555.608)">
+            <path d="M444.816,142.049C441.045,164.212 431.351,180 420,180L419.922,180L420,180C417.24,180 415,182.24 415,185C415,187.76 417.24,190 420,190L480,190C482.76,190 485,187.76 485,185C485,182.24 482.76,180 480,180L479.922,180L480,180C468.588,180 458.851,164.041 455.123,141.69" style="fill:white;stroke:black;stroke-width:3.67px;"/>
+            <g transform="matrix(0.99821,-0.0598032,0.0598032,0.99821,-2.27345,28.6873)">
+                <path d="M440.269,159.169C436.631,168.699 431.639,175.63 425.951,178.516" style="fill:white;stroke:black;stroke-width:3.67px;"/>
+            </g>
+            <g transform="matrix(0.694444,0,0,0.694444,68.0556,50.1821)">
+                <path d="M563.394,104.669C566.027,108.06 567.998,112.055 568,118C568.004,127.934 559.934,136 550,136C540.066,136 532.012,127.934 532,118C531.978,99.978 550.005,100.014 550,80C549.973,89.705 554.218,94.685 558.597,99.323L549,108.92L554.071,113.991L563.394,104.669" style="fill:white;stroke:black;stroke-width:5.29px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
