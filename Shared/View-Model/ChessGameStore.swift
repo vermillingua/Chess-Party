@@ -18,7 +18,7 @@ class ChessGameStore: ObservableObject {
         let remone = PlayerBuilder(name: "Remone", type: .remote,  team: TeamID(id: 1))
         let teamy = PlayerBuilder(name: "Teamy", type: .onDevice,  team: TeamID(id: 0))
         let enimy = PlayerBuilder(name: "Enimy", type: .computer,  team: TeamID(id: 1))
-        let otherEnemy = PlayerBuilder(name: "Other Enimy", type: .computer,  team: TeamID(id: 1))
+        let otherEnemy = PlayerBuilder(name: "Other Enimy with a very long name", type: .computer,  team: TeamID(id: 1))
         currentGames = [
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, chester]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy]),

@@ -15,12 +15,18 @@ struct PlayerInfoView: View {
     
     @ViewBuilder
     var body: some View {
-        layout
-            .padding(5)
-            .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth: 4)
-                .opacity(currentPlayer ? 1 : 0))
+        border
+    }
+    
+    var border: some View {
+        HStack {
+            layout
+                .padding(5)
+                .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(lineWidth: 4)
+                    .opacity(currentPlayer ? 1 : 0))
+        }
     }
     
     @ViewBuilder
@@ -72,13 +78,13 @@ struct PlayerInfoView: View {
     
     var playerIcon: some View {
         player.icon
-            .font(.largeTitle)
+            .font(.body)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .shadow(radius: 50)
     }
     
     var playerNameLabel: some View {
-        Text(player.name).font(.largeTitle).fixedSize()
+        Text(player.name).font(.body)
     }
     
     
