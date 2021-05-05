@@ -11,7 +11,7 @@ struct BattleGameView: View {
     @ObservedObject var game: ChessGame
     var boardView: ChessBoardView
     var horizontalOffsets: CGSize {
-        return CGSize(width: 150, height: 0)
+        return CGSize(width: 150, height: 20)
 //        var maxLength = 5
 //        for player in boardView.chessGame.players {
 //            maxLength = max(maxLength, player.name.count)
