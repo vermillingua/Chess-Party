@@ -17,7 +17,14 @@ struct DuelGameView: View {
     }
     
     var horizontalOffsets: CGSize {
-        CGSize(width: 100, height: 0)
+        return CGSize(width: 150, height: 0)
+//        var maxLength = 5
+//        for player in boardView.chessGame.players {
+//            maxLength = max(maxLength, player.name.count)
+//        }
+//        maxLength = min(maxLength*8+20+20, 150)
+//        print(maxLength)
+//        return CGSize(width: maxLength, height: 0)
     }
     var verticalOffsets: CGSize {
         CGSize(width: 0, height: 25+10)

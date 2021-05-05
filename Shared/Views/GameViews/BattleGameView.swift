@@ -11,10 +11,17 @@ struct BattleGameView: View {
     @ObservedObject var game: ChessGame
     var boardView: ChessBoardView
     var horizontalOffsets: CGSize {
-        CGSize(width: 100, height: 0)
+        return CGSize(width: 150, height: 0)
+//        var maxLength = 5
+//        for player in boardView.chessGame.players {
+//            maxLength = max(maxLength, player.name.count)
+//        }
+//        maxLength = min(maxLength*8+20+20, 150)
+//        print(maxLength)
+//        return CGSize(width: maxLength, height: 0)
     }
     var verticalOffsets: CGSize {
-        CGSize(width: 0, height: 25)
+        CGSize(width: 0, height: 35)
     }
     var scrollThreshold: CGFloat {
         800
@@ -36,7 +43,7 @@ struct BattleGameView: View {
             } else {
                 horizontalLayout(readerSize: reader.size)
             }
-        }.padding()
+        }
     }
     
     func verticalLayout(readerSize: CGSize) -> some View {
@@ -49,9 +56,9 @@ struct BattleGameView: View {
             VStack (alignment: .center, spacing: 0) {
                 Spacer()
                 HStack {
-                    PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: true, currentPlayer: currentPlayer?.identity == secondPlayer.identity)
+                    PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: true, currentPlayer: currentPlayer?.identity == secondPlayer.identity).padding(Edge.Set.leading, 5.0)
                     Spacer()
-                    PlayerInfoView(player: fourthPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == fourthPlayer.identity)
+                    PlayerInfoView(player: fourthPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == fourthPlayer.identity).padding(Edge.Set.trailing, 5.0)
                 }.frame(height: verticalOffsets.height)
                 
                 if (readerSize.width < scrollThreshold) {
@@ -64,9 +71,9 @@ struct BattleGameView: View {
                     boardView.layoutPriority(1)
                 }
                 HStack {
-                    PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: true, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
+                    PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: true, currentPlayer: currentPlayer?.identity == firstPlayer.identity).padding(Edge.Set.leading, 5.0)
                     Spacer()
-                    PlayerInfoView(player: thirdPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == thirdPlayer.identity)
+                    PlayerInfoView(player: thirdPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == thirdPlayer.identity).padding(Edge.Set.trailing, 5.0)
                 }.frame(height: verticalOffsets.height)
                 Spacer()
             }

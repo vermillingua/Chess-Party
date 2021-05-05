@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainMenu: View {
     @ObservedObject var chessGameStore = ChessGameStore.instance
-    @State var selectedGame: UUID?
+    
     
     var body: some View {
         List {
@@ -17,9 +17,6 @@ struct MainMenu: View {
             currentGameLinks()
             finishedGames()
         }
-        .onAppear(perform: {
-            selectedGame = chessGameStore.currentGames.first?.id
-        })
     }
     
     private func newGameLinks() -> some View {
@@ -33,11 +30,7 @@ struct MainMenu: View {
         let current = chessGameStore.currentGames.filter {!$0.gameState.gameOver}
         return Section (header: Text("Current Games")) {
             ForEach (current) { game in
-                if game === current.last {
-                    currentGameLink(game: game)
-                } else {
-                    currentGameLink(game: game)
-                }
+                currentGameLink(game: game)
             }
         }
     }
@@ -56,7 +49,7 @@ struct MainMenu: View {
     }
     
     private func currentGameLink(game: ChessGame) -> some View {
-        NavigationLink(destination: gameView(forGame: game), tag: game.id, selection: self.$selectedGame) {
+        return NavigationLink(destination: gameView(forGame: game), tag: game.id, selection: self.$chessGameStore.selectedGame) {
             HStack {
                 game.gameType.icon
                 Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove() ? .bold : .regular))

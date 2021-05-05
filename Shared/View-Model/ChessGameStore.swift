@@ -9,6 +9,11 @@ import Foundation
 
 class ChessGameStore: ObservableObject {
     static var instance: ChessGameStore = ChessGameStore()
+    var selectedGame: UUID? {
+        didSet {
+            objectWillChange.send()
+        }
+    }
 
     @Published var currentGames: [ChessGame]
 
@@ -23,11 +28,13 @@ class ChessGameStore: ObservableObject {
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, chester]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, remone]),
-            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy, teamy, otherEnemy]),
+            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, enimy, teamy, otherEnemy]),
             ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [remone, you]),
             ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, chester, enimy, otherEnemy])
         ]
+        selectedGame = currentGames.first?.id
     }
+    
     
     func gameWillChange() {
         objectWillChange.send()

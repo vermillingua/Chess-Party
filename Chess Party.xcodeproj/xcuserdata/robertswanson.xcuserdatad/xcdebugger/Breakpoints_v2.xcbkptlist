@@ -270,5 +270,163 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC8D874B-E6DD-444F-B12C-713E302E8A81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/View-Model/ChessGameStore.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "073EE431-437D-42C5-8428-F82CC0E30170"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/View-Model/ChessGameStore.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "selectedGame"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 56f987628a02c328"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGameStore.selectedGame.getter : Swift.Optional&lt;Foundation.UUID&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGameStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 591817e731d494d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGameStore.selectedGame.setter : Swift.Optional&lt;Foundation.UUID&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGameStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "209">
+               </Location>
+               <Location
+                  uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 7b474d0d7ed55f9f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGameStore.selectedGame.modify : Swift.Optional&lt;Foundation.UUID&gt;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGameStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 8012380170abcade"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.ChessGameStore.selectedGame.modify : Swift.Optional&lt;Foundation.UUID&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/View-Model/ChessGameStore.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "10">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E742F676-7C5D-426A-89F3-A40E7A78A165"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Views/Menus/MainMenu.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "currentGameLinks()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E742F676-7C5D-426A-89F3-A40E7A78A165 - 4022f6886fa3e68f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chess_Party.MainMenu.(currentGameLinks in _105C15BE1C87FFF46AAE6B2B599BC502)() -&gt; some"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/Menus/MainMenu.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  uuid = "E742F676-7C5D-426A-89F3-A40E7A78A165 - 8d8486169b0829ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Chess_Party.ChessGame) -&gt; Swift.Bool in Chess_Party.MainMenu.(currentGameLinks in _105C15BE1C87FFF46AAE6B2B599BC502)() -&gt; some"
+                  moduleName = "Chess Party"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/robertswanson/dev/Chess-Party/Shared/Views/Menus/MainMenu.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69E4C2A8-C77D-4837-B262-5219F6628E1C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shared/Views/GameViews/DuelGameView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "horizontalOffsets"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
