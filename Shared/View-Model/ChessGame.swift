@@ -285,7 +285,6 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             for player in players {
                 if chessBoard.isKingInCheck(player: player.identity) {
                     playersInCheck.insert(player.identity)
-    //                warningPositions.insert(chessBoard.getKingPosition(forPlayer: player))
                 }
             }
             
@@ -293,12 +292,14 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 gameState = .waitingOnPlayer(player: next)
             } else {
                 if playersInCheck.contains(next.identity) {
-                    eliminatePlayer(playerID: next.identity) // Player eliminated when can't make a move and in check
+//                    eliminatePlayer(playerID: next.identity)
+                    eliminateTeam(teamID: next.team) // Player eliminated when can't make a move and in check
                 } else {
                     if players.count == 2 {
                         gameState = .endedStalemate // 1v1 Games stalemated when player can't make move and isn't in check
                     } else {
-                        eliminatePlayer(playerID: next.identity) // Non 1v1 games eliminate player when they can't make a move
+//                        eliminatePlayer(playerID: next.identity)
+                        eliminateTeam(teamID: next.team) // Non 1v1 games eliminate player when they can't make a move
                     }
                 }
             }
@@ -320,6 +321,14 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             gameState = .endedStalemate
         } else {
             updateGameState()
+        }
+    }
+    
+    func eliminateTeam(teamID: TeamID) {
+        for player in players.filter({player in player.team == teamID}) {
+            if !player.hasBeenEliminated {
+                eliminatePlayer(playerID: player.identity)
+            }
         }
     }
     
