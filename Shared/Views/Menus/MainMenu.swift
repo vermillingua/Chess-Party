@@ -23,6 +23,7 @@ struct MainMenu: View {
         Section (header: Text("New Game")) {
             newGameLink(forGameType: .duel)
             newGameLink(forGameType: .battle)
+            newGameLink(forGameType: .plusWar)
         }
     }
     
@@ -69,6 +70,8 @@ struct MainMenu: View {
         } else if game.gameType == .battle {
            // TODO: Implement
             BattleGameView(game: game)
+        } else if game.gameType == .plusWar {
+            PlusWarGameView(game: game)
         }
     }
     

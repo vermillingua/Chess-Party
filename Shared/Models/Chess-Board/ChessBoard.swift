@@ -18,10 +18,7 @@ protocol ChessBoard {
     func isKingInCheck(player: PlayerID) -> Bool
     func canPlayerMakeMove(player: PlayerID) -> Bool
     func getPositionName(_ position: Position) -> String
+    func positionInBounds(_ position: Position) -> Bool
 }
 
-extension ChessBoard {
-    func positionInBounds(_ position: Position) -> Bool {
-        return position.row >= 0 && position.row < rows && position.column >= 0 && position.column < columns
-    }
-}
+

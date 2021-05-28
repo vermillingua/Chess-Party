@@ -25,6 +25,10 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
     let rows: Int = 8
     let columns: Int = 8
     
+    func positionInBounds(_ position: Position) -> Bool {
+        return position.row >= 0 && position.row < rows && position.column >= 0 && position.column < columns
+    }
+    
     let pawnMoveDirection: [PlayerID : Displacement] = [player1: .north, player2: .south]
     
     let pawnDoubleJumpPositions: [PlayerID : Set<Position>] =

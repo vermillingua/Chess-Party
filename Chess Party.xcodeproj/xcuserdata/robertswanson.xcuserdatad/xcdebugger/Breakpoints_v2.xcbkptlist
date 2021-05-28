@@ -62,8 +62,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "isWaitingOnUserToMakeMove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Shared/Views/GameViews/Chess-Board-View/ChessBoardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "handleGameOver()"
             landmarkType = "7">
          </BreakpointContent>
@@ -232,8 +232,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "handleTappedPotentialMove(atPosition:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -280,8 +280,8 @@
             filePath = "Shared/View-Model/ChessGameStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -374,8 +374,8 @@
             filePath = "Shared/Views/Menus/MainMenu.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "currentGameLinks()"
             landmarkType = "7">
             <Locations>
@@ -438,8 +438,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "updateGameState()"
             landmarkType = "7">
          </BreakpointContent>
@@ -473,22 +473,6 @@
             startingLineNumber = "117"
             endingLineNumber = "117"
             landmarkName = "getMoves(from:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B13F9370-1EFC-47F3-A610-741183CCAD78"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/View-Model/ChessGame.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "init(chessBoard:playerBuilders:id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

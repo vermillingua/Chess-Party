@@ -81,6 +81,8 @@
 		EB869E5825C26190005F683B /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E5625C2618F005F683B /* CGSizeExtensions.swift */; };
 		EB869E6D25C28397005F683B /* SelectTileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */; };
 		EB869E6E25C28397005F683B /* SelectTileViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */; };
+		EB8DFEA426617F4D004E49FC /* PlusWarGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DFEA326617F4D004E49FC /* PlusWarGameView.swift */; };
+		EB8DFEA526617F4D004E49FC /* PlusWarGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8DFEA326617F4D004E49FC /* PlusWarGameView.swift */; };
 		EBA7114225ACED3E00EA6F79 /* Theme-D.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */; };
 		EBA7114325ACED3E00EA6F79 /* Theme-D.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */; };
 		EBA7114A25ACEDAF00EA6F79 /* Theme-R.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */; };
@@ -163,6 +165,7 @@
 		EB7EAA8C25C25E5F00CC4D3E /* PlayerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBuilder.swift; sourceTree = "<group>"; };
 		EB869E5625C2618F005F683B /* CGSizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
 		EB869E6C25C28396005F683B /* SelectTileViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTileViewModifier.swift; sourceTree = "<group>"; };
+		EB8DFEA326617F4D004E49FC /* PlusWarGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusWarGameView.swift; sourceTree = "<group>"; };
 		EBA285DB25A64DA40010AEBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EBA7114125ACED3E00EA6F79 /* Theme-D.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-D.xcassets"; sourceTree = "<group>"; };
 		EBA7114925ACEDAF00EA6F79 /* Theme-R.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Theme-R.xcassets"; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 				EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */,
 				EBF7574F25BD3D350042CF57 /* DuelGameView.swift */,
 				EBB1E56A260A6E0A00066F3B /* BattleGameView.swift */,
+				EB8DFEA326617F4D004E49FC /* PlusWarGameView.swift */,
 				EB601C9425B0F1A000EEFACF /* Chess-Board-View */,
 			);
 			path = GameViews;
@@ -601,6 +605,7 @@
 				ABE50CA525A914F80093AE52 /* Position.swift in Sources */,
 				EBAE198C25B78431008AF991 /* BattleGameMaker.swift in Sources */,
 				EB869E5725C26190005F683B /* CGSizeExtensions.swift in Sources */,
+				EB8DFEA426617F4D004E49FC /* PlusWarGameView.swift in Sources */,
 				AB824B6725A643D900C5A513 /* ChessPartyApp.swift in Sources */,
 				EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
@@ -641,6 +646,7 @@
 				EBAE198D25B78431008AF991 /* BattleGameMaker.swift in Sources */,
 				AB824B6825A643D900C5A513 /* ChessPartyApp.swift in Sources */,
 				EB869E5825C26190005F683B /* CGSizeExtensions.swift in Sources */,
+				EB8DFEA526617F4D004E49FC /* PlusWarGameView.swift in Sources */,
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,

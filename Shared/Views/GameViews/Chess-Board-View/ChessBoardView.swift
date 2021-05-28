@@ -125,7 +125,12 @@ struct ChessBoardView: View {
     }
 
     func getTileType(atPosition position: Position) -> TileView.TileType {
-        (position.row + position.column) % 2 == 0 ? TileView.TileType.primary : TileView.TileType.secondary
+        if !chessGame.chessBoard.positionInBounds(position) {
+            return TileView.TileType.outOfBounds
+        }
+        else {
+            return (position.row + position.column) % 2 == 0 ? TileView.TileType.primary : TileView.TileType.secondary
+        }
     }
     
 

@@ -66,10 +66,16 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         gameType = type(of: chessBoard).gameType
         gameState = .paused
 
+        
         // Initialize Players
         players = []
         let playerCount = playerBuilders.count
+        var i = 0
+
         for builder in playerBuilders {
+            assert(builder.team == gameType.expectedTeamIDs[i], "Incorrect team ID's for game type \(gameType) for game: \(self)")
+            i+=1
+
             let nextPlayer = (players.count == playerCount-1) ? 0 : players.count+1
             let previousPlayer = players.isEmpty ? playerCount-1 : players.count-1
             let responseHandler: PlayerResponseHandler = {move in self.handleMove(move)}

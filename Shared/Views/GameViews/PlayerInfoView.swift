@@ -21,6 +21,7 @@ struct PlayerInfoView: View {
     var border: some View {
         HStack {
             layout
+                .opacity(player.hasBeenEliminated ? 0.80 : 1.0)
                 .padding(5)
                 .overlay(
                 RoundedRectangle(cornerRadius: 5)

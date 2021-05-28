@@ -45,7 +45,7 @@ struct PlayerID: Hashable, Codable {
     var index: Int { id }
 }
 
-struct TeamID: Hashable, Codable {
+struct TeamID: Hashable, Codable, Equatable {
     var id: Int
 }
 

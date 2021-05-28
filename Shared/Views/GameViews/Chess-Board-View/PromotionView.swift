@@ -23,6 +23,6 @@ struct PromotionView: View {
                         pieceSelectionHandler(pieceTypes[i]) 
                     }
             }
-        }
+        }.padding()
     }
 }
