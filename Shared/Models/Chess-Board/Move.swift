@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Move: CustomStringConvertible {
+struct Move: CustomStringConvertible, Codable {
     private(set) var actions: [MoveAction]
     
     /// The first travel actions's destination in the move. Note: Moves with multiple travel actions must order those MoveActions correctly.
@@ -80,7 +80,58 @@ struct Move: CustomStringConvertible {
     }
 }
 
-enum MoveAction: CustomStringConvertible {
+enum MoveAction: CustomStringConvertible, Codable {
+    private enum codingKeys: String, CodingKey {
+        case kind
+        case from
+        case to
+        case at
+        case piece
+    }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: codingKeys.self)
+        
+        if let kind = try? container.decode(Int.self, forKey: .kind) {
+            switch kind {
+            case 0:
+                if let from = try? container.decode(Position.self, forKey: .from), let to = try? container.decode(Position.self, forKey: .to) {
+                    self = .travel(from: from, to: to)
+                    return
+                }
+            case 1:
+                if let at = try? container.decode(Position.self, forKey: .at) {
+                    self = .remove(at: at)
+                    return
+                }
+            case 2:
+                if let at = try? container.decode(Position.self, forKey: .at), let piece = try? container.decode(Piece.self, forKey: .piece) {
+                    self = .spawn(at: at, piece: piece)
+                    return
+                }
+            default:
+                throw DecodingError.dataCorruptedError(forKey: codingKeys.kind, in: container, debugDescription: "Out of bounds move action kind")
+            }
+        }
+        throw DecodingError.dataCorruptedError(forKey: codingKeys.kind, in: container, debugDescription: "No move action kind defined")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: codingKeys.self)
+        switch self {
+        case .travel(let from, let to):
+            try container.encode(0, forKey: .kind)
+            try container.encode(from, forKey: .from)
+            try container.encode(to, forKey: .to)
+        case .remove(let at):
+            try container.encode(1, forKey: .kind)
+            try container.encode(at, forKey: .at)
+        case .spawn(let at, let piece):
+            try container.encode(2, forKey: .kind)
+            try container.encode(at, forKey: .at)
+            try container.encode(piece, forKey: .piece)
+        }
+    }
+    
     case travel(from: Position, to: Position)
     case remove(at: Position)
     case spawn(at: Position, piece: Piece)

@@ -62,8 +62,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "isWaitingOnUserToMakeMove()"
             landmarkType = "7">
          </BreakpointContent>
@@ -225,22 +225,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DEA6E8A3-8D01-4E8E-B559-23CB85948DBA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/View-Model/ChessGame.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "handleTappedPotentialMove(atPosition:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AAEC5433-4340-4A77-AC06-754F4BC478F9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -333,7 +317,7 @@
                </Location>
                <Location
                   uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 7b474d0d7ed55f9f"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Chess_Party.ChessGameStore.selectedGame.modify : Swift.Optional&lt;Foundation.UUID&gt;"
@@ -344,7 +328,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "18">
                </Location>
                <Location
                   uuid = "073EE431-437D-42C5-8428-F82CC0E30170 - 8012380170abcade"
@@ -438,8 +422,8 @@
             filePath = "Shared/View-Model/ChessGame.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "updateGameState()"
             landmarkType = "7">
          </BreakpointContent>

@@ -19,7 +19,7 @@ struct PlayerBuilder {
             return OnDevicePlayer(name: name,
                                   identity: PlayerID(id: atIndex),
                                   team: team,
-                                  icon: icon ?? Image(systemName: "person"),
+                                  icon: PlayerIcon(systemString: "person"),
                                   nextPlayer: PlayerID(id: nextPlayerIndex),
                                   previousPlayer: PlayerID(id: previousPlayer),
                                   playerResponseHandler: responseHandler)
@@ -27,7 +27,7 @@ struct PlayerBuilder {
             return ComputerPlayer(name: name,
                                   identity: PlayerID(id: atIndex),
                                   team: team,
-                                  icon: icon ?? Image(systemName: "desktopcomputer"),
+                                  icon: PlayerIcon(systemString: "desktopcomputer"),
                                   nextPlayer: PlayerID(id: nextPlayerIndex),
                                   previousPlayer: PlayerID(id: previousPlayer),
                                   playerResponseHandler: responseHandler)
@@ -35,7 +35,7 @@ struct PlayerBuilder {
             return RemotePlayer(name: name,
                                 identity: PlayerID(id: atIndex),
                                 team: team,
-                                icon: icon ?? Image(systemName: "network"),
+                                icon: PlayerIcon(systemString: "network"),
                                 nextPlayer: PlayerID(id: nextPlayerIndex),
                                 previousPlayer: PlayerID(id: previousPlayer),
                                 playerResponseHandler: responseHandler)

@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol ChessBoard {
+protocol ChessBoard: Codable {
     var board: [Position: Piece] { get }
     var rows: Int { get }
     var columns: Int { get }
-    static var gameType: ChessGameType { get }
+    var boardType: ChessBoardType { get }
 
     func getMoves(from position: Position) -> [Move]
     func doMove(_ move: Move) -> ChessBoard
@@ -21,4 +21,6 @@ protocol ChessBoard {
     func positionInBounds(_ position: Position) -> Bool
 }
 
-
+enum ChessBoardType: Codable {
+    case ChessBoard1v1, ChessBoard2v2, ChessBoard1v1v1v1
+}

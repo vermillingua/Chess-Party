@@ -13,7 +13,7 @@ struct RenderablePiece: Identifiable {
     var position: Position
 }
 
-class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
+class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codable {
     // MARK: - Board Identity
     let gameType: ChessGameType
     private(set) var id: UUID
@@ -55,17 +55,24 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         return pieces
     }
     
-    init(chessBoard: ChessBoard, playerBuilders: [PlayerBuilder], id: UUID = UUID()) {
-        self.chessBoard = chessBoard
+    init(type: ChessGameType, playerBuilders: [PlayerBuilder], id: UUID = UUID()) {
         self.id = id
         history = []
         potentialMoveDestinations = []
         warningPositions = []
         lastMoves = []
         playersInCheck = Set<PlayerID>()
-        gameType = type(of: chessBoard).gameType
+        gameType = type
         gameState = .paused
-
+        
+        switch type.associatedBoardType {
+        case .ChessBoard1v1:
+            chessBoard = ChessBoard1v1()
+        case .ChessBoard2v2:
+            chessBoard = ChessBoard2v2()
+        case .ChessBoard1v1v1v1:
+            chessBoard = ChessBoard1v1v1v1()
+        }
         
         // Initialize Players
         players = []
@@ -85,6 +92,59 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         // Set game state and start game
         gameState = .waitingOnPlayer(player: self.players.first!)
         self.players.first!.startMove(withBoard: chessBoard)
+    }
+    
+    enum ChessGameCodingKeys: String, CodingKey {
+        case gameType
+        case id
+        case players
+        case history
+        case playersInCheck
+        case chessBoard
+        case gameState
+        case settings
+        case lastMoves
+        case warningPositions
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ChessGameCodingKeys.self)
+        
+        gameType = try container.decode(ChessGameType.self, forKey: .gameType)
+        id = try container.decode(UUID.self, forKey: .id)
+        var playersContainer = try container.nestedUnkeyedContainer(forKey: .players)
+        players = try PlayerCoder.decodePlayerList(fromContainer: &playersContainer)
+        
+        var historyContainer = try container.nestedUnkeyedContainer(forKey: .history)
+        history = try ChessBoardCoder.decodeChessBoardList(container: &historyContainer, gameType: gameType)
+        
+        playersInCheck = try container.decode(Set<PlayerID>.self, forKey: .playersInCheck)
+        chessBoard = try ChessBoardCoder.decodeKeyed(container: container, key: .chessBoard, gameType: gameType)
+        gameState = try container.decode(GameState.self, forKey: .gameState)
+//        settings
+        lastMoves = try container.decode(Set<Position>.self, forKey: .lastMoves)
+        warningPositions = try container.decode(Set<Position>.self, forKey: .warningPositions)
+        potentialMoveDestinations = []
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: ChessGameCodingKeys.self)
+        
+        try container.encode(gameType, forKey: .gameType)
+        try container.encode(id, forKey: .id)
+        
+        var playerContainer = container.nestedUnkeyedContainer(forKey: .players)
+        try PlayerCoder.encodePlayerList(container: &playerContainer, players: players)
+        
+        var historyContainer = container.nestedUnkeyedContainer(forKey: .history)
+        try ChessBoardCoder.encodeChessBoardList(container: &historyContainer, boards: history)
+        
+        try container.encode(playersInCheck, forKey: .playersInCheck)
+        try ChessBoardCoder.encodeKeyed(container: &container, key: .chessBoard, board: chessBoard)
+        try container.encode(gameState, forKey: .gameState)
+        //            try container.encode(settings, forKey: .settings)
+        try container.encode(lastMoves, forKey: .lastMoves)
+        try container.encode(warningPositions, forKey: .warningPositions)
     }
     
     var description: String {
@@ -130,8 +190,6 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         case warning
         case lastMove
     }
-    
-    
     
     func userTappedPosition(_ position: Position) {
         let animation = Animation.linear(duration: 0.1)
@@ -184,11 +242,6 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
             onDevicePlayer.handleOnDeviceMove(move)
 
         }
-        
-        
-       
-
-
     }
     
     func clearHighlights() {
@@ -213,6 +266,17 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
         }
     }
     
+    func saveGame() {
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = .prettyPrinted
+            let data = try encoder.encode(self)
+            print(String(data: data, encoding: .utf8)!)
+        } catch {
+            print("Encoding error:\n\(error)")
+        }
+    }
+    
     func handleMove(_ move: Move) {
         if let firstPlayer = currentPlayer {
             // Make this move
@@ -232,7 +296,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
 
             if let nextPlayer = currentPlayer {
                 nextPlayer.startMove(withBoard: chessBoard)
-            } 
+            }
+            saveGame()
             objectWillChange.send()
         }
 
@@ -240,7 +305,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     
     // MARK: - States
     
-    enum GameState {
+    enum GameState: Codable {
         case paused
         case waitingOnPlayer(player: Player)
         case endedVictory(forTeam: TeamID)
@@ -278,6 +343,45 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
                 return true
             default:
                 return false
+            }
+        }
+        
+        // Codability
+        enum GameStateCodingKeys: CodingKey {
+            case state, waitingPlayer, winningTeam
+        }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: GameStateCodingKeys.self)
+            
+            let stateIndex = try container.decode(Int.self, forKey: .state)
+            switch stateIndex {
+            case 0:
+                self = .paused
+            case 1:
+                self = .waitingOnPlayer(player: try PlayerCoder.decodeKeyed(container: container, key: .waitingPlayer))
+            case 2:
+                self = .endedVictory(forTeam: try container.decode(TeamID.self, forKey: .winningTeam))
+            case 3:
+                self = .endedStalemate
+            default:
+                throw DecodingError.dataCorruptedError(forKey: .state, in: container, debugDescription: "Unrecognized game state")
+            }
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: GameStateCodingKeys.self)
+            switch self {
+            case .paused:
+                try container.encode(0, forKey: .state)
+            case .waitingOnPlayer(let player):
+                try container.encode(1, forKey: .state)
+                try PlayerCoder.encodeKeyed(container: &container, key: .waitingPlayer, player: player)
+            case .endedVictory(let forTeam):
+                try container.encode(2, forKey: .state)
+                try container.encode(forTeam, forKey: .winningTeam)
+            case .endedStalemate:
+                try container.encode(3, forKey: .state)
             }
         }
     }
@@ -339,5 +443,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable {
     }
     
     var hasDisplayedGameOver = false
+    
+   
 }
 

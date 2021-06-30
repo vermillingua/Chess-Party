@@ -20,7 +20,7 @@ class ChessGameStore: ObservableObject {
     init() {
         let you = PlayerBuilder(name: "You", type: .onDevice, team: TeamID(id: 0))
         let teamy = PlayerBuilder(name: "Teamy", type: .computer,  team: TeamID(id: 0))
-        let A = PlayerBuilder(name: "First", type: .computer,  team: TeamID(id: 0))
+//        let A = PlayerBuilder(name: "First", type: .computer,  team: TeamID(id: 0))
         
         let chester = PlayerBuilder(name: "Chester", type: .computer, team: TeamID(id: 1))
         let remone = PlayerBuilder(name: "Remone", type: .remote,  team: TeamID(id: 1))
@@ -33,11 +33,11 @@ class ChessGameStore: ObservableObject {
         let D = PlayerBuilder(name: "Fourth", type: .computer,  team: TeamID(id: 3))
         
         currentGames = [
-            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, chester]),
-            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, enimy]),
-            ChessGame(chessBoard: ChessBoard1v1(), playerBuilders: [you, remone]),
-            ChessGame(chessBoard: ChessBoard2v2(), playerBuilders: [you, enimy, teamy, otherEnemy]),
-            ChessGame(chessBoard: ChessBoard1v1v1v1(), playerBuilders: [you, B, C, D])
+            ChessGame(type: .duel, playerBuilders: [you, chester]),
+            ChessGame(type: .duel, playerBuilders: [you, enimy]),
+            ChessGame(type: .duel, playerBuilders: [you, remone]),
+            ChessGame(type: .battle, playerBuilders: [you, enimy, teamy, otherEnemy]),
+            ChessGame(type: .plusWar, playerBuilders: [you, B, C, D])
         ]
         selectedGame = currentGames.first?.id
     }

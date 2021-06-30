@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ChessGameType: String, CaseIterable {
+enum ChessGameType: String, CaseIterable, Codable {
     case duel = "Duel"
     case battle = "Battle"
     case plusWar = "Plus War"
@@ -59,6 +59,19 @@ enum ChessGameType: String, CaseIterable {
             return [TeamID(id: 0), TeamID(id: 1), TeamID(id: 2), TeamID(id: 3)]
         }
     }
+    
+    var associatedBoardType: ChessBoardType {
+        switch self {
+        case .duel:
+            return .ChessBoard1v1
+        case .battle:
+            return .ChessBoard2v2
+        case .plusWar:
+            return .ChessBoard1v1v1v1
+        }
+    }
+    
+    
     
 }
 

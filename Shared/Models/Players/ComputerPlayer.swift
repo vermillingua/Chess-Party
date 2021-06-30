@@ -12,12 +12,12 @@ struct ComputerPlayer: Player {
     let type: PlayerType = .computer
     let identity: PlayerID
     let team: TeamID
-    var icon: Image
+    var icon: PlayerIcon
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
-    var previousPlayer: PlayerID
     var lastMove: Move? = nil
-    let playerResponseHandler: PlayerResponseHandler
+    var previousPlayer: PlayerID
+    let playerResponseHandler: PlayerResponseHandler?
     
     
     func startMove(withBoard chessBoard: ChessBoard) {
@@ -32,7 +32,7 @@ struct ComputerPlayer: Player {
         for position in chessBoard.board.keys {
             if let piece = chessBoard.board[position], piece.player == identity {
                 if let move = chessBoard.getMoves(from: position).first {
-                    playerResponseHandler(move)
+                    playerResponseHandler!(move)
                     return
                 }
             }

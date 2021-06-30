@@ -15,8 +15,8 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
     var castleableRooks: [PlayerID : Set<Position>]
     var hasKingMoved: [PlayerID : Bool]
     
-    static var gameType: ChessGameType = .duel
-    
+    let boardType: ChessBoardType = .ChessBoard1v1
+
     // Needed for swift to ignore let constants when encoding/decoding
     private enum CodingKeys: String, CodingKey {
         case board, kingPosition, enPassentPositions, castleableRooks, hasKingMoved

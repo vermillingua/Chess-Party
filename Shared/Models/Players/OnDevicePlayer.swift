@@ -12,17 +12,17 @@ struct OnDevicePlayer: Player {
     let type: PlayerType = .onDevice
     let identity: PlayerID
     let team: TeamID
-    var icon: Image
+    var icon: PlayerIcon
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
     var lastMove: Move? = nil
     var previousPlayer: PlayerID
-    let playerResponseHandler: PlayerResponseHandler
+    let playerResponseHandler: PlayerResponseHandler?
 
     func startMove(withBoard board: ChessBoard) {
     }
     
     func handleOnDeviceMove(_ move: Move) {
-        playerResponseHandler(move)
+        playerResponseHandler!(move)
     }
 }

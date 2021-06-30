@@ -78,7 +78,7 @@ struct PlayerInfoView: View {
     }
     
     var playerIcon: some View {
-        player.icon
+        player.icon.getImage()
             .font(.body)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .shadow(radius: 50)
