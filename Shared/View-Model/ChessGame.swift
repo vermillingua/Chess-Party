@@ -31,7 +31,13 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     var potentialPromotionFromPosition: Position? = nil
     var potentialPromotionDestination: Position? = nil
 
-    var currentPlayer: Player? { gameState.getCurrentPlayer()}
+    var currentPlayer: Player? {
+        if let id = gameState.getCurrentPlayer() {
+            return playerWithID(id: id)
+        } else {
+            return nil
+        }
+    }
     var nextPlayer: Player? {
         if let nextPlayerIndex = currentPlayer?.nextPlayer.index {
             return players[nextPlayerIndex]
@@ -45,6 +51,9 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     }
     func playersInTeam(_ team: TeamID) -> [Player] {
         players.filter({player in player.team == team})
+    }
+    func playerWithID(id: PlayerID) -> Player? {
+        return players.filter(){player in player.identity == id}.first
     }
 
     var renderedChessPieces: [RenderablePiece] {
@@ -90,8 +99,8 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
         }
         
         // Set game state and start game
-        gameState = .waitingOnPlayer(player: self.players.first!)
         self.players.first!.startMove(withBoard: chessBoard)
+        gameState = .waitingOnPlayer(player: self.players.first!.identity)
     }
     
     enum ChessGameCodingKeys: String, CodingKey {
@@ -112,19 +121,24 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
         
         gameType = try container.decode(ChessGameType.self, forKey: .gameType)
         id = try container.decode(UUID.self, forKey: .id)
-        var playersContainer = try container.nestedUnkeyedContainer(forKey: .players)
-        players = try PlayerCoder.decodePlayerList(fromContainer: &playersContainer)
         
         var historyContainer = try container.nestedUnkeyedContainer(forKey: .history)
         history = try ChessBoardCoder.decodeChessBoardList(container: &historyContainer, gameType: gameType)
         
+        players = []
+        gameState = .paused
+       
         playersInCheck = try container.decode(Set<PlayerID>.self, forKey: .playersInCheck)
         chessBoard = try ChessBoardCoder.decodeKeyed(container: container, key: .chessBoard, gameType: gameType)
-        gameState = try container.decode(GameState.self, forKey: .gameState)
 //        settings
         lastMoves = try container.decode(Set<Position>.self, forKey: .lastMoves)
         warningPositions = try container.decode(Set<Position>.self, forKey: .warningPositions)
         potentialMoveDestinations = []
+        
+        var playersContainer = try container.nestedUnkeyedContainer(forKey: .players)
+        let responseHandler: PlayerResponseHandler = {move in self.handleMove(move)}
+        players = try PlayerCoder.decodePlayerList(fromContainer: &playersContainer, handler: responseHandler)
+        gameState = try container.decode(GameState.self, forKey: .gameState)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -193,7 +207,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     
     func userTappedPosition(_ position: Position) {
         let animation = Animation.linear(duration: 0.1)
-        if gameState.isWaitingOnUserToMakeMove() {
+        if gameState.isWaitingOnUserToMakeMove(game: self) {
             if (position == userFocusedPosition) {
                 withAnimation(animation) {
                     userFocusedPosition = nil
@@ -208,7 +222,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     
     func handleTappedPotentialMove(atPosition position: Position) {
         let userMoves = potentialMovesForCurrentPiece.filter({ $0.primaryDestination == position})
-        let onDevicePlayer = gameState.getCurrentPlayer() as! OnDevicePlayer
+        let onDevicePlayer = currentPlayer as! OnDevicePlayer
         
         potentialPromotionDestination = nil
         potentialPromotionFromPosition = nil
@@ -237,7 +251,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
         
         if let type = pieceType {
             let promotionMoves = chessBoard.getMoves(from: potentialPromotionFromPosition!).filter({ $0.promotionType == type && $0.primaryDestination == potentialPromotionDestination!})
-            let onDevicePlayer = gameState.getCurrentPlayer() as! OnDevicePlayer
+            let onDevicePlayer = currentPlayer as! OnDevicePlayer
             let move = promotionMoves.first!
             onDevicePlayer.handleOnDeviceMove(move)
 
@@ -255,25 +269,13 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     func handleSelectedOtherPosition(_ position: Position) {
         if case .waitingOnPlayer(let currentPlayer) = gameState,
            let piece = chessBoard.board[position],
-           piece.player == currentPlayer.identity {
-
+           piece.player == currentPlayer {
             withAnimation(.linear(duration: animationDuration)) {
                 userFocusedPosition = position
                 potentialMovesForCurrentPiece = chessBoard.getMoves(from: position)
                 potentialMoveDestinations.removeAll()
                 potentialMovesForCurrentPiece.forEach({potentialMoveDestinations.insert($0.primaryDestination)})
             }
-        }
-    }
-    
-    func saveGame() {
-        do {
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = .prettyPrinted
-            let data = try encoder.encode(self)
-            print(String(data: data, encoding: .utf8)!)
-        } catch {
-            print("Encoding error:\n\(error)")
         }
     }
     
@@ -297,8 +299,10 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
             if let nextPlayer = currentPlayer {
                 nextPlayer.startMove(withBoard: chessBoard)
             }
-            saveGame()
+            
+            history.append(chessBoard)
             objectWillChange.send()
+            ChessGameStore.saveGames()
         }
 
     }
@@ -307,29 +311,31 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
     
     enum GameState: Codable {
         case paused
-        case waitingOnPlayer(player: Player)
+        case waitingOnPlayer(player: PlayerID)
         case endedVictory(forTeam: TeamID)
         case endedStalemate
         
-        func isWaitingOnUserToMakeMove() -> Bool {
+        
+        func isWaitingOnUserToMakeMove(game: ChessGame) -> Bool {
             if let currentPlayer = getCurrentPlayer() {
-                return currentPlayer.type == .onDevice
+                return game.playerWithID(id: currentPlayer)?.type == .onDevice
             } else {
                 return false
             }
         }
         
-        func isWaitingOnComputer() -> Bool {
+        func isWaitingOnComputer(game: ChessGame) -> Bool {
             if let currentPlayer = getCurrentPlayer() {
-                return currentPlayer.type == .computer
+                return game.playerWithID(id: currentPlayer)?.type == .computer
             } else {
                 return false
             }
         }
         
-        func getCurrentPlayer() -> Player? {
+        func getCurrentPlayer() -> PlayerID? {
             if case .waitingOnPlayer(let currentPlayer) = self {
                 return currentPlayer
+                
             } else {
                 return nil
             }
@@ -359,7 +365,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
             case 0:
                 self = .paused
             case 1:
-                self = .waitingOnPlayer(player: try PlayerCoder.decodeKeyed(container: container, key: .waitingPlayer))
+                self = .waitingOnPlayer(player: try container.decode(PlayerID.self, forKey: .waitingPlayer))
             case 2:
                 self = .endedVictory(forTeam: try container.decode(TeamID.self, forKey: .winningTeam))
             case 3:
@@ -376,7 +382,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
                 try container.encode(0, forKey: .state)
             case .waitingOnPlayer(let player):
                 try container.encode(1, forKey: .state)
-                try PlayerCoder.encodeKeyed(container: &container, key: .waitingPlayer, player: player)
+                try container.encode(player, forKey: .waitingPlayer)
             case .endedVictory(let forTeam):
                 try container.encode(2, forKey: .state)
                 try container.encode(forTeam, forKey: .winningTeam)
@@ -399,7 +405,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
             }
             
             if chessBoard.canPlayerMakeMove(player: next.identity) {
-                gameState = .waitingOnPlayer(player: next)
+                gameState = .waitingOnPlayer(player: next.identity)
             } else {
                 if playersInCheck.contains(next.identity) {
 //                    eliminatePlayer(playerID: next.identity)
@@ -422,7 +428,7 @@ class ChessGame: ObservableObject, CustomStringConvertible, Identifiable, Codabl
         players[playerID.index].hasBeenEliminated = true
         players[player.previousPlayer.id].nextPlayer = player.nextPlayer
         players[player.nextPlayer.id].previousPlayer = player.previousPlayer
-        gameState = .waitingOnPlayer(player: nextPlayer!)
+        gameState = .waitingOnPlayer(player: nextPlayer!.identity)
         
         let inGame = playersStillInGame
         if inGame.count == 1 {

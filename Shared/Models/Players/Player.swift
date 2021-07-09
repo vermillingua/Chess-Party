@@ -27,7 +27,7 @@ protocol Player: Codable {
     var team: TeamID { get }
     var icon: PlayerIcon { get set }
     var hasBeenEliminated: Bool { get set }
-    var playerResponseHandler: PlayerResponseHandler? { get }
+    var playerResponseHandler: PlayerResponseHandler? { get set }
 
     func startMove(withBoard board: ChessBoard)
 }

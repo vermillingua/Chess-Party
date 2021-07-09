@@ -53,8 +53,8 @@ struct MainMenu: View {
         return NavigationLink(destination: gameView(forGame: game), tag: game.id, selection: self.$chessGameStore.selectedGame) {
             HStack {
                 game.gameType.icon
-                Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove() ? .bold : .regular))
-                if game.gameState.isWaitingOnComputer() {
+                Text(String(describing: game)).font(Font.body.weight(game.gameState.isWaitingOnUserToMakeMove(game: game) ? .bold : .regular))
+                if game.gameState.isWaitingOnComputer(game: game) {
                     Spacer()
                     ProgressView().scaleEffect(0.5).frame(height: 10)
                 }

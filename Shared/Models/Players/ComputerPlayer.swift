@@ -17,7 +17,7 @@ struct ComputerPlayer: Player {
     var nextPlayer: PlayerID
     var lastMove: Move? = nil
     var previousPlayer: PlayerID
-    let playerResponseHandler: PlayerResponseHandler?
+    var playerResponseHandler: PlayerResponseHandler?
     
     
     func startMove(withBoard chessBoard: ChessBoard) {

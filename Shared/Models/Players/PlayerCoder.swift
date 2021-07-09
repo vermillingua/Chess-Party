@@ -6,7 +6,7 @@
 //
 
 import Foundation
-private enum playerCodingKeys: String, CodingKey {
+private enum playerCodingKeys: Int, CodingKey {
     case name
     case type
     case identity
@@ -20,24 +20,34 @@ private enum playerCodingKeys: String, CodingKey {
 
 extension Player {
     init(from decoder: Decoder) throws {
+        var onDevice: Self? = nil, computer: Self? = nil, remote: Self? = nil
         let container = try decoder.container(keyedBy: playerCodingKeys.self)
         let name = try container.decode(String.self, forKey: .name)
         let type = try container.decode(PlayerType.self, forKey: .type)
-        let identity = try container.decode(PlayerID.self, forKey: .name)
-        let nextPlayer = try container.decode(PlayerID.self, forKey: .name)
-        let previousPlayer = try container.decode(PlayerID.self, forKey: .name)
-        let lastMove = try container.decode(Move.self, forKey: .name)
-        let team = try container.decode(TeamID.self, forKey: .name)
-        let icon = try container.decode(PlayerIcon.self, forKey: .name)
-        let hasBeenEliminated = try container.decode(Bool.self, forKey: .name)
+        let identity = try container.decode(PlayerID.self, forKey: .identity)
+        let nextPlayer = try container.decode(PlayerID.self, forKey: .nextPlayerID)
+        let previousPlayer = try container.decode(PlayerID.self, forKey: .previousPlayerID)
+        let lastMove = try container.decode(Move?.self, forKey: .lastMove)
+        let team = try container.decode(TeamID.self, forKey: .teamID)
+        let icon = try container.decode(PlayerIcon.self, forKey: .playerIcon)
+        let hasBeenEliminated = try container.decode(Bool.self, forKey: .hasBeenEliminated)
         
         switch type {
         case .onDevice:
-            self = OnDevicePlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as! Self
+            onDevice = OnDevicePlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as? Self
         case .computer:
-            self = ComputerPlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as! Self
+            computer = ComputerPlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as? Self
         case .remote:
-            self = RemotePlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as! Self
+            remote = RemotePlayer(name: name, identity: identity, team: team, icon: icon, hasBeenEliminated: hasBeenEliminated, nextPlayer: nextPlayer, lastMove: lastMove, previousPlayer: previousPlayer, playerResponseHandler: nil) as? Self
+        }
+        if let onDevice = onDevice {
+            self = onDevice
+        } else if let computer = computer {
+            self = computer
+        } else if let remote = remote {
+            self = remote
+        } else {
+            throw PlayerCoder.PlayerTypeError.castError
         }
     }
     
@@ -111,31 +121,34 @@ struct PlayerCoder {
             if (onDevicePlayer.type == .onDevice) {
                 return onDevicePlayer
             }
-        } catch {}
+        } catch { }
         do {
             let computerPlayer = try container.decode(ComputerPlayer.self)
             if (computerPlayer.type == .computer) {
                 return computerPlayer
             }
-        } catch {}
+        } catch { }
         do {
             let remotePlayer = try container.decode(RemotePlayer.self)
             if (remotePlayer.type == .remote) {
                 return remotePlayer
             }
-        } catch {}
+        } catch { }
         throw DecodingError.dataCorruptedError(in: container, debugDescription: "Unable to decode player")
     }
     
-    static func decodePlayerList(fromContainer container: inout UnkeyedDecodingContainer) throws -> [Player] {
+    static func decodePlayerList(fromContainer container: inout UnkeyedDecodingContainer, handler: @escaping PlayerResponseHandler) throws -> [Player] {
         var players: [Player] = []
         while !container.isAtEnd {
-            players.append(try decodeUnkeyed(container: &container))
+            var player = try decodeUnkeyed(container: &container)
+            player.playerResponseHandler = handler
+            players.append(player)
         }
         return players
     }
     
     enum PlayerTypeError: Error {
         case unknownType(type: Player.Type)
+        case castError
     }
 }
