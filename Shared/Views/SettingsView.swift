@@ -19,6 +19,9 @@ struct SettingsView: View {
         let form = Form {
             Toggle("Sounds", isOn: $sounds).onChange(of: sounds) { settings.sounds = $0 }
             Toggle("Notifications", isOn: $notifications).onChange(of: notifications) { settings.notifications = $0}
+            Button("Reset Games") {
+                ChessGameStore.instance.resetGames()
+            }
             #if os(macOS)
                 Divider()
             #endif

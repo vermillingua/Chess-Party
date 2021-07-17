@@ -12,13 +12,12 @@ struct RemotePlayer: Player {
     let type: PlayerType = .remote
     let identity: PlayerID
     let team: TeamID
-    var icon: Image
+    var icon: PlayerIcon
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
-    var previousPlayer: PlayerID
     var lastMove: Move? = nil
-    let playerResponseHandler: PlayerResponseHandler
-
+    var previousPlayer: PlayerID
+    var playerResponseHandler: PlayerResponseHandler?
 
     func startMove(withBoard board: ChessBoard) {
     }

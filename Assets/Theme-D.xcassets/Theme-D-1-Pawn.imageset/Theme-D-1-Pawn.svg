@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 402 394" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-55,-95)">
+        <g id="Pawn" transform="matrix(5.44373,0,0,5.56514,-560.134,-578.675)">
+            <path d="M145,139.706C145,161.782 133.763,180 119.922,180L120,180C117.24,180 115,182.24 115,185C115,187.76 117.24,190 120,190L180,190C182.76,190 185,187.76 185,185C185,182.24 182.76,180 180,180L179.922,180C166.081,180 154.844,161.782 154.844,139.706" style="fill:rgb(31,0,255);stroke:black;stroke-width:3.63px;"/>
+            <g transform="matrix(1.81562,0,0,1.81562,-185.969,-203.812)">
+                <circle cx="185" cy="185" r="5" style="fill:rgb(31,0,255);stroke:black;stroke-width:2px;"/>
+            </g>
+            <g transform="matrix(1.61794,0,0,2.58065,-110.567,-282.597)">
+                <path d="M159.975,171.05C158.549,174.763 155.734,177.791 152.168,179.494" style="fill:none;stroke:black;stroke-width:1.68px;"/>
+            </g>
+        </g>
+    </g>
+</svg>

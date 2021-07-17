@@ -15,12 +15,19 @@ struct PlayerInfoView: View {
     
     @ViewBuilder
     var body: some View {
-        layout
-            .padding(5)
-            .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(lineWidth: 4)
-                .opacity(currentPlayer ? 1 : 0))
+        border
+    }
+    
+    var border: some View {
+        HStack {
+            layout
+                .opacity(player.hasBeenEliminated ? 0.80 : 1.0)
+                .padding(5)
+                .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(lineWidth: 4)
+                    .opacity(currentPlayer ? 1 : 0))
+        }
     }
     
     @ViewBuilder
@@ -38,9 +45,6 @@ struct PlayerInfoView: View {
                 horizontalLayout
             }
         }
-//        .frame(minWidth: 50, minHeight: 50)
-//        .background(Color.black)
-        
     }
     
     var verticalLayout: some View {
@@ -71,14 +75,14 @@ struct PlayerInfoView: View {
     }
     
     var playerIcon: some View {
-        player.icon
-            .font(.largeTitle)
+        player.icon.getImage()
+            .font(.body)
             .clipShape(RoundedRectangle(cornerRadius: 5))
             .shadow(radius: 50)
     }
     
     var playerNameLabel: some View {
-        Text(player.name).font(.largeTitle).fixedSize()
+        Text(player.name).font(.body)
     }
     
     

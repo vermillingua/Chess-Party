@@ -17,7 +17,7 @@ let team2: TeamID = TeamID(id: 1)
 let team3: TeamID = TeamID(id: 2)
 let team4: TeamID = TeamID(id: 3)
 
-protocol Player {
+protocol Player: Codable {
     var name: String { get }
     var type: PlayerType { get }
     var identity: PlayerID { get }
@@ -25,9 +25,9 @@ protocol Player {
     var previousPlayer: PlayerID { get set }
     var lastMove: Move? { get set }
     var team: TeamID { get }
-    var icon: Image { get set }
+    var icon: PlayerIcon { get set }
     var hasBeenEliminated: Bool { get set }
-    var playerResponseHandler: PlayerResponseHandler { get }
+    var playerResponseHandler: PlayerResponseHandler? { get set }
 
     func startMove(withBoard board: ChessBoard)
 }
@@ -36,7 +36,7 @@ extension Player {
     var index: Int { identity.id }
 }
 
-enum PlayerType {
+enum PlayerType: Int, Codable {
     case onDevice, computer, remote
 }
 
@@ -45,7 +45,7 @@ struct PlayerID: Hashable, Codable {
     var index: Int { id }
 }
 
-struct TeamID: Hashable, Codable {
+struct TeamID: Hashable, Codable, Equatable {
     var id: Int
 }
 

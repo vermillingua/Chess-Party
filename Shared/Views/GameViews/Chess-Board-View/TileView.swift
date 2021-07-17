@@ -12,12 +12,13 @@ struct TileView: View {
     
     var tileType: TileType
 
-    enum TileType { case primary, secondary }
+    enum TileType { case primary, secondary, outOfBounds }
     
     var body: some View {
         ZStack {
             Rectangle()
                 .fill(tileType == .primary ? settings.theme.primaryBoardColor : settings.theme.secondaryBoardColor)
+                .opacity(tileType == .outOfBounds ? 0.0 : 1.0)
                 .aspectRatio(contentMode: .fit)
                 .padding(0)
         }
