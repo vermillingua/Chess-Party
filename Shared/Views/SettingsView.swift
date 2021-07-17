@@ -20,8 +20,7 @@ struct SettingsView: View {
             Toggle("Sounds", isOn: $sounds).onChange(of: sounds) { settings.sounds = $0 }
             Toggle("Notifications", isOn: $notifications).onChange(of: notifications) { settings.notifications = $0}
             Button("Reset Games") {
-                ChessGameStore.instance.firstInit()
-                ChessGameStore.saveGames()
+                ChessGameStore.instance.resetGames()
             }
             #if os(macOS)
                 Divider()

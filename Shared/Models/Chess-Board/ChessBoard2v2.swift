@@ -147,10 +147,8 @@ struct ChessBoard2v2: TraditionalRulesChessBoard, Codable {
         enPassentPositions = [PlayerID : Position]()
     }
     
-    //MARK: TODO!!!
+    //MARK: TODO get position name
     func getPositionName(_ position: Position) -> String {
         "TODO!"
     }
-    
-    
 }

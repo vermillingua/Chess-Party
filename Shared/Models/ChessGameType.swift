@@ -70,8 +70,5 @@ enum ChessGameType: String, CaseIterable, Codable {
             return .ChessBoard1v1v1v1
         }
     }
-    
-    
-    
 }
 

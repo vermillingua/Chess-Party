@@ -45,9 +45,6 @@ struct PlayerInfoView: View {
                 horizontalLayout
             }
         }
-//        .frame(minWidth: 50, minHeight: 50)
-//        .background(Color.black)
-        
     }
     
     var verticalLayout: some View {

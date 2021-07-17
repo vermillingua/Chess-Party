@@ -27,9 +27,9 @@ struct ChessBoardView: View {
         }
         .alert(isPresented: $showingGameOver) {
             var message = ""
-            if case ChessGame.GameState.endedVictory(let team) = chessGame.gameState {
+            if case GameState.endedVictory(let team) = chessGame.gameState {
                 message = "\(chessGame.playersInTeam(team).map {$0.name}.englishDescription) won the game!"
-            } else if case ChessGame.GameState.endedStalemate = chessGame.gameState {
+            } else if case GameState.endedStalemate = chessGame.gameState {
                 message = "It was a stalemate!"
             }
             return Alert(title: Text("Game Over"), message: Text(message))
@@ -48,8 +48,6 @@ struct ChessBoardView: View {
             }
         }
     }
-    
-    
     
     var pieces: some View {
         ZStack {
@@ -82,7 +80,6 @@ struct ChessBoardView: View {
             .position(getPiecePosition(withBoardSize: size, atPosition: renderablePiece.position))
             .onTapGesture { userTappedTile(at: renderablePiece.position) }
     }
-
     
     var selections: some View {
         ZStack {
@@ -98,7 +95,7 @@ struct ChessBoardView: View {
         }.aspectRatio(CGFloat(chessGame.chessBoard.columns)/CGFloat(chessGame.chessBoard.rows), contentMode: .fit)
     }
     
-    func selectionView(type: ChessGame.SelectionType, atPosition position: Position, boardSize: CGSize) -> some View {
+    func selectionView(type: SelectionType, atPosition position: Position, boardSize: CGSize) -> some View {
         let size = getPieceSize(withBoardSize: boardSize)
         let side = min(size.width, size.height) 
         return SelectTileView(selectionType: type, theme: settings.theme)
@@ -108,10 +105,8 @@ struct ChessBoardView: View {
             .onTapGesture { userTappedTile(at: position) }
         
     }
-    
-    
 
-    func getDisplayedSelectionType(atPosition position: Position) -> ChessGame.SelectionType? {
+    func getDisplayedSelectionType(atPosition position: Position) -> SelectionType? {
         if let focused = chessGame.userFocusedPosition, focused == position {
             return .userFocus
         } else if chessGame.potentialMoveDestinations.contains(position) {

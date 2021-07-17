@@ -10,7 +10,6 @@ import SwiftUI
 struct MainMenu: View {
     @ObservedObject var chessGameStore = ChessGameStore.instance
     
-    
     var body: some View {
         List {
             newGameLinks()

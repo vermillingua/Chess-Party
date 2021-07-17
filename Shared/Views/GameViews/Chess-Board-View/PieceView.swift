@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct RenderablePiece: Identifiable {
+    let piece: Piece
+    var id: Int { piece.id }
+    var position: Position
+}
+
 struct PieceView: View {
     @EnvironmentObject var settings: AppSettings
     var renderablePiece: RenderablePiece

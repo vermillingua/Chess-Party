@@ -7,6 +7,8 @@
 
 import Foundation
 
+let CURRENT_GAMES_FILE = "currentGames.json"
+
 class ChessGameStore: ObservableObject {
     static var instance: ChessGameStore = ChessGameStore()
     var selectedGame: UUID? {
@@ -17,32 +19,76 @@ class ChessGameStore: ObservableObject {
 
     @Published var currentGames: [ChessGame]
     
+    private let fileManager = FileManager.default
+    private let savedGamesDir: URL? = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("savedGames")
+    
     init() {
-        do {
-            let manager = FileManager.default
-            var fileURL = manager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-            fileURL?.appendPathComponent("currentGames")
-            if let url = fileURL,  manager.fileExists(atPath: url.path){
-                let json: Data = try Data(contentsOf: url)
-                currentGames = try JSONDecoder().decode([ChessGame].self, from: json)
-                print("Succesfully Loaded Games")
-            } else {
-                print ("Initializing Chess Game Store for the first time")
-                currentGames = []
-                firstInit()
+        currentGames = []
+        if let url = savedGamesDir {
+            let enumerator = fileManager.enumerator(atPath: url.path)
+            while let filename = enumerator?.nextObject() as? String {
+                do {
+                    let json: Data = try Data(contentsOf: getGamePath(filename: filename)!)
+                    let game = try JSONDecoder().decode(ChessGame.self, from: json)
+                    currentGames.append(game)
+                } catch {
+                    print("ERROR: Could not load file: \(filename) error:\n\(error)")
+                }
             }
-        } catch {
-            print ("ERROR: Could not load data store: \(error)")
-            currentGames = []
+        }
+        if currentGames.isEmpty {
             firstInit()
         }
     }
+               
+    private func getGamePath(filename: String) -> URL? {
+        var fileURL = savedGamesDir
+        do {
+            try fileManager.createDirectory(at: fileURL!, withIntermediateDirectories: true, attributes: nil)
+        } catch {}
+        fileURL?.appendPathComponent(filename)
+        return fileURL
+    }
+    
+    func saveGame(game: ChessGame) {
+        do {
+            if let url = getGamePath(filename: "\(game.id.uuidString).json") {
+                let json: Data = try JSONEncoder().encode(game)
+                try json.write(to: url, options: .atomicWrite)
+            }
+        } catch {
+            print("Failed to save game \(game.id.uuidString): \n\(error)")
+        }
+    }
+    
+    func saveAll() {
+        currentGames.forEach(){ game in saveGame(game: game)}
+    }
+    
+    func deleteGame(game: ChessGame) {
+        do {
+            if let url = getGamePath(filename: "\(game.id.uuidString).json") {
+                try fileManager.removeItem(at: url)
+            }
+            let index = currentGames.firstIndex(where: {g in game.id == g.id})
+            if let idx = index {
+                currentGames.remove(at: idx)
+            }
+        } catch {
+            print("ERROR: Failed to delete game \(game.id.uuidString):\n\(error)")
+        }
+    }
+    
+    func resetGames() {
+        currentGames.forEach(){ game in deleteGame(game: game)}
+        firstInit()
+        saveAll()
+    }
 
-    func firstInit() {
+    private func firstInit() {
         currentGames = []
         let you = PlayerBuilder(name: "You", type: .onDevice, team: TeamID(id: 0))
         let teamy = PlayerBuilder(name: "Teamy", type: .computer,  team: TeamID(id: 0))
-//        let A = PlayerBuilder(name: "First", type: .computer,  team: TeamID(id: 0))
         
         let chester = PlayerBuilder(name: "Chester", type: .computer, team: TeamID(id: 1))
         let remone = PlayerBuilder(name: "Remone", type: .remote,  team: TeamID(id: 1))
@@ -51,7 +97,6 @@ class ChessGameStore: ObservableObject {
         let otherEnemy = PlayerBuilder(name: "Other Enimy with a very long name", type: .computer,  team: TeamID(id: 1))
         
         let C = PlayerBuilder(name: "Third", type: .onDevice,  team: TeamID(id: 2))
-        
         let D = PlayerBuilder(name: "Fourth", type: .computer,  team: TeamID(id: 3))
         
         currentGames = [
@@ -64,23 +109,7 @@ class ChessGameStore: ObservableObject {
         selectedGame = currentGames.first?.id
     }
     
-    
     func gameWillChange() {
         objectWillChange.send()
-    }
-    
-    static func saveGames() {
-        do {
-            var fileURL = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-            fileURL?.appendPathComponent("currentGames")
-            if let url = fileURL {
-                let json: Data = try JSONEncoder().encode(ChessGameStore.instance.currentGames)
-                try json.write(to: url)
-                print("Games Saved")
-                //            print("--------------\n\(String(describing: String(data: json, encoding: .utf8))) \n -------------")
-            }
-        } catch {
-            print("Game Save Failed")
-        }
     }
 }

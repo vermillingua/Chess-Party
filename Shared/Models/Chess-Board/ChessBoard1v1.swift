@@ -101,6 +101,4 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
         // MARK: TODO Again... all the things!
         return "TODO"
     }
-    
-    
 }

@@ -17,7 +17,7 @@ struct Theme {
     let pieceImageGetter: PieceImageGetter
     let pieceSizePorportion: CGFloat
     
-    typealias SelectionColorGetter = (ChessGame.SelectionType) -> Color
+    typealias SelectionColorGetter = (SelectionType) -> Color
     let selectionColorGetter: SelectionColorGetter
     let selectionBorderWidth: CGFloat
     
