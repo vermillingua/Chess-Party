@@ -18,11 +18,11 @@ struct PromotionView: View {
         HStack {
             ForEach (0..<pieceTypes.count) { i in
                 settings.theme.pieceImageGetter(pieceTypes[i], playerID).resizable()
-                    .frame(width: pieceSize.width, height: pieceSize.height, alignment: .center)
+                    .frame(width: pieceSize.width*settings.theme.pieceSizePorportion, height: pieceSize.height*settings.theme.pieceSizePorportion, alignment: .center)
                     .onTapGesture {
                         pieceSelectionHandler(pieceTypes[i]) 
                     }
             }
-        }
+        }.padding()
     }
 }

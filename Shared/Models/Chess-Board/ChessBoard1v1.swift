@@ -15,8 +15,8 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
     var castleableRooks: [PlayerID : Set<Position>]
     var hasKingMoved: [PlayerID : Bool]
     
-    static var gameType: ChessGameType = .duel
-    
+    let boardType: ChessBoardType = .ChessBoard1v1
+
     // Needed for swift to ignore let constants when encoding/decoding
     private enum CodingKeys: String, CodingKey {
         case board, kingPosition, enPassentPositions, castleableRooks, hasKingMoved
@@ -24,6 +24,10 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
     
     let rows: Int = 8
     let columns: Int = 8
+    
+    func positionInBounds(_ position: Position) -> Bool {
+        return position.row >= 0 && position.row < rows && position.column >= 0 && position.column < columns
+    }
     
     let pawnMoveDirection: [PlayerID : Displacement] = [player1: .north, player2: .south]
     
@@ -97,6 +101,4 @@ struct ChessBoard1v1: TraditionalRulesChessBoard, Codable {
         // MARK: TODO Again... all the things!
         return "TODO"
     }
-    
-    
 }

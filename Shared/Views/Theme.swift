@@ -15,8 +15,9 @@ struct Theme {
     
     typealias PieceImageGetter = (PieceType, PlayerID) -> Image
     let pieceImageGetter: PieceImageGetter
+    let pieceSizePorportion: CGFloat
     
-    typealias SelectionColorGetter = (ChessGame.SelectionType) -> Color
+    typealias SelectionColorGetter = (SelectionType) -> Color
     let selectionColorGetter: SelectionColorGetter
     let selectionBorderWidth: CGFloat
     
@@ -34,12 +35,12 @@ struct Theme {
     
     static let defaultPieceImageGetter: PieceImageGetter = { (pieceType, playerID) in
         switch pieceType {
-        case .bishop: return Image("Theme-R-\(playerID.id)-Bishop")
-        case .knight: return Image("Theme-R-\(playerID.id)-Knight")
-        case .rook: return Image("Theme-R-\(playerID.id)-Rook")
-        case .pawn: return Image("Theme-R-\(playerID.id)-Pawn")
-        case .queen: return Image("Theme-R-\(playerID.id)-Queen")
-        case .king: return Image("Theme-R-\(playerID.id)-King")
+        case .bishop: return Image("Theme-R-\(playerID.id%2)-Bishop")
+        case .knight: return Image("Theme-R-\(playerID.id%2)-Knight")
+        case .rook: return Image("Theme-R-\(playerID.id%2)-Rook")
+        case .pawn: return Image("Theme-R-\(playerID.id%2)-Pawn")
+        case .queen: return Image("Theme-R-\(playerID.id%2)-Queen")
+        case .king: return Image("Theme-R-\(playerID.id%2)-King")
         }
     }
     static let defaultSelectionColorGetter: SelectionColorGetter = { selection in
@@ -56,6 +57,7 @@ struct Theme {
         primaryBoardColor: Color = Color.init(red: 62/255, green: 40/255, blue: 104/255),
         secondaryBoardColor: Color = Color.init(red: 67/255, green: 145/255, blue: 199/255),
         pieceImageGetter: @escaping PieceImageGetter = Theme.defaultPieceImageGetter,
+
         selectionColorGetter: @escaping SelectionColorGetter = Theme.defaultSelectionColorGetter,
         selectionBorderWidth: CGFloat = 5) {
         
@@ -63,6 +65,7 @@ struct Theme {
         self.primaryBoardColor = primaryBoardColor
         self.secondaryBoardColor = secondaryBoardColor
         self.pieceImageGetter = pieceImageGetter
+        self.pieceSizePorportion = 0.9
         self.selectionColorGetter = selectionColorGetter
         self.selectionBorderWidth = selectionBorderWidth
     }

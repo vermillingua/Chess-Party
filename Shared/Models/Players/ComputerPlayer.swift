@@ -12,12 +12,12 @@ struct ComputerPlayer: Player {
     let type: PlayerType = .computer
     let identity: PlayerID
     let team: TeamID
-    var icon: Image
+    var icon: PlayerIcon
     var hasBeenEliminated: Bool = false
     var nextPlayer: PlayerID
-    var previousPlayer: PlayerID
     var lastMove: Move? = nil
-    let playerResponseHandler: PlayerResponseHandler
+    var previousPlayer: PlayerID
+    var playerResponseHandler: PlayerResponseHandler?
     
     
     func startMove(withBoard chessBoard: ChessBoard) {
@@ -25,14 +25,13 @@ struct ComputerPlayer: Player {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             makeArbitraryMove(withBoard: chessBoard)
         }
-        
     }
     
     private func makeArbitraryMove(withBoard chessBoard: ChessBoard) {
         for position in chessBoard.board.keys {
             if let piece = chessBoard.board[position], piece.player == identity {
                 if let move = chessBoard.getMoves(from: position).first {
-                    playerResponseHandler(move)
+                    playerResponseHandler!(move)
                     return
                 }
             }

@@ -39,7 +39,6 @@ struct MacOSNavigationView: View {
             }
         })
     }
-    
 
     // Credit to monyschuk https://developer.apple.com/forums/thread/651807?answerId=617555022#617555022
     private func toggleSidebar() {

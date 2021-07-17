@@ -16,9 +16,16 @@ struct DuelGameView: View {
         self.boardView = ChessBoardView(chessGame: game)
     }
     
+    var horizontalOffsets: CGSize {
+        return CGSize(width: 150, height: 0)
+    }
+    var verticalOffsets: CGSize {
+        CGSize(width: 0, height: 25+10)
+    }
+    
     var body: some View {
         GeometryReader { reader in
-            if reader.size.reccomendedLayoutOrientation == LayoutOrientation.vertical {
+            if reader.size.reccomendedLayoutOrinetationForShape(boardDimensions: CGSize(width: 8, height: 8), withHorizontalOffsets: horizontalOffsets, withVerticalOffsets: verticalOffsets) == LayoutOrientation.vertical {
                 verticalLayout
             } else {
                 horizontalLayout
@@ -35,9 +42,9 @@ struct DuelGameView: View {
             Spacer()
             VStack (alignment: .center) {
                 Spacer()
-                PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity)
+                PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity).frame(height: verticalOffsets.height)
                 boardView.layoutPriority(1).background(Color.black)
-                PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
+                PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity).frame(height: verticalOffsets.height)
                 Spacer()
             }
             Spacer()
@@ -51,15 +58,12 @@ struct DuelGameView: View {
         return HStack {
             Spacer()
             VStack {
-                PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity)
+                PlayerInfoView(player: secondPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == secondPlayer.identity).frame(width: horizontalOffsets.width)
                 Spacer()
-                PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity)
+                PlayerInfoView(player: firstPlayer, orientation: .horizontal, flip: false, currentPlayer: currentPlayer?.identity == firstPlayer.identity).frame(width: horizontalOffsets.width)
             }
             boardView.layoutPriority(1)
             Spacer()
         }
-        
     }
 }
-
-

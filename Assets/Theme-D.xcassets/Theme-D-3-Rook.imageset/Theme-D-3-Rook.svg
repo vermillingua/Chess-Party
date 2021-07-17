@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 401 433" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-56,-56)">
+        <g id="Rook" transform="matrix(5.42824,0,0,5.42824,-1372.03,-552.664)">
+            <path d="M280,124C285.516,124.452 289.191,137.469 287.249,152.835C285.298,168.273 275.516,180.452 270,180L269.922,180L270,180C267.24,180 265,182.24 265,185C265,187.76 267.24,190 270,190L330,190C332.76,190 335,187.76 335,185C335,182.24 332.76,180 330,180L329.922,180L330,180C324.484,180.452 314.105,168.329 312.751,152.835C311.403,137.405 314.484,124.452 320,124" style="fill:rgb(99,0,152);stroke:black;stroke-width:3.68px;"/>
+            <g transform="matrix(0.764286,0,0,1,70.7143,-66)">
+                <rect x="265" y="180" width="70" height="10" style="fill:rgb(99,0,152);stroke:black;stroke-width:4.14px;"/>
+            </g>
+            <g transform="matrix(0.504849,0.153827,-0.292136,0.958769,180.973,-30.9894)">
+                <path d="M307.315,144.16C307.763,146.65 308,149.281 308,152C308,158.908 306.312,165.237 303.509,170.124" style="fill:rgb(99,0,152);stroke:black;stroke-width:4.6px;"/>
+            </g>
+        </g>
+    </g>
+</svg>

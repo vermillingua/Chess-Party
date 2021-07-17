@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 494 390" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-9,-100)">
+        <g id="Queen" transform="matrix(5.46049,0,0,5.46049,-3072.17,-580.7)">
+            <g transform="matrix(1,0,0,1,-0.5,4.25)">
+                <path d="M640,180C642.76,180 645,182.24 645,185C645,187.76 642.76,190 640,190L580,190C577.24,190 575,187.76 575,185C575,182.24 577.24,180 580,180C580,180 583.066,170.013 566.602,141.562L584.823,156.878C584.823,156.878 589.791,150.054 586.248,127.289L601.094,149.634L610,122.241L618.906,149.634L633.752,127.289C633.719,127.531 633.694,127.772 633.654,128.009C629.972,150.079 635.177,156.878 635.177,156.878L653.398,141.562C636.98,169.963 640,180 640,180Z" style="fill:rgb(255,253,0);stroke:black;stroke-width:3.66px;"/>
+            </g>
+            <g transform="matrix(0.997807,0.0661958,-0.0661958,0.997807,19.4762,-26.1222)">
+                <path d="M578.883,168.99C578.291,165.042 577.388,160.368 573.525,154.747" style="fill:rgb(255,253,0);stroke:black;stroke-width:3.66px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
