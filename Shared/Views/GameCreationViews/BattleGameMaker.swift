@@ -9,6 +9,6 @@ import SwiftUI
 
 struct BattleGameMaker: View {
     var body: some View {
-        Text("Two V Two Game Maker")
+        Text("Battle Game Maker")
     }
 }

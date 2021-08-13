@@ -121,6 +121,10 @@
 		EBB61881268C2215002D2E91 /* ChessBoardCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB6187D268C2215002D2E91 /* ChessBoardCoder.swift */; };
 		EBC6F3B125C493150083B826 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F3B025C493150083B826 /* ArrayExtensions.swift */; };
 		EBC6F3B225C493150083B826 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC6F3B025C493150083B826 /* ArrayExtensions.swift */; };
+		EBE7B67526B78A3200B7720C /* PlusGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE7B67426B78A3200B7720C /* PlusGameMaker.swift */; };
+		EBE7B67626B78A3200B7720C /* PlusGameMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE7B67426B78A3200B7720C /* PlusGameMaker.swift */; };
+		EBEDE05B26C6233700A44E41 /* OnDevicePlayerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEDE05A26C6233700A44E41 /* OnDevicePlayerSelectionView.swift */; };
+		EBEDE05C26C6233700A44E41 /* OnDevicePlayerSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEDE05A26C6233700A44E41 /* OnDevicePlayerSelectionView.swift */; };
 		EBF7574825BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
 		EBF7574925BD3B760042CF57 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */; };
 		EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF7574F25BD3D350042CF57 /* DuelGameView.swift */; };
@@ -198,6 +202,8 @@
 		EBB61873268C1D1A002D2E91 /* PlayerCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoder.swift; sourceTree = "<group>"; };
 		EBB6187D268C2215002D2E91 /* ChessBoardCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessBoardCoder.swift; sourceTree = "<group>"; };
 		EBC6F3B025C493150083B826 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		EBE7B67426B78A3200B7720C /* PlusGameMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusGameMaker.swift; sourceTree = "<group>"; };
+		EBEDE05A26C6233700A44E41 /* OnDevicePlayerSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDevicePlayerSelectionView.swift; sourceTree = "<group>"; };
 		EBF7574725BD3B760042CF57 /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 		EBF7574F25BD3D350042CF57 /* DuelGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuelGameView.swift; sourceTree = "<group>"; };
 		EBFAA1E425C4FD3A00A293A6 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.3.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -354,11 +360,22 @@
 			path = Players;
 			sourceTree = "<group>";
 		};
+		EB266D2D26B7879A00CAF58E /* GameCreationViews */ = {
+			isa = PBXGroup;
+			children = (
+				EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */,
+				EBEDE05A26C6233700A44E41 /* OnDevicePlayerSelectionView.swift */,
+				EBAE198B25B78431008AF991 /* BattleGameMaker.swift */,
+				EBE7B67426B78A3200B7720C /* PlusGameMaker.swift */,
+			);
+			path = GameCreationViews;
+			sourceTree = "<group>";
+		};
 		EB28541825ACC41D00B9150F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				EBA7116F25ACF36C00EA6F79 /* Theme.swift */,
-				EBAE195425B7659F008AF991 /* SettingsView.swift */,
+				EB266D2D26B7879A00CAF58E /* GameCreationViews */,
 				EBAE191925B74136008AF991 /* Menus */,
 				EBF7574E25BD3CE10042CF57 /* GameViews */,
 			);
@@ -400,9 +417,8 @@
 		EBAE191925B74136008AF991 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
+				EBAE195425B7659F008AF991 /* SettingsView.swift */,
 				EB5C884D25BD29C6002F2528 /* MainMenu.swift */,
-				EBAE192C25B754C7008AF991 /* DuelGameMaker.swift */,
-				EBAE198B25B78431008AF991 /* BattleGameMaker.swift */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -606,6 +622,7 @@
 			files = (
 				AB3C161325EED4A3007904A4 /* ChessBoard2v2.swift in Sources */,
 				EB2A1F6925C9DADA004D5447 /* PromotionView.swift in Sources */,
+				EBE7B67526B78A3200B7720C /* PlusGameMaker.swift in Sources */,
 				EB601C6D25B0B90C00EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195A25B765A5008AF991 /* SettingsView.swift in Sources */,
 				EBAE199725B786F0008AF991 /* ChessGameType.swift in Sources */,
@@ -632,6 +649,7 @@
 				EB8DFEA426617F4D004E49FC /* PlusWarGameView.swift in Sources */,
 				AB824B6725A643D900C5A513 /* ChessPartyApp.swift in Sources */,
 				EBF7575025BD3D350042CF57 /* DuelGameView.swift in Sources */,
+				EBEDE05B26C6233700A44E41 /* OnDevicePlayerSelectionView.swift in Sources */,
 				EBB61874268C1D1A002D2E91 /* PlayerCoder.swift in Sources */,
 				EB28542525ACC4DC00B9150F /* TileView.swift in Sources */,
 				EB1CFECF25AA3627002BA365 /* Player.swift in Sources */,
@@ -651,6 +669,7 @@
 			files = (
 				AB3C161425EED4A3007904A4 /* ChessBoard2v2.swift in Sources */,
 				EB2A1F6A25C9DADA004D5447 /* PromotionView.swift in Sources */,
+				EBE7B67626B78A3200B7720C /* PlusGameMaker.swift in Sources */,
 				EB601C7625B0B96700EEFACF /* TraditionalRulesChessBoard.swift in Sources */,
 				EBAE195525B7659F008AF991 /* SettingsView.swift in Sources */,
 				EBAE199825B786F0008AF991 /* ChessGameType.swift in Sources */,
@@ -677,6 +696,7 @@
 				EB8DFEA526617F4D004E49FC /* PlusWarGameView.swift in Sources */,
 				EB28542625ACC4DC00B9150F /* TileView.swift in Sources */,
 				EBF7575125BD3D350042CF57 /* DuelGameView.swift in Sources */,
+				EBEDE05C26C6233700A44E41 /* OnDevicePlayerSelectionView.swift in Sources */,
 				EBB61875268C1D1A002D2E91 /* PlayerCoder.swift in Sources */,
 				EB1CFED025AA3627002BA365 /* Player.swift in Sources */,
 				EB1CFF0B25AA49DF002BA365 /* ChessGame.swift in Sources */,

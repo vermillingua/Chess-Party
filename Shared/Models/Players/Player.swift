@@ -36,7 +36,7 @@ extension Player {
     var index: Int { identity.id }
 }
 
-enum PlayerType: Int, Codable {
+enum PlayerType: Int, Codable, CaseIterable {
     case onDevice, computer, remote
 }
 

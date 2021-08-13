@@ -30,7 +30,7 @@ struct MainMenu: View {
         let current = chessGameStore.currentGames.filter {!$0.gameState.gameOver}
         return Section (header: Text("Current Games")) {
             ForEach (current) { game in
-                currentGameLink(game: game)
+                gameLink(game: game)
             }
         }
     }
@@ -42,13 +42,13 @@ struct MainMenu: View {
         } else {
             return AnyView(Section (header: Text("Finished Games")) {
                 ForEach (finishedGames) { game in
-                    currentGameLink(game: game)
+                    gameLink(game: game)
                 }
             })
         }
     }
     
-    private func currentGameLink(game: ChessGame) -> some View {
+    private func gameLink(game: ChessGame) -> some View {
         return NavigationLink(destination: gameView(forGame: game), tag: game.id, selection: self.$chessGameStore.selectedGame) {
             HStack {
                 game.gameType.icon
@@ -67,7 +67,6 @@ struct MainMenu: View {
         if game.gameType == .duel {
             DuelGameView(game: game)
         } else if game.gameType == .battle {
-           // TODO: Implement
             BattleGameView(game: game)
         } else if game.gameType == .plusWar {
             PlusWarGameView(game: game)
@@ -75,7 +74,7 @@ struct MainMenu: View {
     }
     
     private func newGameLink(forGameType gameType: ChessGameType) -> some View {
-        NavigationLink(destination: gameType.gameMaker) {
+        NavigationLink(destination: gameMakerView(forGameType: gameType)) {
             HStack {
                 gameType.icon.font(.largeTitle)
                 VStack (alignment: .leading) {
@@ -83,6 +82,18 @@ struct MainMenu: View {
                     Text(gameType.description).font(.caption).lineLimit(3)
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func gameMakerView(forGameType gameType: ChessGameType) -> some View {
+        switch gameType {
+        case .duel:
+            DuelGameMaker()
+        case .battle:
+            BattleGameMaker()
+        case .plusWar:
+            PlusGameMaker()
         }
     }
 }

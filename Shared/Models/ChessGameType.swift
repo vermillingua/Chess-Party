@@ -34,10 +34,6 @@ enum ChessGameType: String, CaseIterable, Codable {
         }
     }
     
-    var gameMaker: some View {
-        DuelGameMaker()
-    }
-    
     var isTeamStyle: Bool {
         switch self {
         case .duel:
