@@ -2,7 +2,7 @@
 
 *Developed by team Vermillingua: Daniël du Preez, and Robert Swanson*
 
-![screenshot](./screenshot.png)
+![screenshot](./2v2-screenshot.png)
 
 Chess Party is an SwiftUI app that provides elegant chess experience that facilitates traditional games as well as expanded multiplayer. It is a work in progress aiming towards the following features:
 
